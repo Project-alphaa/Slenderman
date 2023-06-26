@@ -108,6 +108,9 @@ public class BlockRegistry {
             new BarbedWireBlock(AbstractBlock.Settings.of(Material.METAL).sounds(BlockSoundGroup.WOOD).strength(2, 3).nonOpaque())
     );
 
+    public static final Block AIR_CONDITIONER = register("air_conditioner",
+            new AirConditioner(AbstractBlock.Settings.of(Material.METAL).sounds(BlockSoundGroup.COPPER).nonOpaque()));
+
     public static void register() {
     }
 
