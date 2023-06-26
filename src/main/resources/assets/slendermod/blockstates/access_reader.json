@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "slendermod:block/access_reader"
+    },
+    "facing=south": {
+      "model": "slendermod:block/access_reader",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "slendermod:block/access_reader",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "slendermod:block/access_reader",
+      "y": 270
+    }
+  }
+}

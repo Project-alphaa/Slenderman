@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "slendermod:bones",
+    "slendermod:shelf_cons",
+    "slendermod:hospital_bed",
+    "slendermod:exit_sign",
+    "slendermod:scp_slenderman_head"
+  ]
+}

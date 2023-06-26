@@ -1,0 +1,63 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "slendermod:block/fence/planks",
+		"particle": "slendermod:block/fence/planks"
+	},
+	"elements": [
+		{
+			"from": [7, 0, 7],
+			"to": [9, 16, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5.1875, 16, 8]},
+			"faces": {
+				"north": {"uv": [8, 0, 10, 16], "texture": "#1"},
+				"east": {"uv": [6, 0, 8, 16], "texture": "#1"},
+				"south": {"uv": [4, 0, 6, 16], "texture": "#1"},
+				"west": {"uv": [2, 0, 4, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 2, 2], "texture": "#1"},
+				"down": {"uv": [0, 2, 2, 4], "texture": "#1"}
+			}
+		},
+		{
+			"from": [7, 16, 7],
+			"to": [9, 20, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5.1875, 16, 8]},
+			"faces": {
+				"north": {"uv": [10, 12, 12, 16], "texture": "#1"},
+				"east": {"uv": [10, 12, 12, 16], "texture": "#1"},
+				"south": {"uv": [10, 12, 12, 16], "texture": "#1"},
+				"west": {"uv": [10, 12, 12, 16], "texture": "#1"},
+				"up": {"uv": [10, 12, 12, 14], "texture": "#1"},
+				"down": {"uv": [10, 12, 12, 14], "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"translation": [0, -4, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"head": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"fixed": {
+			"translation": [0, -4, 0],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
+}

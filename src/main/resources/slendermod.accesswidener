@@ -1,0 +1,8 @@
+accessWidener v2 named
+
+# Classes
+accessible class net/minecraft/entity/mob/EndermanEntity$ChasePlayerGoal
+accessible class net/minecraft/entity/mob/EndermanEntity$TeleportTowardsPlayerGoal
+
+# Methods
+accessible method net/minecraft/block/TallPlantBlock onBreakInCreative (Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;Lnet/minecraft/entity/player/PlayerEntity;)V

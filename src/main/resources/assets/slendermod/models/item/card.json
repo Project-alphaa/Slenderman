@@ -1,0 +1,56 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "slendermod:item/card3",
+		"particle": "slendermod:item/card3"
+	},
+	"elements": [
+		{
+			"from": [6, 4.25, 8],
+			"to": [10, 6.75, 8],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 4, 3], "texture": "#0"},
+				"south": {"uv": [0, 0, 4, 3], "texture": "#0"},
+				"west": {"uv": [0, 0, 4, 3], "texture": "#0"},
+				"up": {"uv": [0, 0, 4, 3], "texture": "#0"},
+				"down": {"uv": [0, 0, 4, 3], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 2.5, -0.25]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 2, -0.25]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 142, 0],
+			"translation": [0, 6.75, 0],
+			"scale": [2, 2, 2]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 158, 0],
+			"translation": [0, 7.5, 1],
+			"scale": [2, 2, 2]
+		},
+		"ground": {
+			"translation": [0, 6.5, 0],
+			"scale": [2, 2, 2]
+		},
+		"gui": {
+			"rotation": [0, 180, -16],
+			"translation": [-2.25, 7.25, 0],
+			"scale": [3, 3, 4]
+		},
+		"head": {
+			"translation": [0, 9.75, -6.5],
+			"scale": [4, 4, 4]
+		},
+		"fixed": {
+			"translation": [0, 9.75, -0.5],
+			"scale": [4, 4, 4]
+		}
+	}
+}

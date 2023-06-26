@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "slendermod:block/radio"
+    },
+    "facing=south": {
+      "model": "slendermod:block/radio",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "slendermod:block/radio",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "slendermod:block/radio",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "slendermod",
+  "version": "${version}",
+  "name": "Slender Mod",
+  "description": "A mod that replaces all natural mob spawning with slenders, a terrifying creature from another galaxy",
+  "authors": [
+    "Kelvin",
+    "MincraftEinstein",
+    "DrAlpha",
+    "Ender"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/Alpha-thebaby/Slenders",
+    "issues": "https://github.com/Alpha-thebaby/Slenders/issues"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/slendermod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "kelvin.slendermod.SlenderMod"
+    ],
+    "client": [
+      "kelvin.slendermod.SlenderModClient"
+    ],
+    "modmenu": [
+      "kelvin.slendermod.compat.SlenderModModMenuCompat"
+    ]
+  },
+  "mixins": [
+    "slendermod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric-api": "*",
+    "minecraft": "~1.19",
+    "java": ">=17",
+    "lambdynlights": "2.2.0+1.19.3",
+    "geckolib": ">=4.0.3",
+    "satin": "1.10.0",
+    "yet-another-config-lib": ">=2.1.1",
+    "npctrader": ">=1.0.0-rc5-debug"
+  }
+}

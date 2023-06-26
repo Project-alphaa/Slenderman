@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "slendermod:block/bones"
+    },
+    "facing=east": {
+      "model": "slendermod:block/bones",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "slendermod:block/bones",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "slendermod:block/bones",
+      "y": 270
+    }
+  }
+}

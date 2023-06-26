@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/air",
+  "textures": {
+    "particle": "slendermod:block/dead_log_top"
+  }
+}

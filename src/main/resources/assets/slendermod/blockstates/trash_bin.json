@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "slendermod:block/trash_bin"
+    },
+    "facing=west": {
+      "model": "slendermod:block/trash_bin",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "slendermod:block/trash_bin",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "slendermod:block/trash_bin",
+      "y": 270
+    }
+  }
+}

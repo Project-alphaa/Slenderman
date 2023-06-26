@@ -1,0 +1,58 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
+	"textures": {
+		"0": "slendermod:block/trash_bin_side",
+		"1": "slendermod:block/trash_bin_top",
+		"particle": "slendermod:block/trash_bin_side"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 2],
+			"to": [14, 12, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 4, 12, 16], "texture": "#0"},
+				"east": {"uv": [0, 4, 12, 16], "texture": "#0"},
+				"south": {"uv": [0, 4, 12, 16], "texture": "#0"},
+				"west": {"uv": [0, 4, 12, 16], "texture": "#0"},
+				"up": {"uv": [1, 1, 13, 13], "texture": "#1"},
+				"down": {"uv": [1, 1, 13, 13], "texture": "#1"}
+			}
+		},
+		{
+			"from": [1, 12, 1],
+			"to": [15, 16, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 14, 4], "texture": "#0"},
+				"east": {"uv": [0, 0, 14, 4], "texture": "#0"},
+				"south": {"uv": [0, 0, 14, 4], "texture": "#0"},
+				"west": {"uv": [0, 0, 14, 4], "texture": "#0"},
+				"up": {"uv": [0, 0, 14, 14], "texture": "#1"},
+				"down": {"uv": [0, 0, 14, 14], "texture": "#1"}
+			}
+		},
+		{
+			"from": [4.5, 16, 6.5],
+			"to": [11.5, 18, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [7, 14, 0, 16], "texture": "#1"},
+				"east": {"uv": [7, 14, 10, 16], "texture": "#1"},
+				"south": {"uv": [0, 14, 7, 16], "texture": "#1"},
+				"west": {"uv": [7, 14, 10, 16], "texture": "#1"},
+				"up": {"uv": [1, 0, 8, 3], "texture": "#0"},
+				"down": {"uv": [9, 13, 16, 16], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "bin",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1, 2]
+		}
+	]
+}

@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=north,half=left": {
+      "model": "slendermod:block/barbed_wire_roll"
+    },
+    "facing=east,half=left": {
+      "model": "slendermod:block/barbed_wire_roll",
+      "y": 90
+    },
+    "facing=south,half=left": {
+      "model": "slendermod:block/barbed_wire_roll",
+      "y": 180
+    },
+    "facing=west,half=left": {
+      "model": "slendermod:block/barbed_wire_roll",
+      "y": 270
+    },
+    "half=right": {
+      "model": "slendermod:block/barbed_wire_roll_part"
+    }
+  }
+}
