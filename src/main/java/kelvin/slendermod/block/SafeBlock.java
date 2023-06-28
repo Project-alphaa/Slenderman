@@ -32,13 +32,14 @@ public class SafeBlock extends BlockWithEntity {
 
     @Override
     public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+        return BlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient) {
-            //            this.triggerAnim("controller", "open"); // TODO implement opening animation
+        if (world.getBlockEntity(pos) instanceof SafeBlockEntity safeBlockEntity) {
+            safeBlockEntity.setOpen(!safeBlockEntity.isOpen());
+            return ActionResult.SUCCESS;
         }
 
         return ActionResult.CONSUME;
