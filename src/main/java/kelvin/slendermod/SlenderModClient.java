@@ -7,6 +7,7 @@ import kelvin.slendermod.entity.EntityAdultSCPSlender;
 import kelvin.slendermod.entity.EntitySmallSCPSlender;
 import kelvin.slendermod.item.ItemFlashlight;
 import kelvin.slendermod.registry.*;
+import kelvin.slendermod.util.MiscUtil;
 import ladysnake.satin.api.event.ShaderEffectRenderCallback;
 import ladysnake.satin.api.managed.ManagedShaderEffect;
 import ladysnake.satin.api.managed.ShaderEffectManager;
@@ -45,6 +46,8 @@ import java.util.Random;
 public class SlenderModClient implements ClientModInitializer {
 
     private static final ManagedShaderEffect MOTION_BLUR_SHADER = ShaderEffectManager.getInstance().manage(SlenderMod.id("shaders/post/motionblur.json"));
+    private static final ManagedShaderEffect STATIC_SHADER = ShaderEffectManager.getInstance().manage(SlenderMod.id("shaders/post/static.json"));
+
     public static KeyBinding CRAWL_KEY;
     private static Framebuffer FRAMEBUFFER;
     private static float FRIGHT_BLUR = 0.0f;
@@ -180,11 +183,21 @@ public class SlenderModClient implements ClientModInitializer {
                 MOTION_BLUR_SHADER.setUniformValue("fright", FRIGHT_BLUR);
                 MOTION_BLUR_SHADER.setUniformValue("fear_zoom", FEAR_ZOOM);
                 MOTION_BLUR_SHADER.setUniformValue("iTime", I_TIME);
+
                 I_TIME += tickDelta;
                 MOTION_BLUR_SHADER.render(tickDelta);
+
                 copyFrameBufferTexture(FRAMEBUFFER.textureWidth, FRAMEBUFFER.textureHeight, minecraft.getFramebuffer().fbo, minecraft.getFramebuffer().getColorAttachment(), FRAMEBUFFER.fbo, FRAMEBUFFER.getColorAttachment());
             }
         }
+        // just move wherever if needed
+        STATIC_SHADER.setUniformValue("iTime", I_TIME);
+        STATIC_SHADER.setUniformValue("intensity", MiscUtil.staticIntensity);
+        STATIC_SHADER.setUniformValue("speed", MiscUtil.staticSpeed);
+
+        I_TIME += tickDelta;
+        STATIC_SHADER.render(tickDelta);
+
     }
 
     private static void copyFrameBufferTexture(int width, int height, int fboIn, int textureIn, int fboOut, int textureOut) {
