@@ -3,6 +3,8 @@ package kelvin.slendermod;
 import kelvin.slendermod.client.SlendermanMagicParticle;
 import kelvin.slendermod.client.block.renderers.RotatableBlockEntityRenderer;
 import kelvin.slendermod.client.entity.renderers.*;
+import kelvin.slendermod.client.screen.SafeScreen;
+import kelvin.slendermod.client.screen.handler.SafeScreenHandler;
 import kelvin.slendermod.entity.AdultSCPSlenderEntity;
 import kelvin.slendermod.entity.SmallSCPSlenderEntity;
 import kelvin.slendermod.item.FlashlightItem;
@@ -100,6 +102,7 @@ public class SlenderModClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ParticleRegistry.SLENDERMAN_MAGIC, SlendermanMagicParticle.Factory::new);
 
         HandledScreens.register(ScreenHandlerRegistry.TRASH_BIN_SCREEN_HANDLER, HopperScreen::new);
+        HandledScreens.register(ScreenHandlerRegistry.SAFE_SCREEN_HANDLER, SafeScreen::new);
     }
 
     private static void clientTick(MinecraftClient client) {
