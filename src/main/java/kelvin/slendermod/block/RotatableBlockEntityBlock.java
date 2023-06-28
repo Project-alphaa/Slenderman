@@ -5,7 +5,6 @@ import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,6 +29,6 @@ public class RotatableBlockEntityBlock<T extends RotatableBlockEntity> extends C
     }
 
     public String getResourceId() {
-        return resourceId;
+        return this.resourceId;
     }
 }

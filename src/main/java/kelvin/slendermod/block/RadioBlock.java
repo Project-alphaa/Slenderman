@@ -21,7 +21,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -37,7 +36,7 @@ public class RadioBlock extends BlockWithEntity {
 
     public RadioBlock(Settings settings) {
         super(settings);
-        setDefaultState(stateManager.getDefaultState().with(FACING, Direction.NORTH).with(POWERED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(POWERED, false));
     }
 
     @Override
@@ -45,11 +44,9 @@ public class RadioBlock extends BlockWithEntity {
         Direction direction = state.get(FACING);
         if (direction == Direction.NORTH || direction == Direction.SOUTH) {
             return NORTH_SOUTH_SHAPE;
-        }
-        else if (direction == Direction.EAST || direction == Direction.WEST) {
+        } else if (direction == Direction.EAST || direction == Direction.WEST) {
             return EAST_WEST_SHAPE;
-        }
-        else {
+        } else {
             throw new IllegalStateException();
         }
     }
@@ -97,7 +94,7 @@ public class RadioBlock extends BlockWithEntity {
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
+        return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
     }
 
     @Override

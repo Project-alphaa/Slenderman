@@ -24,15 +24,14 @@ public class ClientPlayNetworkHandlerMixin {
 
     @Inject(at = @At("RETURN"), method = "onOpenWrittenBook")
     public void onOpenWrittenBook(OpenWrittenBookS2CPacket packet, CallbackInfo info) {
-        ItemStack stack = client.player.getStackInHand(packet.getHand());
+        ItemStack stack = this.client.player.getStackInHand(packet.getHand());
         Screen screen = new BookScreen(new BookScreen.WrittenBookContents(stack));
         if (stack.isOf(ItemRegistry.SLENDER_GRIMOIRE)) {
-            client.setScreen(screen);
-        }
-        else if (stack.isOf(ItemRegistry.NOTE)) {
+            this.client.setScreen(screen);
+        } else if (stack.isOf(ItemRegistry.NOTE)) {
             NoteScreen noteScreen = (NoteScreen) new BookScreen(new BookScreen.WrittenBookContents(stack));
             noteScreen.isNote();
-            client.setScreen((Screen) noteScreen);
+            this.client.setScreen((Screen) noteScreen);
         }
     }
 }

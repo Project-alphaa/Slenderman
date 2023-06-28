@@ -14,11 +14,11 @@ public class PageTurnWidgetMixin implements NoteScreen {
 
     @Redirect(method = "renderButton", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderTexture(ILnet/minecraft/util/Identifier;)V"))
     private void render(int texture, Identifier id) {
-        renderAsNote(isNote, id);
+        this.renderAsNote(this.isNote, id);
     }
 
     @Override
     public void isNote() {
-        isNote = true;
+        this.isNote = true;
     }
 }

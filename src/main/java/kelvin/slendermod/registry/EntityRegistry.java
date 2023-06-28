@@ -28,37 +28,22 @@ public class EntityRegistry {
 
     private static final EntityDimensions ADULT_SLENDER_SIZE = EntityDimensions.fixed(0.7f, 2.8f);
 
-    public static final EntityType<EntityAdultSCPSlender> SCP_SLENDERMAN = register("scp_slenderman",
-            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntityAdultSCPSlender::new).dimensions(ADULT_SLENDER_SIZE).build()
-    );
+    public static final EntityType<EntityAdultSCPSlender> SCP_SLENDERMAN = register("scp_slenderman", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntityAdultSCPSlender::new).dimensions(ADULT_SLENDER_SIZE).build());
 
-    public static final EntityType<EntityAdultSCPSlender> SCP_SLENDERWOMAN = register("scp_slenderwoman",
-            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntityAdultSCPSlender::new).dimensions(ADULT_SLENDER_SIZE).build()
-    );
+    public static final EntityType<EntityAdultSCPSlender> SCP_SLENDERWOMAN = register("scp_slenderwoman", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntityAdultSCPSlender::new).dimensions(ADULT_SLENDER_SIZE).build());
 
-    public static final EntityType<EntitySmallSCPSlender> SMALL_SCP_SLENDER = register("small_scp_slender",
-            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntitySmallSCPSlender::new).dimensions(EntityDimensions.fixed(0.75f, 1.5f)).build()
-    );
+    public static final EntityType<EntitySmallSCPSlender> SMALL_SCP_SLENDER = register("small_scp_slender", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntitySmallSCPSlender::new).dimensions(EntityDimensions.fixed(0.75f, 1.5f)).build());
 
-    public static final EntityType<EntitySlenderBoss> SLENDER_BOSS = register("slender_boss",
-            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntitySlenderBoss::new).dimensions(EntityDimensions.fixed(2, 4)).build()
-    );
+    public static final EntityType<EntitySlenderBoss> SLENDER_BOSS = register("slender_boss", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntitySlenderBoss::new).dimensions(EntityDimensions.fixed(2, 4)).build());
 
-    public static final EntityType<EntitySlenderman> SLENDERMAN = register("slenderman",
-            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntitySlenderman::new).dimensions(ADULT_SLENDER_SIZE).build()
-    );
+    public static final EntityType<EntitySlenderman> SLENDERMAN = register("slenderman", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntitySlenderman::new).dimensions(ADULT_SLENDER_SIZE).build());
 
     public static void register() {
         spawnSlender(SCP_SLENDERMAN, "scp_slenderman", 2);
         spawnSlender(SCP_SLENDERWOMAN, "scp_slenderwoman", 2);
         spawnSlender(SMALL_SCP_SLENDER, "small_scp_slender", 3);
 
-        BiomeModifications.create(id("remove_all_monsters")).add(ModificationPhase.REMOVALS, selectionContext ->
-                        selectionContext.hasTag(BiomeTags.IS_OVERWORLD) || selectionContext.hasTag(BiomeTags.IS_NETHER) || selectionContext.hasTag(BiomeTags.IS_END),
-                (biomeSelectionContext, modificationContext) -> {
-                    modificationContext.getSpawnSettings().removeSpawns((spawnGroup, spawnEntry) ->
-                            spawnGroup == SpawnGroup.MONSTER && spawnEntry.type != SCP_SLENDERMAN && spawnEntry.type != SCP_SLENDERWOMAN && spawnEntry.type != SMALL_SCP_SLENDER);
-                });
+        BiomeModifications.create(id("remove_all_monsters")).add(ModificationPhase.REMOVALS, selectionContext -> selectionContext.hasTag(BiomeTags.IS_OVERWORLD) || selectionContext.hasTag(BiomeTags.IS_NETHER) || selectionContext.hasTag(BiomeTags.IS_END), (biomeSelectionContext, modificationContext) -> modificationContext.getSpawnSettings().removeSpawns((spawnGroup, spawnEntry) -> spawnGroup == SpawnGroup.MONSTER && spawnEntry.type != SCP_SLENDERMAN && spawnEntry.type != SCP_SLENDERWOMAN && spawnEntry.type != SMALL_SCP_SLENDER));
 
         FabricDefaultAttributeRegistry.register(SCP_SLENDERMAN, EntityAdultSCPSlender.createAttributes());
         FabricDefaultAttributeRegistry.register(SCP_SLENDERWOMAN, EntityAdultSCPSlender.createAttributes());
@@ -68,16 +53,13 @@ public class EntityRegistry {
     }
 
     private static <T extends MobEntity> void spawnSlender(EntityType<T> slender, String name, int maxGroupSize) {
-        SpawnRestriction.register(slender, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, (type, world, spawnReason, pos, random) ->
-                world.getDifficulty() != Difficulty.PEACEFUL && MobEntity.canMobSpawn(type, world, spawnReason, pos, random));
+        SpawnRestriction.register(slender, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, (type, world, spawnReason, pos, random) -> world.getDifficulty() != Difficulty.PEACEFUL && MobEntity.canMobSpawn(type, world, spawnReason, pos, random));
 
-        BiomeModifications.create(id(name)).add(ModificationPhase.ADDITIONS, selectionContext ->
-                        selectionContext.hasTag(BiomeTags.IS_OVERWORLD) || selectionContext.hasTag(BiomeTags.IS_NETHER) || selectionContext.hasTag(BiomeTags.IS_END),
-                (selectionContext, modificationContext) -> {
-                    BiomeModificationContext.SpawnSettingsContext settings = modificationContext.getSpawnSettings();
-                    settings.setSpawnCost(slender, 10, 10);
-                    settings.addSpawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(slender, 1, 1, maxGroupSize));
-                });
+        BiomeModifications.create(id(name)).add(ModificationPhase.ADDITIONS, selectionContext -> selectionContext.hasTag(BiomeTags.IS_OVERWORLD) || selectionContext.hasTag(BiomeTags.IS_NETHER) || selectionContext.hasTag(BiomeTags.IS_END), (selectionContext, modificationContext) -> {
+            BiomeModificationContext.SpawnSettingsContext settings = modificationContext.getSpawnSettings();
+            settings.setSpawnCost(slender, 10, 10);
+            settings.addSpawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(slender, 1, 1, maxGroupSize));
+        });
     }
 
     private static <T extends EntityType<?>> T register(String name, T entityType) {

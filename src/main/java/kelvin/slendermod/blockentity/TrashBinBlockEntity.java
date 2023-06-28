@@ -38,12 +38,12 @@ public class TrashBinBlockEntity extends BlockEntity implements NamedScreenHandl
 
     @Override
     public int size() {
-        return items.size();
+        return this.items.size();
     }
 
     @Override
     public boolean isEmpty() {
-        for (ItemStack stack : items) {
+        for (ItemStack stack : this.items) {
             if (!stack.isEmpty()) {
                 return false;
             }
@@ -53,59 +53,58 @@ public class TrashBinBlockEntity extends BlockEntity implements NamedScreenHandl
 
     @Override
     public ItemStack getStack(int slot) {
-        return items.get(slot);
+        return this.items.get(slot);
     }
 
     @Override
     public ItemStack removeStack(int slot, int amount) {
-        return Inventories.splitStack(items, slot, amount);
+        return Inventories.splitStack(this.items, slot, amount);
     }
 
     @Override
     public ItemStack removeStack(int slot) {
-        return Inventories.removeStack(items, slot);
+        return Inventories.removeStack(this.items, slot);
     }
 
     @Override
     public void setStack(int slot, ItemStack stack) {
-        ItemStack stack1 = items.get(slot);
+        ItemStack stack1 = this.items.get(slot);
         boolean flag = !stack.isEmpty() && stack.isItemEqual(stack1) && ItemStack.areNbtEqual(stack, stack1);
-        items.set(slot, stack);
+        this.items.set(slot, stack);
 
-        if (stack.getCount() > getMaxCountPerStack()) {
-            stack.setCount(getMaxCountPerStack());
+        if (stack.getCount() > this.getMaxCountPerStack()) {
+            stack.setCount(this.getMaxCountPerStack());
         }
 
         if (slot > -1 && slot < 5 && !flag) {
-            markDirty();
+            this.markDirty();
         }
     }
 
     @Override
     public boolean canPlayerUse(PlayerEntity player) {
-        if (world.getBlockEntity(pos) != this) {
+        if (this.world.getBlockEntity(this.pos) != this) {
             return false;
-        }
-        else {
-            return player.squaredDistanceTo(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) <= 64;
+        } else {
+            return player.squaredDistanceTo(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64;
         }
     }
 
     @Override
     public void clear() {
-        items.clear();
+        this.items.clear();
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        items = DefaultedList.ofSize(size(), ItemStack.EMPTY);
-        Inventories.readNbt(nbt, items);
+        this.items = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
+        Inventories.readNbt(nbt, this.items);
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        Inventories.writeNbt(nbt, items);
+        Inventories.writeNbt(nbt, this.items);
     }
 }

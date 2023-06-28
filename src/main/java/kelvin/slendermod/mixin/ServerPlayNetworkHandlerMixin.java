@@ -19,10 +19,10 @@ public class ServerPlayNetworkHandlerMixin {
     public ServerPlayerEntity player;
     private boolean isNote;
 
-    @Redirect(method = {"addBook", "updateBookContent"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
+    @Redirect(method = { "addBook", "updateBookContent" }, at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
     private boolean book(ItemStack instance, Item item) {
         if (instance.isOf(ItemRegistry.WRITABLE_NOTE)) {
-            isNote = true;
+            this.isNote = true;
             return true;
         }
         return instance.isOf(Items.WRITABLE_BOOK);
@@ -30,10 +30,9 @@ public class ServerPlayNetworkHandlerMixin {
 
     @Redirect(method = "addBook", at = @At(value = "NEW", target = "(Lnet/minecraft/item/ItemConvertible;)Lnet/minecraft/item/ItemStack;"))
     private ItemStack addBook(ItemConvertible item) {
-        if (isNote) {
+        if (this.isNote) {
             return new ItemStack(ItemRegistry.NOTE);
-        }
-        else {
+        } else {
             return new ItemStack(item);
         }
     }

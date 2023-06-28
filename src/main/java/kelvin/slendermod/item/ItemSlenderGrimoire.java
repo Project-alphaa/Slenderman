@@ -14,7 +14,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Optional;
 
-import static kelvin.slendermod.SlenderMod.*;
+import static kelvin.slendermod.SlenderMod.LOGGER;
+import static kelvin.slendermod.SlenderMod.id;
 
 public class ItemSlenderGrimoire extends WrittenBookItem {
 
@@ -53,8 +54,7 @@ public class ItemSlenderGrimoire extends WrittenBookItem {
             nbtCompound.putInt(GENERATION_KEY, 0);
             stack.setSubNbt(PAGES_KEY, nbtList);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -65,11 +65,10 @@ public class ItemSlenderGrimoire extends WrittenBookItem {
             InputStream stream = file.orElseThrow(FileNotFoundException::new).getInputStream();
             String text = new String(stream.readAllBytes());
             return text.split("\\|");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOGGER.warn("Failed to read book text file: " + fileName, e);
         }
-        return new String[]{};
+        return new String[] { };
     }
 
     @Override

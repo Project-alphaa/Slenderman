@@ -12,14 +12,14 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
 
-public class AirConditioner extends HorizontalFacingBlock {
+public class AirConditionerBlock extends HorizontalFacingBlock {
 
     private static final VoxelShape NORTH_SOUTH_SHAPE = Block.createCuboidShape(-1.5, 0, 4.5, 17.5, 12, 11.5);
     private static final VoxelShape EAST_WEST_SHAPE = Block.createCuboidShape(4.5, 0, -1.5, 11.5, 12, 17.5);
 
-    public AirConditioner(Settings settings) {
+    public AirConditionerBlock(Settings settings) {
         super(settings);
-        setDefaultState(stateManager.getDefaultState().with(FACING, Direction.NORTH));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
 
     @Override

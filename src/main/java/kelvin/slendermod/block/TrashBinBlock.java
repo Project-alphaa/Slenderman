@@ -1,16 +1,13 @@
 package kelvin.slendermod.block;
 
 import kelvin.slendermod.blockentity.TrashBinBlockEntity;
-import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
@@ -31,25 +28,21 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings("deprecation")
 public class TrashBinBlock extends BlockWithEntity {
 
-    private static final VoxelShape BASE_SHAPE = VoxelShapes.union(
-            Block.createCuboidShape(2, 0, 2, 14, 12, 14),
-            Block.createCuboidShape(1, 12, 1, 15, 16, 15)
-    );
+    private static final VoxelShape BASE_SHAPE = VoxelShapes.union(Block.createCuboidShape(2, 0, 2, 14, 12, 14), Block.createCuboidShape(1, 12, 1, 15, 16, 15));
     private static final VoxelShape NORTH_SOUTH_SHAPE = VoxelShapes.union(Block.createCuboidShape(4.5, 16, 6.5, 11.5, 18, 9.5), BASE_SHAPE);
     private static final VoxelShape EAST_WEST_SHAPE = VoxelShapes.union(Block.createCuboidShape(6.5, 16, 4.5, 9.5, 18, 11.5), BASE_SHAPE);
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
     public TrashBinBlock(Settings settings) {
         super(settings);
-        setDefaultState(stateManager.getDefaultState().with(FACING, Direction.NORTH));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (world.isClient) {
             return ActionResult.SUCCESS;
-        }
-        else {
+        } else {
             if (world.getBlockEntity(pos) instanceof TrashBinBlockEntity trashBinBlockEntity) {
                 player.openHandledScreen(new NamedScreenHandlerFactory() {
 

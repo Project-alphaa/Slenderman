@@ -13,8 +13,7 @@ public interface NoteScreen {
     default void renderAsNote(boolean isNote, Identifier defaultTexture) {
         if (isNote) {
             RenderSystem.setShaderTexture(0, NOTE_TEXTURE);
-        }
-        else {
+        } else {
             RenderSystem.setShaderTexture(0, defaultTexture);
         }
     }

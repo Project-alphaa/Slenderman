@@ -18,17 +18,6 @@ public class ConfigRegistry {
     public boolean enableSlenderEffects = true;
 
     public static Screen createScreen(Screen prevScreen) {
-        return YetAnotherConfigLib.create(INSTANCE, (defaults, config, builder) ->
-                builder.title(Text.translatable("config.slendermod.title"))
-                        .category(ConfigCategory.createBuilder()
-                                .name(Text.translatable("config.category.slendermod.main.name"))
-                                .option(Option.createBuilder(Boolean.class)
-                                        .name(Text.translatable("config.option.slendermod.enable_slender_effects.name"))
-                                        .tooltip(Text.translatable("config.option.slendermod.enable_slender_effects.tooltip"))
-                                        .binding(defaults.enableSlenderEffects, () -> config.enableSlenderEffects, value -> config.enableSlenderEffects = value)
-                                        .controller(BooleanController::new)
-                                        .build())
-                                .build())
-        ).generateScreen(prevScreen);
+        return YetAnotherConfigLib.create(INSTANCE, (defaults, config, builder) -> builder.title(Text.translatable("config.slendermod.title")).category(ConfigCategory.createBuilder().name(Text.translatable("config.category.slendermod.main.name")).option(Option.createBuilder(Boolean.class).name(Text.translatable("config.option.slendermod.enable_slender_effects.name")).tooltip(Text.translatable("config.option.slendermod.enable_slender_effects.tooltip")).binding(defaults.enableSlenderEffects, () -> config.enableSlenderEffects, value -> config.enableSlenderEffects = value).controller(BooleanController::new).build()).build())).generateScreen(prevScreen);
     }
 }

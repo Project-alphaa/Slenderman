@@ -46,9 +46,7 @@ public class MMPathNavigateGround extends MobNavigation {
 
     private boolean isAt(Path path, float threshold) {
         final Vec3d pathPos = path.getNodePosition(this.entity);
-        return MathHelper.abs((float) (this.entity.getX() - pathPos.x)) < threshold &&
-                MathHelper.abs((float) (this.entity.getZ() - pathPos.z)) < threshold &&
-                Math.abs(this.entity.getY() - pathPos.y) < 1.0D;
+        return MathHelper.abs((float) (this.entity.getX() - pathPos.x)) < threshold && MathHelper.abs((float) (this.entity.getZ() - pathPos.z)) < threshold && Math.abs(this.entity.getY() - pathPos.y) < 1.0D;
     }
 
     private boolean atElevationChange(Path path) {
@@ -80,7 +78,8 @@ public class MMPathNavigateGround extends MobNavigation {
     private boolean sweep(Vec3d vec, Vec3d base, Vec3d max) {
         float t = 0.0F;
         float max_t = (float) vec.length();
-        if (max_t < EPSILON) return true;
+        if (max_t < EPSILON)
+            return true;
         final float[] tr = new float[3];
         final int[] ldi = new int[3];
         final int[] tri = new int[3];
@@ -104,9 +103,7 @@ public class MMPathNavigateGround extends MobNavigation {
         final BlockPos.Mutable pos = new BlockPos.Mutable();
         do {
             // stepForward
-            int axis = (tNext[0] < tNext[1]) ?
-                    ((tNext[0] < tNext[2]) ? 0 : 2) :
-                    ((tNext[1] < tNext[2]) ? 1 : 2);
+            int axis = (tNext[0] < tNext[1]) ? ((tNext[0] < tNext[2]) ? 0 : 2) : ((tNext[1] < tNext[2]) ? 1 : 2);
             float dt = tNext[axis] - t;
             t = tNext[axis];
             ldi[axis] += step[axis];
@@ -129,14 +126,18 @@ public class MMPathNavigateGround extends MobNavigation {
                 for (int z = z0; z != z1; z += stepz) {
                     for (int y = y0; y != y1; y += stepy) {
                         BlockState block = this.world.getBlockState(pos.set(x, y, z));
-                        if (!block.canPathfindThrough(this.world, pos, NavigationType.LAND)) return false;
+                        if (!block.canPathfindThrough(this.world, pos, NavigationType.LAND))
+                            return false;
                     }
                     PathNodeType below = this.nodeMaker.getNodeType(this.world, x, y0 - 1, z, this.entity, 1, 1, 1, true, true);
-                    if (below == PathNodeType.WATER || below == PathNodeType.LAVA || below == PathNodeType.OPEN) return false;
+                    if (below == PathNodeType.WATER || below == PathNodeType.LAVA || below == PathNodeType.OPEN)
+                        return false;
                     PathNodeType in = this.nodeMaker.getNodeType(this.world, x, y0, z, this.entity, 1, y1 - y0, 1, true, true);
                     float priority = this.entity.getPathfindingPenalty(in);
-                    if (priority < 0.0F || priority >= 8.0F) return false;
-                    if (in == PathNodeType.DAMAGE_FIRE || in == PathNodeType.DANGER_FIRE || in == PathNodeType.DAMAGE_OTHER) return false;
+                    if (priority < 0.0F || priority >= 8.0F)
+                        return false;
+                    if (in == PathNodeType.DAMAGE_FIRE || in == PathNodeType.DANGER_FIRE || in == PathNodeType.DAMAGE_OTHER)
+                        return false;
                 }
             }
         } while (t <= max_t);
@@ -152,11 +153,11 @@ public class MMPathNavigateGround extends MobNavigation {
     }
 
     static float element(Vec3d v, int i) {
-        switch (i) {
-            case 0: return (float) v.x;
-            case 1: return (float) v.y;
-            case 2: return (float) v.z;
-            default: return 0.0F;
-        }
+        return switch (i) {
+            case 0 -> (float) v.x;
+            case 1 -> (float) v.y;
+            case 2 -> (float) v.z;
+            default -> 0.0F;
+        };
     }
 }

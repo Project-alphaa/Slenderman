@@ -25,20 +25,14 @@ import net.minecraft.world.WorldView;
 @SuppressWarnings("deprecation")
 public class BarbedWireBlock extends HorizontalFacingBlock {
 
-    private static final VoxelShape LEFT_SHAPE = VoxelShapes.union(
-            Block.createCuboidShape(15, 0, 0, 17, 16, 16),
-            Block.createCuboidShape(0, 6.25, 7, 15, 8.25, 9)
-    );
-    private static final VoxelShape RIGHT_SHAPE = VoxelShapes.union(
-            Block.createCuboidShape(1, 0, 0, 3, 16, 16),
-            Block.createCuboidShape(3, 6.25, 7, 16, 8.25, 9)
-    );
+    private static final VoxelShape LEFT_SHAPE = VoxelShapes.union(Block.createCuboidShape(15, 0, 0, 17, 16, 16), Block.createCuboidShape(0, 6.25, 7, 15, 8.25, 9));
+    private static final VoxelShape RIGHT_SHAPE = VoxelShapes.union(Block.createCuboidShape(1, 0, 0, 3, 16, 16), Block.createCuboidShape(3, 6.25, 7, 16, 8.25, 9));
 
     public static final EnumProperty<DoorHinge> HALF = EnumProperty.of("half", DoorHinge.class);
 
     public BarbedWireBlock(Settings settings) {
         super(settings);
-        setDefaultState(stateManager.getDefaultState().with(FACING, Direction.NORTH).with(HALF, DoorHinge.LEFT));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(HALF, DoorHinge.LEFT));
     }
 
     @Override
@@ -59,7 +53,7 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
     }
 
     public static VoxelShape rotateShape(int times, VoxelShape shape) {
-        VoxelShape[] shapes = new VoxelShape[]{shape, VoxelShapes.empty()};
+        VoxelShape[] shapes = new VoxelShape[] { shape, VoxelShapes.empty() };
 
         for (int i = 0; i < times; i++) {
             shapes[0].forEachBox((minX, minY, minZ, maxX, maxY, maxZ) -> shapes[1] = VoxelShapes.union(shapes[1], VoxelShapes.cuboid(1 - maxZ, minY, minX, 1 - minZ, maxY, maxX)));
@@ -75,8 +69,7 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
         DoorHinge half = state.get(HALF);
         if (direction.getAxis() == Direction.Axis.Y && half == DoorHinge.LEFT == (direction == state.get(FACING).rotateYCounterclockwise())) {
             return neighborState.isOf(this) && neighborState.get(HALF) != half ? state.with(FACING, neighborState.get(FACING)) : Blocks.AIR.getDefaultState();
-        }
-        else {
+        } else {
             return half == DoorHinge.LEFT && direction == state.get(FACING).rotateYClockwise() && !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
         }
     }
@@ -113,9 +106,8 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
         World world = ctx.getWorld();
         Direction facing = ctx.getPlayerFacing().getOpposite();
         if (pos.getY() < world.getTopY() && world.getBlockState(pos.offset(facing.rotateYCounterclockwise())).canReplace(ctx)) {
-            return getDefaultState().with(FACING, facing).with(HALF, DoorHinge.LEFT);
-        }
-        else {
+            return this.getDefaultState().with(FACING, facing).with(HALF, DoorHinge.LEFT);
+        } else {
             return null;
         }
     }

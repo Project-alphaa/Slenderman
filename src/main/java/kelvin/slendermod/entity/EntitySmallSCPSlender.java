@@ -25,9 +25,9 @@ public class EntitySmallSCPSlender extends AbstractEntitySCPSlender {
 
     public EntitySmallSCPSlender(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
-        stepHeight = 1.0f;
-        moveControl = new MMEntityMoveHelper(this, 90);
-        ((MobNavigation)getNavigation()).setCanPathThroughDoors(true);
+        this.stepHeight = 1.0f;
+        this.moveControl = new MMEntityMoveHelper(this, 90);
+        ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {

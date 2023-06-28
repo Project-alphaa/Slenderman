@@ -16,7 +16,6 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.client.screen.v1.Screens;
 import net.minecraft.block.Block;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
@@ -77,15 +76,16 @@ public class SlenderModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.TRASH_BIN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.MISSING_PERSON_POSTER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DUMPSTER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.NO_ENTRY_SIGN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.BARBED_WIRE_ROLL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.AIR_CONDITIONER, RenderLayer.getCutout());
 
-        for (Block note : BlockRegistry.PAGES) BlockRenderLayerMap.INSTANCE.putBlock(note, RenderLayer.getCutout());
+        for (Block note : BlockRegistry.PAGES)
+            BlockRenderLayerMap.INSTANCE.putBlock(note, RenderLayer.getCutout());
 
         BlockEntityRendererFactories.register(BlockEntityRegistry.ROTATABLE_BLOCK_ENTITY, ctx -> new RotatableBlockEntityRenderer());
 
-        ModelPredicateProviderRegistry.register(ItemRegistry.FLASHLIGHT, SlenderMod.id("powered"), (stack, world, entity, seed) ->
-                ItemFlashlight.isFlashlightPowered(stack) ? 1 : 0);
+        ModelPredicateProviderRegistry.register(ItemRegistry.FLASHLIGHT, SlenderMod.id("powered"), (stack, world, entity, seed) -> ItemFlashlight.isFlashlightPowered(stack) ? 1 : 0);
 
         CRAWL_KEY = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.slendermod.crawl", InputUtil.Type.KEYSYM, InputUtil.GLFW_KEY_G, "key.categories.movement"));
 
@@ -172,8 +172,7 @@ public class SlenderModClient implements ClientModInitializer {
 
                 }
 
-                if (minecraft.getFramebuffer().textureWidth != FRAMEBUFFER.textureWidth ||
-                        minecraft.getFramebuffer().textureHeight != FRAMEBUFFER.textureHeight) {
+                if (minecraft.getFramebuffer().textureWidth != FRAMEBUFFER.textureWidth || minecraft.getFramebuffer().textureHeight != FRAMEBUFFER.textureHeight) {
                     FRAMEBUFFER.resize(minecraft.getFramebuffer().textureWidth, minecraft.getFramebuffer().textureHeight, true);
                 }
 
@@ -200,9 +199,7 @@ public class SlenderModClient implements ClientModInitializer {
         GL30.glDrawBuffer(GL30.GL_COLOR_ATTACHMENT1);
 
         // specify source, destination drawing (sub)rectangles.
-        GL30.glBlitFramebuffer(0, 0, width, height,
-                0, 0, width, height,
-                GL30.GL_COLOR_BUFFER_BIT, GL30.GL_NEAREST);
+        GL30.glBlitFramebuffer(0, 0, width, height, 0, 0, width, height, GL30.GL_COLOR_BUFFER_BIT, GL30.GL_NEAREST);
 
         // unbind the color attachments
         GL30.glFramebufferTexture2D(GL30.GL_FRAMEBUFFER, GL30.GL_COLOR_ATTACHMENT1, GL30.GL_TEXTURE_2D, 0, 0);

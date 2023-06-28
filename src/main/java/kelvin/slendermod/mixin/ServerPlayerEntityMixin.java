@@ -35,8 +35,8 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
     @Inject(at = @At("HEAD"), method = "useBook")
     public void useBook(ItemStack book, Hand hand, CallbackInfo info) {
         if (book.isOf(ItemRegistry.SLENDER_GRIMOIRE) || book.isOf(ItemRegistry.NOTE) || book.isOf(ItemRegistry.WRITABLE_NOTE)) {
-            currentScreenHandler.sendContentUpdates();
-            networkHandler.sendPacket(new OpenWrittenBookS2CPacket(hand));
+            this.currentScreenHandler.sendContentUpdates();
+            this.networkHandler.sendPacket(new OpenWrittenBookS2CPacket(hand));
         }
     }
 }

@@ -30,8 +30,7 @@ public class LivingEntityMixin {
     private void addParticles(World world, ParticleEffect particleEffect, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
         if (((Object) this) instanceof EntitySlenderman) {
             world.addParticle(ParticleRegistry.SLENDERMAN_MAGIC, x, y, z, velocityX, velocityY, velocityZ);
-        }
-        else {
+        } else {
             world.addParticle(ParticleTypes.PORTAL, x, y, z, velocityX, velocityY, velocityZ);
         }
     }

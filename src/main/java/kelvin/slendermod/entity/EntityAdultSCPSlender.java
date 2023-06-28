@@ -32,8 +32,8 @@ public class EntityAdultSCPSlender extends AbstractEntitySCPSlender {
 
     public EntityAdultSCPSlender(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
-        stepHeight = 1.0f;
-        moveControl = new MMEntityMoveHelper(this, 15);
+        this.stepHeight = 1.0f;
+        this.moveControl = new MMEntityMoveHelper(this, 15);
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
@@ -43,7 +43,7 @@ public class EntityAdultSCPSlender extends AbstractEntitySCPSlender {
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
-        dataTracker.startTracking(ANIMATION_SET, random.nextInt(2));
+        this.dataTracker.startTracking(ANIMATION_SET, this.random.nextInt(2));
     }
 
     @Override
@@ -102,6 +102,6 @@ public class EntityAdultSCPSlender extends AbstractEntitySCPSlender {
     }
 
     protected AnimationSet getAnimationSet() {
-        return dataTracker.get(ANIMATION_SET) == 0 ? ANIMATIONS : ANIMATIONS2;
+        return this.dataTracker.get(ANIMATION_SET) == 0 ? ANIMATIONS : ANIMATIONS2;
     }
 }

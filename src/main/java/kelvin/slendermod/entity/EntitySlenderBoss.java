@@ -26,7 +26,10 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.Animation;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
@@ -51,8 +54,8 @@ public class EntitySlenderBoss extends PathAwareEntity implements GeoEntity {
 
     public EntitySlenderBoss(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
-        stepHeight = 1.0f;
-        startPos = new Vec3d(getPos().x, getPos().y, getPos().z);
+        this.stepHeight = 1.0f;
+        this.startPos = new Vec3d(this.getPos().x, this.getPos().y, this.getPos().z);
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
@@ -61,28 +64,28 @@ public class EntitySlenderBoss extends PathAwareEntity implements GeoEntity {
 
     protected void initDataTracker() {
         super.initDataTracker();
-        dataTracker.startTracking(CURRENT_ANIMATION, 0);
+        this.dataTracker.startTracking(CURRENT_ANIMATION, 0);
     }
 
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        nbt.putInt("currentAnimation", dataTracker.get(CURRENT_ANIMATION));
+        nbt.putInt("currentAnimation", this.dataTracker.get(CURRENT_ANIMATION));
     }
 
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        dataTracker.set(CURRENT_ANIMATION, nbt.getInt("currentAnimation"));
-        if (hasCustomName()) {
-            bossBar.setName(getDisplayName());
+        this.dataTracker.set(CURRENT_ANIMATION, nbt.getInt("currentAnimation"));
+        if (this.hasCustomName()) {
+            this.bossBar.setName(this.getDisplayName());
         }
     }
 
     @Override
     public void setCustomName(@Nullable Text name) {
         super.setCustomName(name);
-        bossBar.setName(name);
+        this.bossBar.setName(name);
     }
 
     @Override
@@ -97,18 +100,18 @@ public class EntitySlenderBoss extends PathAwareEntity implements GeoEntity {
     public void tick() {
         super.tick();
 
-        if (!world.isClient()) {
-            if (world.getTime() % (100) == 0) {
-                if (getCurrentState() != State.ATTACK || getCurrentState() != State.DASH) {
-                    playSound(SoundRegistry.BOSS_IDLE, 1, 1);
+        if (!this.world.isClient()) {
+            if (this.world.getTime() % (100) == 0) {
+                if (this.getCurrentState() != State.ATTACK || this.getCurrentState() != State.DASH) {
+                    this.playSound(SoundRegistry.BOSS_IDLE, 1, 1);
                 }
             }
 
             RawAnimation animation = ANIM_IDLE;
-            float yaw = -(float) Math.toRadians(getYaw());
-            switch (getCurrentState()) {
+            float yaw = -(float) Math.toRadians(this.getYaw());
+            switch (this.getCurrentState()) {
                 case DEFAULT -> {
-                    Entity first = getFirstPassenger();
+                    Entity first = this.getFirstPassenger();
                     if (first instanceof ServerPlayerEntity player) {
 
                         yaw = -(float) Math.toRadians(player.getYaw());
@@ -118,98 +121,91 @@ public class EntitySlenderBoss extends PathAwareEntity implements GeoEntity {
 
                         float motionX = lookX * player.forwardSpeed * 0.2f;
                         float motionZ = lookZ * player.forwardSpeed * 0.2f;
-                        ;
 
                         if (player.forwardSpeed != 0) {
                             animation = ANIM_WALK;
-                            move(MovementType.SELF, new Vec3d(motionX, 0, motionZ));
+                            this.move(MovementType.SELF, new Vec3d(motionX, 0, motionZ));
                         }
-                        setYaw(player.getYaw());
-                        setBodyYaw(player.getBodyYaw());
-                        setHeadYaw(player.getHeadYaw());
-                    }
-                    else {
-                        if (moveTimer == 0) {
-                            if (random.nextInt(100) == 0) {
+                        this.setYaw(player.getYaw());
+                        this.setBodyYaw(player.getBodyYaw());
+                        this.setHeadYaw(player.getHeadYaw());
+                    } else {
+                        if (this.moveTimer == 0) {
+                            if (this.random.nextInt(100) == 0) {
                                 int radius = 15;
-                                navigation.startMovingTo((int) (startPos.x + random.nextInt(radius * 2) - radius), (int) startPos.y, (int) (startPos.z + random.nextInt(radius * 2) - radius), 1.0f);
-                                moveTimer = 20 * 5;
+                                this.navigation.startMovingTo((int) (this.startPos.x + this.random.nextInt(radius * 2) - radius), (int) this.startPos.y, (int) (this.startPos.z + this.random.nextInt(radius * 2) - radius), 1.0f);
+                                this.moveTimer = 20 * 5;
                             }
-                        }
-                        else {
+                        } else {
                             animation = ANIM_WALK;
-                            moveTimer--;
+                            this.moveTimer--;
                         }
                     }
                 }
                 case ATTACK -> {
                     animation = ANIM_ATTACK;
-                    if (timeInState == 0) {
-                        playSound(SoundRegistry.BOSS_ATTACK, 1, 1);
-                    }
-                    else if (timeInState == 10) {
+                    if (this.timeInState == 0) {
+                        this.playSound(SoundRegistry.BOSS_ATTACK, 1, 1);
+                    } else if (this.timeInState == 10) {
                         float look_x = (float) Math.sin(yaw);
                         float look_z = (float) Math.cos(yaw);
 
-                        setVelocity(new Vec3d(look_x, 0.1, look_z));
+                        this.setVelocity(new Vec3d(look_x, 0.1, look_z));
 
-                        Vec3d forward = getForward(3);
+                        Vec3d forward = this.getForward(3);
 
                         double range = 2;
 
-                        List<Entity> entities = world.getOtherEntities(this, new Box(forward.subtract(range, range, range), forward.add(range, range, range)));
+                        List<Entity> entities = this.world.getOtherEntities(this, new Box(forward.subtract(range, range, range), forward.add(range, range, range)));
                         for (Entity entity : entities) {
                             entity.damage(DamageSource.mob(this), 10);
                         }
 
-                    }
-                    else if (timeInState > 30) {
-                        changeState(State.DEFAULT);
+                    } else if (this.timeInState > 30) {
+                        this.changeState(State.DEFAULT);
                     }
                 }
                 case DASH -> {
                     animation = ANIM_DASH;
-                    if (timeInState == 0) {
+                    if (this.timeInState == 0) {
                         float lookX = (float) Math.sin(yaw);
                         float lookZ = (float) Math.cos(yaw);
 
                         float motionX = lookX * 3;
                         float motionZ = lookZ * 3;
 
-                        setVelocity(new Vec3d(motionX, 0.25, motionZ));
-                        playSound(SoundRegistry.BOSS_DASH, 1, 1);
-                    }
-                    else if (timeInState > 5) {
-                        changeState(State.DEFAULT);
-                    }
-                    else {
+                        this.setVelocity(new Vec3d(motionX, 0.25, motionZ));
+                        this.playSound(SoundRegistry.BOSS_DASH, 1, 1);
+                    } else if (this.timeInState > 5) {
+                        this.changeState(State.DEFAULT);
+                    } else {
 
-                        Vec3d forward = getForward(3);
+                        Vec3d forward = this.getForward(3);
 
                         double range = 2;
 
-                        List<Entity> entities = world.getOtherEntities(this, new Box(forward.subtract(range, range, range), forward.add(range, range, range)));
+                        List<Entity> entities = this.world.getOtherEntities(this, new Box(forward.subtract(range, range, range), forward.add(range, range, range)));
                         for (Entity entity : entities) {
                             entity.damage(DamageSource.mob(this), 10);
                         }
                     }
                 }
             }
-            timeInState++;
-            setCurrentAnimation(animation);
+            this.timeInState++;
+            this.setCurrentAnimation(animation);
         }
-        bossBar.setPercent(getHealth() / getMaxHealth());
+        this.bossBar.setPercent(this.getHealth() / this.getMaxHealth());
     }
 
     public Vec3d getForward(double distance) {
-        double yaw = -Math.toRadians(getYaw());
-        return getPos().add(new Vec3d(Math.sin(yaw), 0, Math.cos(yaw)).multiply(distance));
+        double yaw = -Math.toRadians(this.getYaw());
+        return this.getPos().add(new Vec3d(Math.sin(yaw), 0, Math.cos(yaw)).multiply(distance));
     }
 
     @Override
     protected ActionResult interactMob(PlayerEntity player, Hand hand) {
         if (hand == Hand.OFF_HAND) {
-            if (!hasPassengers()) {
+            if (!this.hasPassengers()) {
                 if (player.isCreative()) {
                     player.startRiding(this);
                 }
@@ -221,26 +217,26 @@ public class EntitySlenderBoss extends PathAwareEntity implements GeoEntity {
     @Override
     public void onStartedTrackingBy(ServerPlayerEntity player) {
         super.onStartedTrackingBy(player);
-        bossBar.addPlayer(player);
+        this.bossBar.addPlayer(player);
     }
 
     @Override
     public void onStoppedTrackingBy(ServerPlayerEntity player) {
         super.onStoppedTrackingBy(player);
-        bossBar.removePlayer(player);
+        this.bossBar.removePlayer(player);
     }
 
     public void changeState(State newState) {
-        if (currentState != newState) {
-            currentState = newState;
-            timeInState = 0;
+        if (this.currentState != newState) {
+            this.currentState = newState;
+            this.timeInState = 0;
         }
     }
 
     private void setCurrentAnimation(RawAnimation animation) {
         int index = ANIMATIONS.indexOf(animation);
-        if (dataTracker.get(CURRENT_ANIMATION) != index) {
-            dataTracker.set(CURRENT_ANIMATION, index);
+        if (this.dataTracker.get(CURRENT_ANIMATION) != index) {
+            this.dataTracker.set(CURRENT_ANIMATION, index);
         }
     }
 
@@ -248,7 +244,7 @@ public class EntitySlenderBoss extends PathAwareEntity implements GeoEntity {
     public void registerControllers(AnimatableManager.ControllerRegistrar data) {
         data.add(new AnimationController<>(this, "controller", 0, animation -> {
             var controller = animation.getController();
-            controller.setAnimation(ANIMATIONS.get(dataTracker.get(CURRENT_ANIMATION)));
+            controller.setAnimation(ANIMATIONS.get(this.dataTracker.get(CURRENT_ANIMATION)));
             controller.setTransitionLength(5);
             return PlayState.CONTINUE;
         }));
@@ -260,12 +256,10 @@ public class EntitySlenderBoss extends PathAwareEntity implements GeoEntity {
     }
 
     public State getCurrentState() {
-        return currentState;
+        return this.currentState;
     }
 
     public enum State {
-        DEFAULT,
-        ATTACK,
-        DASH
+        DEFAULT, ATTACK, DASH
     }
 }

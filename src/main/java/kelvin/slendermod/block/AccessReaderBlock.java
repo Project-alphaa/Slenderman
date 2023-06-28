@@ -10,7 +10,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.ActionResult;
@@ -30,7 +29,7 @@ public class AccessReaderBlock extends BlockWithEntity {
 
     public AccessReaderBlock(Settings settings) {
         super(settings);
-        setDefaultState(stateManager.getDefaultState().with(FACING, Direction.NORTH));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
 
     @Override
@@ -48,18 +47,17 @@ public class AccessReaderBlock extends BlockWithEntity {
                     }
 
                     if (accessReaderBlockEntity.setCard(player, player.isCreative() ? heldItem.copy() : heldItem)) {
-                        updateNeighbors(state, world, pos);
+                        this.updateNeighbors(state, world, pos);
                         return ActionResult.SUCCESS;
                     }
                 }
-            }
-            else {
+            } else {
                 if (world.isClient()) {
                     return ActionResult.CONSUME;
                 }
 
                 if (accessReaderBlockEntity.removeCard(player)) {
-                    updateNeighbors(state, world, pos);
+                    this.updateNeighbors(state, world, pos);
                     return ActionResult.SUCCESS;
                 }
             }
@@ -76,7 +74,7 @@ public class AccessReaderBlock extends BlockWithEntity {
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
+        return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
     }
 
     @Override
@@ -113,8 +111,8 @@ public class AccessReaderBlock extends BlockWithEntity {
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (!state.isOf(newState.getBlock())) {
-            dropCard(world, pos);
-            updateNeighbors(state, world, pos);
+            this.dropCard(world, pos);
+            this.updateNeighbors(state, world, pos);
             super.onStateReplaced(state, world, pos, newState, moved);
         }
     }

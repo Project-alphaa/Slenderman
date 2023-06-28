@@ -17,8 +17,7 @@ public class EndermanEntityMixin {
     private void addParticle(World world, ParticleEffect particle, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
         if (((Object) this) instanceof EntitySlenderman) {
             world.addParticle(ParticleRegistry.SLENDERMAN_MAGIC, x, y, z, velocityX, velocityY, velocityZ);
-        }
-        else {
+        } else {
             world.addParticle(ParticleTypes.PORTAL, x, y, z, velocityX, velocityY, velocityZ);
         }
     }

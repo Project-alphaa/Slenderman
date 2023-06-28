@@ -35,13 +35,13 @@ public class DumpsterBlock extends HorizontalFacingBlock {
 
     public DumpsterBlock(Settings settings) {
         super(settings);
-        setDefaultState(stateManager.getDefaultState().with(FACING, Direction.NORTH).with(LAYER, Layer.LOWER).with(WIDTH_ROW, WidthRow.MIDDLE).with(DEPTH_ROW, DepthRow.FRONT));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(LAYER, Layer.LOWER).with(WIDTH_ROW, WidthRow.MIDDLE).with(DEPTH_ROW, DepthRow.FRONT));
     }
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         if (!world.isClient && player.isCreative()) {
-//            TallPlantBlock.onBreakInCreative(world, pos, state, player);    // TODO rewrite for boolean property
+            //            TallPlantBlock.onBreakInCreative(world, pos, state, player);    // TODO rewrite for boolean property
         }
         super.onBreak(world, pos, state, player);
     }
@@ -51,8 +51,8 @@ public class DumpsterBlock extends HorizontalFacingBlock {
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockPos pos = ctx.getBlockPos();
         World world = ctx.getWorld();
-        BlockState state = getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite()).with(LAYER, Layer.LOWER).with(WIDTH_ROW, WidthRow.MIDDLE).with(DEPTH_ROW, DepthRow.FRONT);
-        if (pos.getY() < world.getTopY() - 1 && preformOnAll(state, pos, (worldPos, relativePos) -> world.getBlockState(worldPos).canReplace(ctx))) {
+        BlockState state = this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite()).with(LAYER, Layer.LOWER).with(WIDTH_ROW, WidthRow.MIDDLE).with(DEPTH_ROW, DepthRow.FRONT);
+        if (pos.getY() < world.getTopY() - 1 && this.preformOnAll(state, pos, (worldPos, relativePos) -> world.getBlockState(worldPos).canReplace(ctx))) {
             return state;
         }
         return null;
@@ -60,7 +60,7 @@ public class DumpsterBlock extends HorizontalFacingBlock {
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        preformOnAll(state, pos, (worldPos, relativePos) -> {
+        this.preformOnAll(state, pos, (worldPos, relativePos) -> {
             if (!worldPos.equals(pos)) {
                 world.setBlockState(worldPos, state.with(LAYER, Layer.values()[relativePos.getY()]).with(WIDTH_ROW, WidthRow.values()[relativePos.getX()]).with(DEPTH_ROW, DepthRow.values()[relativePos.getZ()]), 3);
             }
@@ -72,67 +72,67 @@ public class DumpsterBlock extends HorizontalFacingBlock {
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         Direction facing = state.get(FACING);
         Direction.Axis axis = direction.getAxis();
-//        EnumProperty<? extends DirectionCheckable> property = switch (axis) {
-//            case X -> WIDTH_ROW;
-//            case Y -> LAYER;
-//            case Z -> DEPTH_ROW;
-//        };
+        //        EnumProperty<? extends DirectionCheckable> property = switch (axis) {
+        //            case X -> WIDTH_ROW;
+        //            case Y -> LAYER;
+        //            case Z -> DEPTH_ROW;
+        //        };
 
-//        List<Function<Direction, Direction>> list = new ArrayList<>();
-//        list.addAll(List.of(state.get(WIDTH_ROW).getDirectionsChecks()));
-//        list.addAll(List.of(state.get(LAYER).getDirectionsChecks()));
-//        list.addAll(List.of(state.get(DEPTH_ROW).getDirectionsChecks()));
+        //        List<Function<Direction, Direction>> list = new ArrayList<>();
+        //        list.addAll(List.of(state.get(WIDTH_ROW).getDirectionsChecks()));
+        //        list.addAll(List.of(state.get(LAYER).getDirectionsChecks()));
+        //        list.addAll(List.of(state.get(DEPTH_ROW).getDirectionsChecks()));
 
-//        if (neighborState.contains(property) && neighborState.get(property) != state.get(property)) {
-//            return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-//        }
-//        Direction direction1 = null;
+        //        if (neighborState.contains(property) && neighborState.get(property) != state.get(property)) {
+        //            return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+        //        }
+        //        Direction direction1 = null;
 
-//        if (axis.equals(Direction.Axis.X)) {
-//            var a = state.get(WIDTH_ROW);
-//            if (a.equals(WidthRow.LEFT)) {
-//                direction1 = state.get(FACING).rotateYClockwise();
-//            }
-//            else if (a.equals(WidthRow.MIDDLE)) {
-//                direction1 = state.get(FACING);
-//            }
-//            else if (a.equals(WidthRow.RIGHT)) {
-//                direction1 = state.get(FACING).rotateYClockwise().getOpposite();
-//            }
-//        }
-//        else if (axis.equals(Direction.Axis.Y)) {
-//            var a = state.get(LAYER);
-//            if (a.equals(Layer.UPPER)) {
-//                direction1 = Direction.UP;
-//            }
-//            else if (a.equals(Layer.LOWER)) {
-//                direction1 = Direction.DOWN;
-//            }
-//        }
-//        else if (axis.equals(Direction.Axis.Z)) {
-//            var a = state.get(DEPTH_ROW);
-//            if (a.equals(DepthRow.BACK)) {
-//                direction1 = state.get(FACING).getOpposite();
-//            }
-//            else if (a.equals(DepthRow.FRONT)) {
-//                direction1 = state.get(FACING);
-//            }
-//        }
-//
-//        if (direction.equals(direction)) {
-//        }
+        //        if (axis.equals(Direction.Axis.X)) {
+        //            var a = state.get(WIDTH_ROW);
+        //            if (a.equals(WidthRow.LEFT)) {
+        //                direction1 = state.get(FACING).rotateYClockwise();
+        //            }
+        //            else if (a.equals(WidthRow.MIDDLE)) {
+        //                direction1 = state.get(FACING);
+        //            }
+        //            else if (a.equals(WidthRow.RIGHT)) {
+        //                direction1 = state.get(FACING).rotateYClockwise().getOpposite();
+        //            }
+        //        }
+        //        else if (axis.equals(Direction.Axis.Y)) {
+        //            var a = state.get(LAYER);
+        //            if (a.equals(Layer.UPPER)) {
+        //                direction1 = Direction.UP;
+        //            }
+        //            else if (a.equals(Layer.LOWER)) {
+        //                direction1 = Direction.DOWN;
+        //            }
+        //        }
+        //        else if (axis.equals(Direction.Axis.Z)) {
+        //            var a = state.get(DEPTH_ROW);
+        //            if (a.equals(DepthRow.BACK)) {
+        //                direction1 = state.get(FACING).getOpposite();
+        //            }
+        //            else if (a.equals(DepthRow.FRONT)) {
+        //                direction1 = state.get(FACING);
+        //            }
+        //        }
+        //
+        //        if (direction.equals(direction)) {
+        //        }
 
-//        for (Function<Direction, Direction> function : list) {
-//            if (function.apply(facing).equals(direction)) {
-//                if (neighborState.isOf(this)) {
+        //        for (Function<Direction, Direction> function : list) {
+        //            if (function.apply(facing).equals(direction)) {
+        //                if (neighborState.isOf(this)) {
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-//                }
-//                else {
-//                    return Blocks.AIR.getDefaultState();
-//                }
-//            }
-//        }
-//        return Blocks.AIR.getDefaultState();//super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+        //                }
+        //                else {
+        //                    return Blocks.AIR.getDefaultState();
+        //                }
+        //            }
+        //        }
+        //        return Blocks.AIR.getDefaultState();//super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @Override
@@ -182,9 +182,7 @@ public class DumpsterBlock extends HorizontalFacingBlock {
     }
 
     private enum WidthRow implements DirectionCheckable {
-        LEFT("left", Direction::rotateYCounterclockwise),
-        MIDDLE("middle", Direction::rotateYClockwise, Direction::rotateYCounterclockwise),
-        RIGHT("right", Direction::rotateYClockwise);
+        LEFT("left", Direction::rotateYCounterclockwise), MIDDLE("middle", Direction::rotateYClockwise, Direction::rotateYCounterclockwise), RIGHT("right", Direction::rotateYClockwise);
 
         private final String name;
         private final Function<Direction, Direction>[] directionChecks;
@@ -197,23 +195,22 @@ public class DumpsterBlock extends HorizontalFacingBlock {
 
         @Override
         public Function<Direction, Direction>[] getDirectionsChecks() {
-            return directionChecks;
+            return this.directionChecks;
         }
 
         @Override
         public String asString() {
-            return name;
+            return this.name;
         }
 
         @Override
         public String toString() {
-            return asString();
+            return this.asString();
         }
     }
 
     private enum DepthRow implements DirectionCheckable {
-        BACK("back", direction -> direction),
-        FRONT("front", Direction::getOpposite);
+        BACK("back", direction -> direction), FRONT("front", Direction::getOpposite);
 
         private final String name;
         private final Function<Direction, Direction>[] directionChecks;
@@ -226,23 +223,22 @@ public class DumpsterBlock extends HorizontalFacingBlock {
 
         @Override
         public Function<Direction, Direction>[] getDirectionsChecks() {
-            return directionChecks;
+            return this.directionChecks;
         }
 
         @Override
         public String asString() {
-            return name;
+            return this.name;
         }
 
         @Override
         public String toString() {
-            return asString();
+            return this.asString();
         }
     }
 
     private enum Layer implements DirectionCheckable {
-        LOWER("lower", direction -> Direction.UP),
-        UPPER("upper", direction -> Direction.DOWN);
+        LOWER("lower", direction -> Direction.UP), UPPER("upper", direction -> Direction.DOWN);
 
         private final String name;
         private final Function<Direction, Direction>[] directionChecks;
@@ -255,17 +251,17 @@ public class DumpsterBlock extends HorizontalFacingBlock {
 
         @Override
         public Function<Direction, Direction>[] getDirectionsChecks() {
-            return directionChecks;
+            return this.directionChecks;
         }
 
         @Override
         public String asString() {
-            return name;
+            return this.name;
         }
 
         @Override
         public String toString() {
-            return asString();
+            return this.asString();
         }
     }
 

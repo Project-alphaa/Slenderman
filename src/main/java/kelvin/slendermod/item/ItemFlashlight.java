@@ -42,10 +42,9 @@ public class ItemFlashlight extends Item {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if (isFlashlightPowered(stack)) {
-            tooltip.add(Text.translatable(getTranslationKey() + ".powered_on").formatted(Formatting.GRAY));
-        }
-        else {
-            tooltip.add(Text.translatable(getTranslationKey() + ".powered_off").formatted(Formatting.GRAY));
+            tooltip.add(Text.translatable(this.getTranslationKey() + ".powered_on").formatted(Formatting.GRAY));
+        } else {
+            tooltip.add(Text.translatable(this.getTranslationKey() + ".powered_off").formatted(Formatting.GRAY));
         }
         super.appendTooltip(stack, world, tooltip, context);
     }

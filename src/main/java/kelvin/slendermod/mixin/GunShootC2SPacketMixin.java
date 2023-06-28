@@ -18,7 +18,7 @@ public class GunShootC2SPacketMixin {
 
     @Inject(method = "receive", at = @At("HEAD"))
     private void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender, CallbackInfo ci) {
-        ServerWorld world = player.getWorld() ;
+        ServerWorld world = player.getWorld();
         server.execute(() -> world.emitGameEvent(player, SlenderMod.GUN_SHOT, player.getPos()));
     }
 }

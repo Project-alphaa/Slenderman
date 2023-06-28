@@ -21,7 +21,7 @@ public class RadioBlockEntity extends BlockEntity {
 
     public RadioBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.RADIO_BLOCK_ENTITY, pos, state);
-        client = MinecraftClient.getInstance();
+        this.client = MinecraftClient.getInstance();
     }
 
     public static void serverTick(World world, BlockPos pos, BlockState state, RadioBlockEntity blockEntity) {
@@ -35,13 +35,13 @@ public class RadioBlockEntity extends BlockEntity {
     }
 
     public void resetTicks() {
-        tick = 0;
+        this.tick = 0;
     }
 
     public void stopSound() {
-        SoundManager manager = client.getSoundManager();
-        if (manager.isPlaying(soundInstance)) {
-            manager.stop(soundInstance);
+        SoundManager manager = this.client.getSoundManager();
+        if (manager.isPlaying(this.soundInstance)) {
+            manager.stop(this.soundInstance);
         }
     }
 }

@@ -45,14 +45,13 @@ public abstract class ClientPlayerEntityMixin extends LivingEntity {
     @Inject(at = @At("HEAD"), method = "tick")
     public void tick(CallbackInfo info) {
         if (SlenderModClient.CRAWL_KEY.isPressed()) {
-            if (!isCrawlKeyPressed) {
-                isCrawlKeyPressed = true;
+            if (!this.isCrawlKeyPressed) {
+                this.isCrawlKeyPressed = true;
                 ((IForceCrawlingPlayer) this).toggleForcedCrawling();
                 ClientPlayNetworking.send(ServerPacketHandler.TOGGLED_FORCED_CRAWLING_ID, PacketByteBufs.create());
             }
-        }
-        else {
-            isCrawlKeyPressed = false;
+        } else {
+            this.isCrawlKeyPressed = false;
         }
     }
 
@@ -61,7 +60,7 @@ public abstract class ClientPlayerEntityMixin extends LivingEntity {
         if (book.isOf(ItemRegistry.WRITABLE_NOTE)) {
             NoteScreen screen = (NoteScreen) new BookEditScreen((PlayerEntity) (Object) this, book, hand);
             screen.isNote();
-            client.setScreen((Screen) screen);
+            this.client.setScreen((Screen) screen);
         }
     }
 }

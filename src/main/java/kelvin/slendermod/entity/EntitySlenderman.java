@@ -6,10 +6,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandler;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.EndermanEntity;
-import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -43,32 +41,32 @@ public class EntitySlenderman extends EndermanEntity implements GeoEntity {
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
-        dataTracker.startTracking(ATTACKING, false);
+        this.dataTracker.startTracking(ATTACKING, false);
     }
 
     @Override
     protected void initGoals() {
-        goalSelector.add(0, new SwimGoal(this));
-        goalSelector.add(1, new ChasePlayerGoal(this));
-        goalSelector.add(2, new SlendermanAttackGoal(this, 1.0, false));
-        goalSelector.add(7, new WanderAroundFarGoal(this, 1.0, 0.0F));
-        goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        goalSelector.add(8, new LookAroundGoal(this));
-        targetSelector.add(1, new TeleportTowardsPlayerGoal(this, this::shouldAngerAt));
-        targetSelector.add(2, new RevengeGoal(this));
-        targetSelector.add(4, new UniversalAngerGoal<>(this, false));
+        this.goalSelector.add(0, new SwimGoal(this));
+        this.goalSelector.add(1, new ChasePlayerGoal(this));
+        this.goalSelector.add(2, new SlendermanAttackGoal(this, 1.0, false));
+        this.goalSelector.add(7, new WanderAroundFarGoal(this, 1.0, 0.0F));
+        this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.add(8, new LookAroundGoal(this));
+        this.targetSelector.add(1, new TeleportTowardsPlayerGoal(this, this::shouldAngerAt));
+        this.targetSelector.add(2, new RevengeGoal(this));
+        this.targetSelector.add(4, new UniversalAngerGoal<>(this, false));
     }
 
     @Override
     public void tickMovement() {
         super.tickMovement();
 
-        if (isAttacking()) {
-            attackTimer--;
+        if (this.isAttacking()) {
+            this.attackTimer--;
         }
 
-        if (attackTimer <= 0) {
-            setAttacking(false);
+        if (this.attackTimer <= 0) {
+            this.setAttacking(false);
         }
     }
 
@@ -84,36 +82,33 @@ public class EntitySlenderman extends EndermanEntity implements GeoEntity {
 
     @Override
     public void setAttacking(boolean attacking) {
-        dataTracker.set(ATTACKING, attacking);
-        attackTimer = attacking ? 7 : 0;
+        this.dataTracker.set(ATTACKING, attacking);
+        this.attackTimer = attacking ? 7 : 0;
     }
 
     @Override
     public boolean isAttacking() {
-        return dataTracker.get(ATTACKING);
+        return this.dataTracker.get(ATTACKING);
     }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<>(this, "controller", 0, state -> {
             var controller = state.getController();
-            if (isAttacking()) {
-//                if (random.nextBoolean()) {
-//                    controller.setAnimation(ANIM_ATTACK_SLAM);
-//                }
-//                else {
-                    controller.setAnimation(ANIM_ATTACK_SWING);
-//                }
-            }
-            else if (state.isMoving()) {
-                if (getMoveControl().getSpeed() > 1) {
+            if (this.isAttacking()) {
+                //                if (random.nextBoolean()) {
+                //                    controller.setAnimation(ANIM_ATTACK_SLAM);
+                //                }
+                //                else {
+                controller.setAnimation(ANIM_ATTACK_SWING);
+                //                }
+            } else if (state.isMoving()) {
+                if (this.getMoveControl().getSpeed() > 1) {
                     controller.setAnimation(ANIM_RUNNING);
-                }
-                else {
+                } else {
                     controller.setAnimation(ANIM_WALKING);
                 }
-            }
-            else {
+            } else {
                 controller.setAnimation(ANIM_IDLE);
             }
 
@@ -123,7 +118,7 @@ public class EntitySlenderman extends EndermanEntity implements GeoEntity {
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return cache;
+        return this.cache;
     }
 
     private static class SlendermanAttackGoal extends MeleeAttackGoal {
@@ -137,7 +132,7 @@ public class EntitySlenderman extends EndermanEntity implements GeoEntity {
 
         @Override
         protected void attack(LivingEntity target, double squaredDistance) {
-            if (slenderman.attackTimer <= 0) {
+            if (this.slenderman.attackTimer <= 0) {
                 super.attack(target, squaredDistance);
             }
         }
@@ -145,7 +140,7 @@ public class EntitySlenderman extends EndermanEntity implements GeoEntity {
         @Override
         protected void resetCooldown() {
             super.resetCooldown();
-            slenderman.setAttacking(true);
+            this.slenderman.setAttacking(true);
         }
     }
 }

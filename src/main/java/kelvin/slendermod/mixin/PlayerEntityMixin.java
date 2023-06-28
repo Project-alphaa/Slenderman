@@ -22,18 +22,18 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IForceCr
 
     @Override
     public void toggleForcedCrawling() {
-        forcedCrawling = !forcedCrawling;
+        this.forcedCrawling = !this.forcedCrawling;
     }
 
     @Override
     public boolean isForcedCrawling() {
-        return forcedCrawling;
+        return this.forcedCrawling;
     }
 
     @Inject(at = @At("HEAD"), method = "updatePose", cancellable = true)
     protected void updatePose(CallbackInfo info) {
-        if (forcedCrawling) {
-            setPose(EntityPose.SWIMMING);
+        if (this.forcedCrawling) {
+            this.setPose(EntityPose.SWIMMING);
             info.cancel();
         }
     }

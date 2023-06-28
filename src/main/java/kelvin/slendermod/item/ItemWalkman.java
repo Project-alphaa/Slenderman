@@ -20,7 +20,7 @@ public class ItemWalkman extends Item {
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
-        if (user.isCreative() || hasCassetteTape(user)) {
+        if (user.isCreative() || this.hasCassetteTape(user)) {
             user.getItemCooldownManager().set(this, 150);
             user.playSound(SoundRegistry.TAPE, SoundCategory.PLAYERS, 0.5F, 1);
             return TypedActionResult.success(stack);

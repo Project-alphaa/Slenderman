@@ -34,7 +34,7 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
     private void setModelPose(AbstractClientPlayerEntity player, CallbackInfo ci) {
         ItemStack helmet = player.getEquippedStack(EquipmentSlot.HEAD);
         if (helmet.isOf(BlockRegistry.SCP_SLENDERMAN_HEAD.asItem()) && !player.isSpectator()) {
-            getModel().head.visible = false;
+            this.getModel().head.visible = false;
         }
     }
 }

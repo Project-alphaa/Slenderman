@@ -21,24 +21,18 @@ public class SlenderMod implements ModInitializer {
 
     public static final String MODID = "slendermod";
     public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
-    public static final ItemGroup SLENDER_TAB = FabricItemGroup.builder(id("slender_tab"))
-            .icon(() -> new ItemStack(BlockRegistry.SCP_SLENDERMAN_HEAD))
-            .entries((enabledFeatures, entries, operatorEnabled) -> Registries.ITEM.stream().filter(item -> Registries.ITEM.getId(item).getNamespace().equals(MODID)).forEach(item -> {
-                if (item != ItemRegistry.NOTE) {
-                    if (item == ItemRegistry.SLENDER_GRIMOIRE) {
-                        ItemStack itemNbt = item.getDefaultStack();
-                        ItemSlenderGrimoire.writeCustomNBT(itemNbt);
-                        entries.add(itemNbt, ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
-                    } else {
-                        entries.add(item, ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
-                    }
-                }
-            })).build();
-    public static final GameEvent GUN_SHOT = Registry.register(
-            Registries.GAME_EVENT,
-            SlenderMod.id("gun_shot"),
-            new GameEvent("gun_shot", 48)
-    );
+    public static final ItemGroup SLENDER_TAB = FabricItemGroup.builder(id("slender_tab")).icon(() -> new ItemStack(BlockRegistry.SCP_SLENDERMAN_HEAD)).entries((enabledFeatures, entries, operatorEnabled) -> Registries.ITEM.stream().filter(item -> Registries.ITEM.getId(item).getNamespace().equals(MODID)).forEach(item -> {
+        if (item != ItemRegistry.NOTE) {
+            if (item == ItemRegistry.SLENDER_GRIMOIRE) {
+                ItemStack itemNbt = item.getDefaultStack();
+                ItemSlenderGrimoire.writeCustomNBT(itemNbt);
+                entries.add(itemNbt, ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+            } else {
+                entries.add(item, ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+            }
+        }
+    })).build();
+    public static final GameEvent GUN_SHOT = Registry.register(Registries.GAME_EVENT, SlenderMod.id("gun_shot"), new GameEvent("gun_shot", 48));
 
     @Override
     public void onInitialize() {

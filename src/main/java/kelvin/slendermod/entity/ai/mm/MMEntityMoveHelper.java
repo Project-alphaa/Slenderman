@@ -53,8 +53,7 @@ public class MMEntityMoveHelper extends MoveControl {
             this.entity.setForwardSpeed(this.forwardMovement);
             this.entity.setSidewaysSpeed(this.sidewaysMovement);
             this.state = MoveControl.State.WAIT;
-        }
-        else if (this.state == MoveControl.State.MOVE_TO) {
+        } else if (this.state == MoveControl.State.MOVE_TO) {
             this.state = MoveControl.State.WAIT;
             double d0 = this.targetX - this.entity.getX();
             double d1 = this.targetZ - this.entity.getZ();
@@ -67,22 +66,20 @@ public class MMEntityMoveHelper extends MoveControl {
             }
 
             float f9 = (float) (MathHelper.atan2(d1, d0) * (180D / Math.PI)) - 90.0F;
-            this.entity.setYaw(this.wrapDegrees(this.entity.getYaw(), f9, maxRotate));
+            this.entity.setYaw(this.wrapDegrees(this.entity.getYaw(), f9, this.maxRotate));
             this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue()));
 
             if (d2 > (double) this.entity.stepHeight && d0 * d0 + d1 * d1 < (double) Math.max(1.0F, this.entity.getWidth())) {
                 this.entity.getJumpControl().setActive();
                 this.state = MoveControl.State.JUMPING;
             }
-        }
-        else if (this.state == MoveControl.State.JUMPING) {
+        } else if (this.state == MoveControl.State.JUMPING) {
             this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue()));
 
             if (this.entity.isOnGround()) {
                 this.state = MoveControl.State.WAIT;
             }
-        }
-        else {
+        } else {
             this.entity.setForwardSpeed(0.0F);
         }
     }

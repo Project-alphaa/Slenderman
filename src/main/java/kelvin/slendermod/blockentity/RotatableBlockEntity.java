@@ -27,10 +27,10 @@ public class RotatableBlockEntity extends BlockEntity implements GeoBlockEntity 
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return cache;
+        return this.cache;
     }
 
     public String getResourceId() {
-        return getCachedState().getBlock() instanceof RotatableBlockEntityBlock<?> block ? block.getResourceId() : null;
+        return this.getCachedState().getBlock() instanceof RotatableBlockEntityBlock<?> block ? block.getResourceId() : null;
     }
 }

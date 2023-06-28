@@ -1,6 +1,9 @@
 package kelvin.slendermod.block;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.TrapdoorBlock;
 import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
@@ -31,8 +34,7 @@ public class ManholeCoverBlock extends TrapdoorBlock {
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         if (!state.get(OPEN)) {
             return state.get(HALF) == BlockHalf.TOP ? OPEN_TOP_SHAPE : OPEN_BOTTOM_SHAPE;
-        }
-        else {
+        } else {
             return switch (state.get(FACING)) {
                 case SOUTH -> SOUTH_SHAPE;
                 case WEST -> WEST_SHAPE;

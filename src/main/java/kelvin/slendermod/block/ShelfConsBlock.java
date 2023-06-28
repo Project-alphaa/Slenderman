@@ -29,7 +29,7 @@ public class ShelfConsBlock extends CustomFacingBlock {
 
     public ShelfConsBlock(Settings settings) {
         super(settings);
-        setDefaultState(stateManager.getDefaultState().with(HALF, DoubleBlockHalf.LOWER));
+        this.setDefaultState(this.stateManager.getDefaultState().with(HALF, DoubleBlockHalf.LOWER));
     }
 
     @Override
@@ -41,8 +41,7 @@ public class ShelfConsBlock extends CustomFacingBlock {
                 case EAST, WEST -> LOWER_EW_SHAPE;
                 default -> LOWER_NS_SHAPE;
             };
-        } 
-        else {
+        } else {
             return switch (direction) {
                 case EAST, WEST -> UPPER_EW_SHAPE;
                 default -> UPPER_NS_SHAPE;
@@ -54,8 +53,7 @@ public class ShelfConsBlock extends CustomFacingBlock {
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (direction == getDirectionTowardsOtherHalf(state.get(HALF))) {
             return neighborState.isOf(this) && neighborState.get(HALF) != state.get(HALF) ? state : Blocks.AIR.getDefaultState();
-        }
-        else {
+        } else {
             return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
         }
     }
@@ -87,7 +85,7 @@ public class ShelfConsBlock extends CustomFacingBlock {
         BlockPos blockPos = ctx.getBlockPos();
         BlockPos blockPos2 = blockPos.offset(Direction.UP);
         World world = ctx.getWorld();
-        return world.getBlockState(blockPos2).canReplace(ctx) && world.getWorldBorder().contains(blockPos2) ? getDefaultState().with(FACING, direction) : null;
+        return world.getBlockState(blockPos2).canReplace(ctx) && world.getWorldBorder().contains(blockPos2) ? this.getDefaultState().with(FACING, direction) : null;
     }
 
     @Override
