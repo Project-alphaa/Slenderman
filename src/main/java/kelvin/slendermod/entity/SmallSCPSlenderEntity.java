@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 import software.bernie.geckolib.core.animation.Animation;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class EntitySmallSCPSlender extends AbstractEntitySCPSlender {
+public class SmallSCPSlenderEntity extends AbstractSCPSlenderEntity {
 
     private static final RawAnimation ANIM_IDLE = RawAnimation.begin().then("animation.idle", Animation.LoopType.LOOP);
     private static final RawAnimation ANIM_WALK = RawAnimation.begin().then("animation.walk", Animation.LoopType.LOOP);
@@ -23,7 +23,7 @@ public class EntitySmallSCPSlender extends AbstractEntitySCPSlender {
     private static final RawAnimation ANIM_ATTACK = RawAnimation.begin().then("animation.attack", Animation.LoopType.PLAY_ONCE);
     private static final AnimationSet ANIMATIONS = new AnimationSet(ANIM_IDLE, ANIM_WALK, ANIM_ROAR, ANIM_RUN, ANIM_LOOK, ANIM_ATTACK);
 
-    public EntitySmallSCPSlender(EntityType<? extends PathAwareEntity> entityType, World world) {
+    public SmallSCPSlenderEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
         this.stepHeight = 1.0f;
         this.moveControl = new MMEntityMoveHelper(this, 90);

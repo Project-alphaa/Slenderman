@@ -9,9 +9,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
-public class ItemMedicalKit extends Item {
+public class MedicalKitItem extends Item {
 
-    public ItemMedicalKit(Settings settings) {
+    public MedicalKitItem(Settings settings) {
         super(settings);
     }
 

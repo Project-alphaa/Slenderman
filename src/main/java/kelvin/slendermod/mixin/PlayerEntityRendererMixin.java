@@ -1,6 +1,6 @@
 package kelvin.slendermod.mixin;
 
-import kelvin.slendermod.entity.EntitySlenderBoss;
+import kelvin.slendermod.entity.SlenderBossEntity;
 import kelvin.slendermod.registry.BlockRegistry;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -25,7 +25,7 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
 
     @Inject(at = @At("HEAD"), method = "render", cancellable = true)
     public void render(AbstractClientPlayerEntity player, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo info) {
-        if (player.getVehicle() instanceof EntitySlenderBoss) {
+        if (player.getVehicle() instanceof SlenderBossEntity) {
             info.cancel();
         }
     }

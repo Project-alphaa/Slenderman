@@ -3,9 +3,9 @@ package kelvin.slendermod;
 import kelvin.slendermod.client.SlendermanMagicParticle;
 import kelvin.slendermod.client.block.renderers.RotatableBlockEntityRenderer;
 import kelvin.slendermod.client.entity.renderers.*;
-import kelvin.slendermod.entity.EntityAdultSCPSlender;
-import kelvin.slendermod.entity.EntitySmallSCPSlender;
-import kelvin.slendermod.item.ItemFlashlight;
+import kelvin.slendermod.entity.AdultSCPSlenderEntity;
+import kelvin.slendermod.entity.SmallSCPSlenderEntity;
+import kelvin.slendermod.item.FlashlightItem;
 import kelvin.slendermod.registry.*;
 import kelvin.slendermod.util.MiscUtil;
 import ladysnake.satin.api.event.ShaderEffectRenderCallback;
@@ -63,11 +63,11 @@ public class SlenderModClient implements ClientModInitializer {
     public void onInitializeClient() {
         SoundRegistry.register();
 
-        EntityRendererRegistry.register(EntityRegistry.SCP_SLENDERMAN, RendererSCPSlenderman::new);
-        EntityRendererRegistry.register(EntityRegistry.SCP_SLENDERWOMAN, RendererSCPSlenderwoman::new);
-        EntityRendererRegistry.register(EntityRegistry.SMALL_SCP_SLENDER, RendererSmallSCPSlender::new);
-        EntityRendererRegistry.register(EntityRegistry.SLENDER_BOSS, RendererSlenderBoss::new);
-        EntityRendererRegistry.register(EntityRegistry.SLENDERMAN, RendererSlenderman::new);
+        EntityRendererRegistry.register(EntityRegistry.SCP_SLENDERMAN, SCPSlendermanRenderer::new);
+        EntityRendererRegistry.register(EntityRegistry.SCP_SLENDERWOMAN, SCPSlenderwomanRenderer::new);
+        EntityRendererRegistry.register(EntityRegistry.SMALL_SCP_SLENDER, SmallSCPSlenderRenderer::new);
+        EntityRendererRegistry.register(EntityRegistry.SLENDER_BOSS, SlenderBossRenderer::new);
+        EntityRendererRegistry.register(EntityRegistry.SLENDERMAN, SlendermanRenderer::new);
 
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.SCP_SLENDERMAN_HEAD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DEAD_LEAVES, RenderLayer.getCutout());
@@ -88,9 +88,9 @@ public class SlenderModClient implements ClientModInitializer {
             BlockRenderLayerMap.INSTANCE.putBlock(note, RenderLayer.getCutout());
 
         BlockEntityRendererFactories.register(BlockEntityRegistry.ROTATABLE_BLOCK_ENTITY, ctx -> new RotatableBlockEntityRenderer());
-        BlockEntityRendererFactories.register(BlockEntityRegistry.SAFE_BLOCK_ENTITY, RendererSafeBlock::new);
+        BlockEntityRendererFactories.register(BlockEntityRegistry.SAFE_BLOCK_ENTITY, SafeBlockRenderer::new);
 
-        ModelPredicateProviderRegistry.register(ItemRegistry.FLASHLIGHT, SlenderMod.id("powered"), (stack, world, entity, seed) -> ItemFlashlight.isFlashlightPowered(stack) ? 1 : 0);
+        ModelPredicateProviderRegistry.register(ItemRegistry.FLASHLIGHT, SlenderMod.id("powered"), (stack, world, entity, seed) -> FlashlightItem.isFlashlightPowered(stack) ? 1 : 0);
 
         CRAWL_KEY = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.slendermod.crawl", InputUtil.Type.KEYSYM, InputUtil.GLFW_KEY_G, "key.categories.movement"));
 
@@ -156,7 +156,7 @@ public class SlenderModClient implements ClientModInitializer {
 
         if (minecraft.world != null) {
             for (Entity entity : minecraft.world.getEntities()) {
-                if (entity instanceof EntityAdultSCPSlender || entity instanceof EntitySmallSCPSlender) {
+                if (entity instanceof AdultSCPSlenderEntity || entity instanceof SmallSCPSlenderEntity) {
                     if (minecraft.player != null) {
                         if (minecraft.player.distanceTo(entity) <= 10) {
                             isNear = true;

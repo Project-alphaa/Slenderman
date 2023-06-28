@@ -17,9 +17,9 @@ import java.util.Optional;
 import static kelvin.slendermod.SlenderMod.LOGGER;
 import static kelvin.slendermod.SlenderMod.id;
 
-public class ItemSlenderGrimoire extends WrittenBookItem {
+public class SlenderGrimoireItem extends WrittenBookItem {
 
-    public ItemSlenderGrimoire() {
+    public SlenderGrimoireItem() {
         super(new Settings());
     }
 

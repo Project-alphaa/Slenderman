@@ -12,25 +12,25 @@ import static kelvin.slendermod.SlenderMod.id;
 @SuppressWarnings("unused")
 public class ItemRegistry {
 
-    public static final Item FLASHLIGHT = register("flashlight", new ItemFlashlight(new Item.Settings().maxCount(1)));
+    public static final Item FLASHLIGHT = register("flashlight", new FlashlightItem(new Item.Settings().maxCount(1)));
 
-    public static final Item BOSS_ATTACK = register("boss_hit", new ItemBossAttack());
+    public static final Item BOSS_ATTACK = register("boss_hit", new BossAttackItem());
 
-    public static final Item BOSS_DASH = register("boss_dash", new ItemBossDash());
+    public static final Item BOSS_DASH = register("boss_dash", new BossDashItem());
 
-    public static final Item SLENDER_GRIMOIRE = register("slender_grimoire", new ItemSlenderGrimoire());
+    public static final Item SLENDER_GRIMOIRE = register("slender_grimoire", new SlenderGrimoireItem());
 
-    public static final Item NOTE = register("note", new ItemNote());
+    public static final Item NOTE = register("note", new NoteItem());
 
-    public static final Item WRITABLE_NOTE = register("writable_note", new ItemWritableNote());
+    public static final Item WRITABLE_NOTE = register("writable_note", new WritableNoteItem());
 
-    public static final Item WALKMAN = register("walkman", new ItemWalkman());
+    public static final Item WALKMAN = register("walkman", new WalkmanItem());
 
     public static final Item CASSETTE_TAPE = register("cassette_tape", new Item(new Item.Settings()));
 
     public static final Item ACCESS_CARD = register("access_card", new Item(new Item.Settings()));
 
-    public static final Item MEDICAL_KIT = register("medical_kit", new ItemMedicalKit(new Item.Settings().maxCount(1)));
+    public static final Item MEDICAL_KIT = register("medical_kit", new MedicalKitItem(new Item.Settings().maxCount(1)));
 
     public static final Item SAFE_ITEM = register("safe", new ItemSafeBlock(BlockRegistry.SAFE, new FabricItemSettings()));
 

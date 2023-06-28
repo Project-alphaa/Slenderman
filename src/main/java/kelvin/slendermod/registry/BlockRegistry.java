@@ -55,7 +55,7 @@ public class BlockRegistry {
 
     public static final Block RADIO = register("radio", new RadioBlock(AbstractBlock.Settings.of(Material.STONE).sounds(BlockSoundGroup.METAL)));
 
-    public static final Block SAFE = Registry.register(Registries.BLOCK, new Identifier(SlenderMod.MODID, "safe"), new SafeBlock(AbstractBlock.Settings.of(Material.STONE).sounds(BlockSoundGroup.METAL)));
+    public static final Block SAFE = Registry.register(Registries.BLOCK, new Identifier(SlenderMod.MOD_ID, "safe"), new SafeBlock(AbstractBlock.Settings.of(Material.STONE).sounds(BlockSoundGroup.METAL)));
 
 
     public static final LinkedList<Block> PAGES = registerPages();

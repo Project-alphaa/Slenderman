@@ -48,10 +48,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public abstract class AbstractEntitySCPSlender extends PathAwareEntity implements GeoEntity {
+public abstract class AbstractSCPSlenderEntity extends PathAwareEntity implements GeoEntity {
 
-    private static final TrackedData<Integer> CURRENT_ANIMATION = DataTracker.registerData(AbstractEntitySCPSlender.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final TrackedData<Boolean> ROAR_TRACKER = DataTracker.registerData(AbstractEntitySCPSlender.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Integer> CURRENT_ANIMATION = DataTracker.registerData(AbstractSCPSlenderEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    private static final TrackedData<Boolean> ROAR_TRACKER = DataTracker.registerData(AbstractSCPSlenderEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final EntityGameEventHandler<SlenderRoarEventListener> slenderRoarEventHandler;
@@ -65,7 +65,7 @@ public abstract class AbstractEntitySCPSlender extends PathAwareEntity implement
     private BlockPos doorPos;
     private int doorHits;
 
-    protected AbstractEntitySCPSlender(EntityType<? extends PathAwareEntity> entityType, World world) {
+    protected AbstractSCPSlenderEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
         PositionSource source = new EntityPositionSource(this, this.getStandingEyeHeight());
         this.slenderRoarEventHandler = new EntityGameEventHandler<>(new SlenderRoarEventListener(source, SlenderMod.GUN_SHOT.getRange()));
@@ -511,11 +511,11 @@ public abstract class AbstractEntitySCPSlender extends PathAwareEntity implement
                 Entity sourceEntity = emitter.sourceEntity();
 
                 if (event == SlenderMod.GUN_SHOT) {
-                    AbstractEntitySCPSlender.this.travelToGunShot(sourceEntity);
+                    AbstractSCPSlenderEntity.this.travelToGunShot(sourceEntity);
                     return true;
-                } else if (event == GameEvent.ENTITY_DIE && AbstractEntitySCPSlender.this.target != null) {
-                    if (sourceEntity.getUuid() == AbstractEntitySCPSlender.this.target.getUuid()) {
-                        AbstractEntitySCPSlender.this.tryToSpotTargets();
+                } else if (event == GameEvent.ENTITY_DIE && AbstractSCPSlenderEntity.this.target != null) {
+                    if (sourceEntity.getUuid() == AbstractSCPSlenderEntity.this.target.getUuid()) {
+                        AbstractSCPSlenderEntity.this.tryToSpotTargets();
                         return true;
                     }
                 }

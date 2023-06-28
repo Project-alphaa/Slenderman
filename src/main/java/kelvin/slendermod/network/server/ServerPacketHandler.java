@@ -1,7 +1,7 @@
 package kelvin.slendermod.network.server;
 
 import kelvin.slendermod.SlenderMod;
-import kelvin.slendermod.entity.AbstractEntitySCPSlender;
+import kelvin.slendermod.entity.AbstractSCPSlenderEntity;
 import kelvin.slendermod.util.IForceCrawlingPlayer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.Entity;
@@ -23,7 +23,7 @@ public class ServerPacketHandler {
             UUID uuid = buf.readUuid();
             Entity entity = world.getEntity(uuid);
             server.execute(() -> {
-                if (entity instanceof AbstractEntitySCPSlender slender) {
+                if (entity instanceof AbstractSCPSlenderEntity slender) {
                     slender.setAngryAt(player);
                 }
             });

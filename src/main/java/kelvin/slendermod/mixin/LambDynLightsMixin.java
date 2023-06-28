@@ -1,7 +1,7 @@
 package kelvin.slendermod.mixin;
 
 import dev.lambdaurora.lambdynlights.LambDynLights;
-import kelvin.slendermod.item.ItemFlashlight;
+import kelvin.slendermod.item.FlashlightItem;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,6 +13,6 @@ public class LambDynLightsMixin {
 
     @Inject(method = "getLuminanceFromItemStack", at = @At("RETURN"), cancellable = true)
     private static void getLuminanceFromItemStack(ItemStack stack, boolean submergedInWater, CallbackInfoReturnable<Integer> cir) {
-        cir.setReturnValue(ItemFlashlight.isFlashlightPowered(stack) ? 15 : 0);
+        cir.setReturnValue(FlashlightItem.isFlashlightPowered(stack) ? 15 : 0);
     }
 }

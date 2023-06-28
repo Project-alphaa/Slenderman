@@ -1,9 +1,9 @@
 package kelvin.slendermod.registry;
 
-import kelvin.slendermod.entity.EntityAdultSCPSlender;
-import kelvin.slendermod.entity.EntitySlenderBoss;
-import kelvin.slendermod.entity.EntitySlenderman;
-import kelvin.slendermod.entity.EntitySmallSCPSlender;
+import kelvin.slendermod.entity.AdultSCPSlenderEntity;
+import kelvin.slendermod.entity.SlenderBossEntity;
+import kelvin.slendermod.entity.SlendermanEntity;
+import kelvin.slendermod.entity.SmallSCPSlenderEntity;
 import net.fabricmc.fabric.api.biome.v1.BiomeModificationContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
@@ -28,15 +28,15 @@ public class EntityRegistry {
 
     private static final EntityDimensions ADULT_SLENDER_SIZE = EntityDimensions.fixed(0.7f, 2.8f);
 
-    public static final EntityType<EntityAdultSCPSlender> SCP_SLENDERMAN = register("scp_slenderman", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntityAdultSCPSlender::new).dimensions(ADULT_SLENDER_SIZE).build());
+    public static final EntityType<AdultSCPSlenderEntity> SCP_SLENDERMAN = register("scp_slenderman", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, AdultSCPSlenderEntity::new).dimensions(ADULT_SLENDER_SIZE).build());
 
-    public static final EntityType<EntityAdultSCPSlender> SCP_SLENDERWOMAN = register("scp_slenderwoman", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntityAdultSCPSlender::new).dimensions(ADULT_SLENDER_SIZE).build());
+    public static final EntityType<AdultSCPSlenderEntity> SCP_SLENDERWOMAN = register("scp_slenderwoman", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, AdultSCPSlenderEntity::new).dimensions(ADULT_SLENDER_SIZE).build());
 
-    public static final EntityType<EntitySmallSCPSlender> SMALL_SCP_SLENDER = register("small_scp_slender", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntitySmallSCPSlender::new).dimensions(EntityDimensions.fixed(0.75f, 1.5f)).build());
+    public static final EntityType<SmallSCPSlenderEntity> SMALL_SCP_SLENDER = register("small_scp_slender", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, SmallSCPSlenderEntity::new).dimensions(EntityDimensions.fixed(0.75f, 1.5f)).build());
 
-    public static final EntityType<EntitySlenderBoss> SLENDER_BOSS = register("slender_boss", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntitySlenderBoss::new).dimensions(EntityDimensions.fixed(2, 4)).build());
+    public static final EntityType<SlenderBossEntity> SLENDER_BOSS = register("slender_boss", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, SlenderBossEntity::new).dimensions(EntityDimensions.fixed(2, 4)).build());
 
-    public static final EntityType<EntitySlenderman> SLENDERMAN = register("slenderman", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EntitySlenderman::new).dimensions(ADULT_SLENDER_SIZE).build());
+    public static final EntityType<SlendermanEntity> SLENDERMAN = register("slenderman", FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, SlendermanEntity::new).dimensions(ADULT_SLENDER_SIZE).build());
 
     public static void register() {
         spawnSlender(SCP_SLENDERMAN, "scp_slenderman", 2);
@@ -45,10 +45,10 @@ public class EntityRegistry {
 
         BiomeModifications.create(id("remove_all_monsters")).add(ModificationPhase.REMOVALS, selectionContext -> selectionContext.hasTag(BiomeTags.IS_OVERWORLD) || selectionContext.hasTag(BiomeTags.IS_NETHER) || selectionContext.hasTag(BiomeTags.IS_END), (biomeSelectionContext, modificationContext) -> modificationContext.getSpawnSettings().removeSpawns((spawnGroup, spawnEntry) -> spawnGroup == SpawnGroup.MONSTER && spawnEntry.type != SCP_SLENDERMAN && spawnEntry.type != SCP_SLENDERWOMAN && spawnEntry.type != SMALL_SCP_SLENDER));
 
-        FabricDefaultAttributeRegistry.register(SCP_SLENDERMAN, EntityAdultSCPSlender.createAttributes());
-        FabricDefaultAttributeRegistry.register(SCP_SLENDERWOMAN, EntityAdultSCPSlender.createAttributes());
-        FabricDefaultAttributeRegistry.register(SMALL_SCP_SLENDER, EntitySmallSCPSlender.createAttributes());
-        FabricDefaultAttributeRegistry.register(SLENDER_BOSS, EntitySlenderBoss.createAttributes());
+        FabricDefaultAttributeRegistry.register(SCP_SLENDERMAN, AdultSCPSlenderEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(SCP_SLENDERWOMAN, AdultSCPSlenderEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(SMALL_SCP_SLENDER, SmallSCPSlenderEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(SLENDER_BOSS, SlenderBossEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(SLENDERMAN, EndermanEntity.createEndermanAttributes());
     }
 

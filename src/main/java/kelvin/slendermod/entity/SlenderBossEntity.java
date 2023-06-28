@@ -35,9 +35,9 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
 
-public class EntitySlenderBoss extends PathAwareEntity implements GeoEntity {
+public class SlenderBossEntity extends PathAwareEntity implements GeoEntity {
 
-    private static final TrackedData<Integer> CURRENT_ANIMATION = DataTracker.registerData(EntitySlenderBoss.class, TrackedDataHandlerRegistry.INTEGER);
+    private static final TrackedData<Integer> CURRENT_ANIMATION = DataTracker.registerData(SlenderBossEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
     private static final RawAnimation ANIM_IDLE = RawAnimation.begin().then("animation.slender_boss.idle", Animation.LoopType.LOOP);
     private static final RawAnimation ANIM_WALK = RawAnimation.begin().then("animation.slender_boss.crawl", Animation.LoopType.LOOP);
@@ -52,7 +52,7 @@ public class EntitySlenderBoss extends PathAwareEntity implements GeoEntity {
     private int moveTimer = 0;
     private final ServerBossBar bossBar = new ServerBossBar(Text.translatable("entity.slendermod.slender_boss"), BossBar.Color.RED, BossBar.Style.NOTCHED_6);
 
-    public EntitySlenderBoss(EntityType<? extends PathAwareEntity> entityType, World world) {
+    public SlenderBossEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
         this.stepHeight = 1.0f;
         this.startPos = new Vec3d(this.getPos().x, this.getPos().y, this.getPos().z);

@@ -15,9 +15,9 @@ import net.minecraft.world.World;
 import software.bernie.geckolib.core.animation.Animation;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
-public class EntityAdultSCPSlender extends AbstractEntitySCPSlender {
+public class AdultSCPSlenderEntity extends AbstractSCPSlenderEntity {
 
-    private static final TrackedData<Integer> ANIMATION_SET = DataTracker.registerData(EntityAdultSCPSlender.class, TrackedDataHandlerRegistry.INTEGER);
+    private static final TrackedData<Integer> ANIMATION_SET = DataTracker.registerData(AdultSCPSlenderEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final RawAnimation ANIM_IDLE = RawAnimation.begin().then("idle", Animation.LoopType.LOOP);
     private static final RawAnimation ANIM_WALK = RawAnimation.begin().then("walking", Animation.LoopType.LOOP);
     private static final RawAnimation ANIM_ROAR = RawAnimation.begin().then("roar", Animation.LoopType.PLAY_ONCE);
@@ -30,7 +30,7 @@ public class EntityAdultSCPSlender extends AbstractEntitySCPSlender {
     private static final AnimationSet ANIMATIONS = new AnimationSet(ANIM_IDLE, ANIM_WALK, ANIM_CRYING, ANIM_RUN, ANIM_LOOK, ANIM_ATTACK);
     private static final AnimationSet ANIMATIONS2 = new AnimationSet(ANIM_IDLE, ANIM_WALK, ANIM_CRYING, ANIM_RUN, ANIM_LOOK, ANIM_ATTACK2);
 
-    public EntityAdultSCPSlender(EntityType<? extends PathAwareEntity> entityType, World world) {
+    public AdultSCPSlenderEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
         this.stepHeight = 1.0f;
         this.moveControl = new MMEntityMoveHelper(this, 15);

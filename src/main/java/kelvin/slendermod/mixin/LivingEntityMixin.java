@@ -1,7 +1,7 @@
 package kelvin.slendermod.mixin;
 
 import kelvin.slendermod.block.SCPSlendermanHeadBlock;
-import kelvin.slendermod.entity.EntitySlenderman;
+import kelvin.slendermod.entity.SlendermanEntity;
 import kelvin.slendermod.registry.ParticleRegistry;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -28,7 +28,7 @@ public class LivingEntityMixin {
 
     @Redirect(method = "handleStatus", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;addParticle(Lnet/minecraft/particle/ParticleEffect;DDDDDD)V"))
     private void addParticles(World world, ParticleEffect particleEffect, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-        if (((Object) this) instanceof EntitySlenderman) {
+        if (((Object) this) instanceof SlendermanEntity) {
             world.addParticle(ParticleRegistry.SLENDERMAN_MAGIC, x, y, z, velocityX, velocityY, velocityZ);
         } else {
             world.addParticle(ParticleTypes.PORTAL, x, y, z, velocityX, velocityY, velocityZ);

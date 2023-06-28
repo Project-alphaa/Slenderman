@@ -12,9 +12,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
-public class ItemWalkman extends Item {
+public class WalkmanItem extends Item {
 
-    public ItemWalkman() {
+    public WalkmanItem() {
         super(new FabricItemSettings());
     }
 

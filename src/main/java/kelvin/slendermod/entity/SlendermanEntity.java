@@ -20,7 +20,7 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class EntitySlenderman extends EndermanEntity implements GeoEntity {
+public class SlendermanEntity extends EndermanEntity implements GeoEntity {
 
     private static final RawAnimation ANIM_IDLE = RawAnimation.begin().then("idle", Animation.LoopType.LOOP);
     private static final RawAnimation ANIM_WALKING = RawAnimation.begin().then("walking", Animation.LoopType.LOOP);
@@ -29,12 +29,12 @@ public class EntitySlenderman extends EndermanEntity implements GeoEntity {
     private static final RawAnimation ANIM_ATTACK_SWING = RawAnimation.begin().then("swing_attack", Animation.LoopType.PLAY_ONCE);
     private static final RawAnimation ANIM_CHOKING = RawAnimation.begin().then("choking", Animation.LoopType.PLAY_ONCE);
 
-    private static final TrackedData<Boolean> ATTACKING = DataTracker.registerData(EntitySlenderman.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Boolean> ATTACKING = DataTracker.registerData(SlendermanEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private int attackTimer = 0;
 
-    public EntitySlenderman(EntityType<? extends EndermanEntity> entityType, World world) {
+    public SlendermanEntity(EntityType<? extends EndermanEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -123,9 +123,9 @@ public class EntitySlenderman extends EndermanEntity implements GeoEntity {
 
     private static class SlendermanAttackGoal extends MeleeAttackGoal {
 
-        private final EntitySlenderman slenderman;
+        private final SlendermanEntity slenderman;
 
-        public SlendermanAttackGoal(EntitySlenderman mob, double speed, boolean pauseWhenMobIdle) {
+        public SlendermanAttackGoal(SlendermanEntity mob, double speed, boolean pauseWhenMobIdle) {
             super(mob, speed, pauseWhenMobIdle);
             this.slenderman = mob;
         }

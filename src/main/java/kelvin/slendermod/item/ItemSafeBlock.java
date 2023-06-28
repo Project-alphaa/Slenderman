@@ -1,6 +1,6 @@
 package kelvin.slendermod.item;
 
-import kelvin.slendermod.client.entity.renderers.RendererSafeBlockItem;
+import kelvin.slendermod.client.entity.renderers.SafeBlockItemRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.item.BuiltinModelItemRenderer;
 import net.minecraft.item.BlockItem;
@@ -28,7 +28,7 @@ public class ItemSafeBlock extends BlockItem implements GeoItem {
     @Override
     public void createRenderer(Consumer<Object> consumer) {
         consumer.accept(new RenderProvider() {
-            private final RendererSafeBlockItem renderer = new RendererSafeBlockItem();
+            private final SafeBlockItemRenderer renderer = new SafeBlockItemRenderer();
 
             @Override
             public BuiltinModelItemRenderer getCustomRenderer() {

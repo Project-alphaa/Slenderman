@@ -15,9 +15,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ItemFlashlight extends Item {
+public class FlashlightItem extends Item {
 
-    public ItemFlashlight(Settings settings) {
+    public FlashlightItem(Settings settings) {
         super(settings);
     }
 
@@ -26,7 +26,7 @@ public class ItemFlashlight extends Item {
         user.playSound(SoundRegistry.FLASHLIGHT_SWITCH, 1, 1);
         if (!world.isClient()) {
             ItemStack heldStack = user.getStackInHand(hand);
-            if (heldStack.getItem() instanceof ItemFlashlight) {
+            if (heldStack.getItem() instanceof FlashlightItem) {
                 boolean powered = false;
                 NbtCompound nbt = heldStack.getOrCreateSubNbt("Flashlight");
                 if (nbt.contains("Powered")) {
@@ -50,7 +50,7 @@ public class ItemFlashlight extends Item {
     }
 
     public static boolean isFlashlightPowered(ItemStack stack) {
-        if (stack.getItem() instanceof ItemFlashlight) {
+        if (stack.getItem() instanceof FlashlightItem) {
             boolean powered = false;
             NbtCompound nbt = stack.getOrCreateSubNbt("Flashlight");
             if (nbt.contains("Powered")) {

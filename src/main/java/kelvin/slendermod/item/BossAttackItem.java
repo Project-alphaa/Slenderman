@@ -1,6 +1,6 @@
 package kelvin.slendermod.item;
 
-import kelvin.slendermod.entity.EntitySlenderBoss;
+import kelvin.slendermod.entity.SlenderBossEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -10,11 +10,11 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemBossDash extends Item {
+public class BossAttackItem extends Item {
 
 
-    public ItemBossDash() {
-        super(new Settings().maxCount(1));
+    public BossAttackItem() {
+        super(new Item.Settings().maxCount(1));
     }
 
     @Override
@@ -22,9 +22,9 @@ public class ItemBossDash extends Item {
         if (!world.isClient()) {
             if (user.hasVehicle()) {
                 var entity = user.getVehicle();
-                if (entity instanceof EntitySlenderBoss boss) {
-                    if (boss.getCurrentState() == EntitySlenderBoss.State.DEFAULT) {
-                        boss.changeState(EntitySlenderBoss.State.DASH);
+                if (entity instanceof SlenderBossEntity boss) {
+                    if (boss.getCurrentState() == SlenderBossEntity.State.DEFAULT) {
+                        boss.changeState(SlenderBossEntity.State.ATTACK);
                         user.getItemCooldownManager().set(this, 30);
                     }
                 }

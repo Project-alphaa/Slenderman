@@ -1,7 +1,7 @@
 package kelvin.slendermod;
 
 import kelvin.slendermod.compat.PGCompat;
-import kelvin.slendermod.item.ItemSlenderGrimoire;
+import kelvin.slendermod.item.SlenderGrimoireItem;
 import kelvin.slendermod.network.server.ServerPacketHandler;
 import kelvin.slendermod.registry.*;
 import net.fabricmc.api.ModInitializer;
@@ -20,13 +20,13 @@ import software.bernie.geckolib.GeckoLib;
 @SuppressWarnings("unused")
 public class SlenderMod implements ModInitializer {
 
-    public static final String MODID = "slendermod";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
-    public static final ItemGroup SLENDER_TAB = FabricItemGroup.builder(id("slender_tab")).icon(() -> new ItemStack(BlockRegistry.SCP_SLENDERMAN_HEAD)).entries((enabledFeatures, entries, operatorEnabled) -> Registries.ITEM.stream().filter(item -> Registries.ITEM.getId(item).getNamespace().equals(MODID)).forEach(item -> {
+    public static final String MOD_ID = "slendermod";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static final ItemGroup SLENDER_TAB = FabricItemGroup.builder(id("slender_tab")).icon(() -> new ItemStack(BlockRegistry.SCP_SLENDERMAN_HEAD)).entries((enabledFeatures, entries, operatorEnabled) -> Registries.ITEM.stream().filter(item -> Registries.ITEM.getId(item).getNamespace().equals(MOD_ID)).forEach(item -> {
         if (item != ItemRegistry.NOTE) {
             if (item == ItemRegistry.SLENDER_GRIMOIRE) {
                 ItemStack itemNbt = item.getDefaultStack();
-                ItemSlenderGrimoire.writeCustomNBT(itemNbt);
+                SlenderGrimoireItem.writeCustomNBT(itemNbt);
                 entries.add(itemNbt, ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
             } else {
                 entries.add(item, ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
@@ -52,6 +52,6 @@ public class SlenderMod implements ModInitializer {
     }
 
     public static Identifier id(String path) {
-        return new Identifier(MODID, path);
+        return new Identifier(MOD_ID, path);
     }
 }

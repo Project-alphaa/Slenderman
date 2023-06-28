@@ -4,9 +4,9 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.WrittenBookItem;
 
-public class ItemNote extends WrittenBookItem {
+public class NoteItem extends WrittenBookItem {
 
-    public ItemNote() {
+    public NoteItem() {
         super(new FabricItemSettings());
     }
 
