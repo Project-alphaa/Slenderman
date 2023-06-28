@@ -15,6 +15,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.event.GameEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import software.bernie.geckolib.GeckoLib;
 
 @SuppressWarnings("unused")
 public class SlenderMod implements ModInitializer {
@@ -41,6 +42,7 @@ public class SlenderMod implements ModInitializer {
         BlockEntityRegistry.register();
         ItemRegistry.register();
         ParticleRegistry.register();
+        GeckoLib.initialize();
 
         ServerPacketHandler.start();
         ConfigRegistry.INSTANCE.load();

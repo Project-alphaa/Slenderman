@@ -1,19 +1,19 @@
 {
-  "variants": {
-    "facing=north": {
-      "model": "slendermod:block/ufo_interior"
-    },
-    "facing=south": {
-      "model": "slendermod:block/ufo_interior",
-      "y": 180
-    },
-    "facing=east": {
-      "model": "slendermod:block/ufo_interior",
-      "y": 90
-    },
-    "facing=west": {
-      "model": "slendermod:block/ufo_interior",
-      "y": 270
-    }
-  }
+   "variants": {
+      "facing=north": {
+         "model": "slendermod:block/ufo_interior"
+      },
+      "facing=south": {
+         "model": "slendermod:block/ufo_interior",
+         "y": 180
+      },
+      "facing=east": {
+         "model": "slendermod:block/ufo_interior",
+         "y": 90
+      },
+      "facing=west": {
+         "model": "slendermod:block/ufo_interior",
+         "y": 270
+      }
+   }
 }

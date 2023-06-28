@@ -1,17 +1,17 @@
 {
-  "targets": [
-    "swap"
-  ],
-  "passes": [
-    {
-      "name": "slendermod:motionblur",
-      "intarget": "minecraft:main",
-      "outtarget": "swap"
-    },
-    {
-      "name": "slendermod:motionblur",
-      "intarget": "swap",
-      "outtarget": "minecraft:main"
-    }
-  ]
+   "targets": [
+      "swap"
+   ],
+   "passes": [
+      {
+         "name": "slendermod:motionblur",
+         "intarget": "minecraft:main",
+         "outtarget": "swap"
+      },
+      {
+         "name": "slendermod:motionblur",
+         "intarget": "swap",
+         "outtarget": "minecraft:main"
+      }
+   ]
 }

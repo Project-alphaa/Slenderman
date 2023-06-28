@@ -76,6 +76,7 @@ public class SlenderModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.BONES, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.HOSPITAL_BED, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.RADIO, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.SAFE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.TRASH_BIN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.MISSING_PERSON_POSTER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DUMPSTER, RenderLayer.getCutout());
@@ -87,6 +88,7 @@ public class SlenderModClient implements ClientModInitializer {
             BlockRenderLayerMap.INSTANCE.putBlock(note, RenderLayer.getCutout());
 
         BlockEntityRendererFactories.register(BlockEntityRegistry.ROTATABLE_BLOCK_ENTITY, ctx -> new RotatableBlockEntityRenderer());
+        BlockEntityRendererFactories.register(BlockEntityRegistry.SAFE_BLOCK_ENTITY, RendererSafeBlock::new);
 
         ModelPredicateProviderRegistry.register(ItemRegistry.FLASHLIGHT, SlenderMod.id("powered"), (stack, world, entity, seed) -> ItemFlashlight.isFlashlightPowered(stack) ? 1 : 0);
 

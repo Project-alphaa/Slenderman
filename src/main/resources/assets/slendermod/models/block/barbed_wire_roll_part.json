@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/block",
-  "textures": {
-    "particle": "minecraft:block/iron_bars"
-  }
+   "parent": "minecraft:block/block",
+   "textures": {
+      "particle": "minecraft:block/iron_bars"
+   }
 }

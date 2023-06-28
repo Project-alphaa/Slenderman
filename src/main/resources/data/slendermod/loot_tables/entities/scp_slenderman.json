@@ -1,21 +1,21 @@
 {
-  "type": "minecraft:entity",
-  "pools": [
-    {
-      "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "random_chance",
-          "chance": 0.20
-        }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "slendermod:scp_slenderman_head"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ]
+   "type": "minecraft:entity",
+   "pools": [
+      {
+         "bonus_rolls": 0.0,
+         "conditions": [
+            {
+               "condition": "random_chance",
+               "chance": 0.20
+            }
+         ],
+         "entries": [
+            {
+               "type": "minecraft:item",
+               "name": "slendermod:scp_slenderman_head"
+            }
+         ],
+         "rolls": 1.0
+      }
+   ]
 }

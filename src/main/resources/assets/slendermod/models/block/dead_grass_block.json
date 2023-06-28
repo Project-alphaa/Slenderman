@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "slendermod:block/dead_grass_block"
-  }
+   "parent": "minecraft:block/cube_all",
+   "textures": {
+      "all": "slendermod:block/dead_grass_block"
+   }
 }

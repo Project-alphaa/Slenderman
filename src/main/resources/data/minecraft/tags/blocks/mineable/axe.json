@@ -1,9 +1,9 @@
 {
-  "replace": false,
-  "values": [
-    "slendermod:barbed_wire_fence",
-    "slendermod:bed",
-    "slendermod:dead_tree",
-    "slendermod:scratched_dead_tree"
-  ]
+   "replace": false,
+   "values": [
+      "slendermod:barbed_wire_fence",
+      "slendermod:bed",
+      "slendermod:dead_tree",
+      "slendermod:scratched_dead_tree"
+   ]
 }

@@ -1,19 +1,19 @@
 {
-  "variants": {
-    "facing=north": {
-      "model": "slendermod:block/missing_person_poster"
-    },
-    "facing=east": {
-      "model": "slendermod:block/missing_person_poster",
-      "y": 90
-    },
-    "facing=south": {
-      "model": "slendermod:block/missing_person_poster",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "slendermod:block/missing_person_poster",
-      "y": 270
-    }
-  }
+   "variants": {
+      "facing=north": {
+         "model": "slendermod:block/missing_person_poster"
+      },
+      "facing=east": {
+         "model": "slendermod:block/missing_person_poster",
+         "y": 90
+      },
+      "facing=south": {
+         "model": "slendermod:block/missing_person_poster",
+         "y": 180
+      },
+      "facing=west": {
+         "model": "slendermod:block/missing_person_poster",
+         "y": 270
+      }
+   }
 }

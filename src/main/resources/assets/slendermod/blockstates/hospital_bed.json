@@ -1,31 +1,31 @@
 {
-  "variants": {
-    "part=head,facing=north": {
-      "model": "slendermod:block/hospital_bed"
-    },
-    "part=head,facing=east": {
-      "model": "slendermod:block/hospital_bed",
-      "y": 90
-    },
-    "part=head,facing=south": {
-      "model": "slendermod:block/hospital_bed",
-      "y": 180
-    },
-    "part=head,facing=west": {
-      "model": "slendermod:block/hospital_bed",
-      "y": 270
-    },
-    "part=foot,facing=north": {
-      "model": "slendermod:block/hospital_bed_foot"
-    },
-    "part=foot,facing=east": {
-      "model": "slendermod:block/hospital_bed_foot"
-    },
-    "part=foot,facing=south": {
-      "model": "slendermod:block/hospital_bed_foot"
-    },
-    "part=foot,facing=west": {
-      "model": "slendermod:block/hospital_bed_foot"
-    }
-  }
+   "variants": {
+      "part=head,facing=north": {
+         "model": "slendermod:block/hospital_bed"
+      },
+      "part=head,facing=east": {
+         "model": "slendermod:block/hospital_bed",
+         "y": 90
+      },
+      "part=head,facing=south": {
+         "model": "slendermod:block/hospital_bed",
+         "y": 180
+      },
+      "part=head,facing=west": {
+         "model": "slendermod:block/hospital_bed",
+         "y": 270
+      },
+      "part=foot,facing=north": {
+         "model": "slendermod:block/hospital_bed_foot"
+      },
+      "part=foot,facing=east": {
+         "model": "slendermod:block/hospital_bed_foot"
+      },
+      "part=foot,facing=south": {
+         "model": "slendermod:block/hospital_bed_foot"
+      },
+      "part=foot,facing=west": {
+         "model": "slendermod:block/hospital_bed_foot"
+      }
+   }
 }

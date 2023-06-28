@@ -1,19 +1,19 @@
 {
-  "variants": {
-    "facing=north": {
-      "model": "slendermod:block/air_conditioner"
-    },
-    "facing=east": {
-      "model": "slendermod:block/air_conditioner",
-      "y": 90
-    },
-    "facing=south": {
-      "model": "slendermod:block/air_conditioner",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "slendermod:block/air_conditioner",
-      "y": 270
-    }
-  }
+   "variants": {
+      "facing=north": {
+         "model": "slendermod:block/air_conditioner"
+      },
+      "facing=east": {
+         "model": "slendermod:block/air_conditioner",
+         "y": 90
+      },
+      "facing=south": {
+         "model": "slendermod:block/air_conditioner",
+         "y": 180
+      },
+      "facing=west": {
+         "model": "slendermod:block/air_conditioner",
+         "y": 270
+      }
+   }
 }

@@ -1,6 +1,9 @@
 package kelvin.slendermod.block;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.HorizontalFacingBlock;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;

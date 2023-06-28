@@ -1,7 +1,7 @@
 {
-  "variants": {
-    "": {
-      "model": "slendermod:block/dead_leaves"
-    }
-  }
+   "variants": {
+      "": {
+         "model": "slendermod:block/dead_leaves"
+      }
+   }
 }

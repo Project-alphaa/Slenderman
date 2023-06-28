@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "slendermod:item/page_8"
-  }
+   "parent": "minecraft:item/generated",
+   "textures": {
+      "layer0": "slendermod:item/page_8"
+   }
 }

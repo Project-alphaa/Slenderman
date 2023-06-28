@@ -1,6 +1,6 @@
 {
-	"parent": "slendermod:block/page_base",
-	"textures": {
-		"0": "slendermod:item/page_3"
-	}
+   "parent": "slendermod:block/page_base",
+   "textures": {
+      "0": "slendermod:item/page_3"
+   }
 }

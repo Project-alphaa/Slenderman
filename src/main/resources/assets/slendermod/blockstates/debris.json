@@ -1,7 +1,7 @@
 {
-  "variants": {
-    "": {
-      "model": "slendermod:block/debris"
-    }
-  }
+   "variants": {
+      "": {
+         "model": "slendermod:block/debris"
+      }
+   }
 }

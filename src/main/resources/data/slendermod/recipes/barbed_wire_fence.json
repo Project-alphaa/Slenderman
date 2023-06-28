@@ -1,19 +1,19 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "pcp",
-    "pcp"
-  ],
-  "key": {
-    "p": {
-      "tag": "minecraft:planks"
-    },
-    "c": {
-      "item": "minecraft:chain"
-    }
-  },
-  "result": {
-    "item": "slendermod:barbed_wire_fence",
-    "count": 2
-  }
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "pcp",
+      "pcp"
+   ],
+   "key": {
+      "p": {
+         "tag": "minecraft:planks"
+      },
+      "c": {
+         "item": "minecraft:chain"
+      }
+   },
+   "result": {
+      "item": "slendermod:barbed_wire_fence",
+      "count": 2
+   }
 }

@@ -9,6 +9,7 @@ public class MiscUtil {
     public static void setStaticIntensity(float val) {
         staticIntensity = val;
     }
+
     // Acts like a multiplier
     public static void setStaticSpeed(float val) {
         staticSpeed = val;

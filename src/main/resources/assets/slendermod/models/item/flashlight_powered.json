@@ -1,6 +1,6 @@
 {
-  "parent": "slendermod:item/flashlight",
-  "textures": {
-    "0": "slendermod:item/flashlight_powered"
-  }
+   "parent": "slendermod:item/flashlight",
+   "textures": {
+      "0": "slendermod:item/flashlight_powered"
+   }
 }

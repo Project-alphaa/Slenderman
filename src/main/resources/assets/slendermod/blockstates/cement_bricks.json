@@ -1,7 +1,7 @@
 {
-  "variants": {
-    "": {
-      "model": "slendermod:block/cement_bricks"
-    }
-  }
+   "variants": {
+      "": {
+         "model": "slendermod:block/cement_bricks"
+      }
+   }
 }

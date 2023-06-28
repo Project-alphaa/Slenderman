@@ -1,7 +1,7 @@
 {
-  "variants": {
-    "": {
-      "model": "slendermod:block/trash"
-    }
-  }
+   "variants": {
+      "": {
+         "model": "slendermod:block/trash"
+      }
+   }
 }

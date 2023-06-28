@@ -1,29 +1,29 @@
 {
-  "type": "minecraft:block",
-  "pools": [
-    {
-      "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "conditions": [
+   "type": "minecraft:block",
+   "pools": [
+      {
+         "bonus_rolls": 0.0,
+         "conditions": [
             {
-              "block": "slendermod:shelf_cons",
-              "condition": "minecraft:block_state_property",
-              "properties": {
-                "half": "lower"
-              }
+               "condition": "minecraft:survives_explosion"
             }
-          ],
-          "name": "slendermod:shelf_cons"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ]
+         ],
+         "entries": [
+            {
+               "type": "minecraft:item",
+               "conditions": [
+                  {
+                     "block": "slendermod:shelf_cons",
+                     "condition": "minecraft:block_state_property",
+                     "properties": {
+                        "half": "lower"
+                     }
+                  }
+               ],
+               "name": "slendermod:shelf_cons"
+            }
+         ],
+         "rolls": 1.0
+      }
+   ]
 }

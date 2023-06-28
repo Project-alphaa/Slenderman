@@ -1,6 +1,7 @@
 package kelvin.slendermod.registry;
 
 import kelvin.slendermod.item.*;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registries;
@@ -30,6 +31,8 @@ public class ItemRegistry {
     public static final Item ACCESS_CARD = register("access_card", new Item(new Item.Settings()));
 
     public static final Item MEDICAL_KIT = register("medical_kit", new ItemMedicalKit(new Item.Settings().maxCount(1)));
+
+    public static final Item SAFE_ITEM = register("safe", new ItemSafeBlock(BlockRegistry.SAFE, new FabricItemSettings()));
 
     public static final Item SCP_SLENDERMAN_SPAWN_EGG = register("scp_slenderman_spawn_egg", new SpawnEggItem(EntityRegistry.SCP_SLENDERMAN, 10658466, 6842472, new Item.Settings()));
 

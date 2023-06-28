@@ -1,19 +1,19 @@
 {
-  "variants": {
-    "facing=north": {
-      "model": "slendermod:block/scp_slenderman_head"
-    },
-    "facing=east": {
-      "model": "slendermod:block/scp_slenderman_head",
-      "y": 90
-    },
-    "facing=south": {
-      "model": "slendermod:block/scp_slenderman_head",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "slendermod:block/scp_slenderman_head",
-      "y": 270
-    }
-  }
+   "variants": {
+      "facing=north": {
+         "model": "slendermod:block/scp_slenderman_head"
+      },
+      "facing=east": {
+         "model": "slendermod:block/scp_slenderman_head",
+         "y": 90
+      },
+      "facing=south": {
+         "model": "slendermod:block/scp_slenderman_head",
+         "y": 180
+      },
+      "facing=west": {
+         "model": "slendermod:block/scp_slenderman_head",
+         "y": 270
+      }
+   }
 }

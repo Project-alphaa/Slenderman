@@ -1,5 +1,6 @@
 package kelvin.slendermod.registry;
 
+import kelvin.slendermod.SlenderMod;
 import kelvin.slendermod.block.*;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -8,6 +9,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.DyeColor;
+import net.minecraft.util.Identifier;
 
 import java.util.LinkedList;
 
@@ -52,6 +54,8 @@ public class BlockRegistry {
     public static final Block ACCESS_READER = register("access_reader", new AccessReaderBlock(AbstractBlock.Settings.copy(Blocks.STONE)));
 
     public static final Block RADIO = register("radio", new RadioBlock(AbstractBlock.Settings.of(Material.STONE).sounds(BlockSoundGroup.METAL)));
+
+    public static final Block SAFE = Registry.register(Registries.BLOCK, new Identifier(SlenderMod.MODID, "safe"), new SafeBlock(AbstractBlock.Settings.of(Material.STONE).sounds(BlockSoundGroup.METAL)));
 
 
     public static final LinkedList<Block> PAGES = registerPages();

@@ -1,9 +1,9 @@
 {
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "slendermod:block/access_reader_front",
-    "side": "slendermod:block/iron_block",
-    "top": "slendermod:block/iron_block",
-    "particle": "slendermod:block/iron_block"
-  }
+   "parent": "minecraft:block/orientable",
+   "textures": {
+      "front": "slendermod:block/access_reader_front",
+      "side": "slendermod:block/iron_block",
+      "top": "slendermod:block/iron_block",
+      "particle": "slendermod:block/iron_block"
+   }
 }

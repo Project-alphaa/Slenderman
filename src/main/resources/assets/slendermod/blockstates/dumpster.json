@@ -1,19 +1,19 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "slendermod:block/dumpster"
+   "multipart": [
+      {
+         "apply": {
+            "model": "slendermod:block/dumpster"
+         },
+         "when": {
+            "layer": "lower",
+            "width_row": "middle",
+            "depth_row": "front"
+         }
       },
-      "when": {
-        "layer": "lower",
-        "width_row": "middle",
-        "depth_row": "front"
+      {
+         "apply": {
+            "model": "slendermod:block/dumpster_part"
+         }
       }
-    },
-    {
-      "apply": {
-        "model": "slendermod:block/dumpster_part"
-      }
-    }
-  ]
+   ]
 }

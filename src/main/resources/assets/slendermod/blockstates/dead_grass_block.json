@@ -1,7 +1,7 @@
 {
-  "variants": {
-    "": {
-      "model": "slendermod:block/dead_grass_block"
-    }
-  }
+   "variants": {
+      "": {
+         "model": "slendermod:block/dead_grass_block"
+      }
+   }
 }

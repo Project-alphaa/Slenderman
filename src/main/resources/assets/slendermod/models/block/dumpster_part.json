@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/air",
-  "textures": {
-    "particle": "slendermod:block/dumpster_front"
-  }
+   "parent": "minecraft:block/air",
+   "textures": {
+      "particle": "slendermod:block/dumpster_front"
+   }
 }
