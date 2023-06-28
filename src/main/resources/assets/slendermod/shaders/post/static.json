@@ -1,0 +1,17 @@
+{
+  "targets": [
+    "swap"
+  ],
+  "passes": [
+    {
+      "name": "slendermod:static",
+      "intarget": "minecraft:main",
+      "outtarget": "swap"
+    },
+    {
+      "name": "slendermod:static",
+      "intarget": "swap",
+      "outtarget": "minecraft:main"
+    }
+  ]
+}
