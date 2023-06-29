@@ -65,8 +65,11 @@ public class SafeScreenHandler extends ScreenHandler {
                 }
             }
             else if (slotIndex >= containerSize) {
-                if (slotIndex < inventoryEnd) {
-                    if (!insertItem(stack1,  inventoryEnd, hotbarEnd, false)) {
+                if (!insertItem(stack1, 0, 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+                else if (slotIndex < inventoryEnd) {
+                    if (!insertItem(stack1, inventoryEnd, hotbarEnd, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
