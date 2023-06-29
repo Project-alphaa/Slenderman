@@ -16,11 +16,11 @@ import software.bernie.geckolib.core.object.PlayState;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class ItemSafeBlock extends BlockItem implements GeoItem {
+public class SafeBlockItem extends BlockItem implements GeoItem {
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
-    public ItemSafeBlock(Block block, Settings settings) {
+    public SafeBlockItem(Block block, Settings settings) {
         super(block, settings);
         SingletonGeoAnimatable.registerSyncedAnimatable(this);
     }
