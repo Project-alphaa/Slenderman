@@ -17,15 +17,12 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.stream.Stream;
 
 @SuppressWarnings("deprecation")
 public class SafeBlock extends BlockWithEntity {
@@ -36,7 +33,6 @@ public class SafeBlock extends BlockWithEntity {
     private static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
     public static final Text TITLE = Text.translatable("container.slendermod.safe");
-    private static final VoxelShape SHAPE = Stream.of(Block.createCuboidShape(1, 0, 4, 3, 16, 14), Block.createCuboidShape(3, 14, 4, 13, 16, 14), Block.createCuboidShape(13, 0, 4, 15, 16, 14), Block.createCuboidShape(3, 0, 4, 13, 2, 14), Block.createCuboidShape(3, 2, 12, 13, 14, 14), Block.createCuboidShape(3, 2, 4, 13, 14, 6)).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
     public SafeBlock(Settings settings) {
         super(settings);
