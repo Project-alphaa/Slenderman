@@ -9,3 +9,6 @@ Contributors:
 - Kelvin (Former Author)
 - Einstein (Dev)
 - Ender (Dev) 
+- shadowmaster435 (Dev) 
+- RevolvingMadness (Dev) 
+- Ampflower (Dev)
