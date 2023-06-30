@@ -74,6 +74,8 @@ public class BlockRegistry {
 
     public static final Block AIR_CONDITIONER = register("air_conditioner", new AirConditionerBlock(AbstractBlock.Settings.of(Material.METAL).sounds(BlockSoundGroup.COPPER).nonOpaque()));
 
+    public static final Block BLOOD = register("blood", new CarpetBlock(AbstractBlock.Settings.of(Material.ORGANIC_PRODUCT, MapColor.RED).breakInstantly().sounds(BlockSoundGroup.SLIME).nonOpaque().noCollision()));
+
     public static void register() {
     }
 
