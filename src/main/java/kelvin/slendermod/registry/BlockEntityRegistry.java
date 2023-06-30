@@ -13,7 +13,7 @@ import static kelvin.slendermod.SlenderMod.id;
 
 public class BlockEntityRegistry {
 
-    public static final BlockEntityType<RotatableBlockEntity> ROTATABLE_BLOCK_ENTITY = register("rotatable_block_entity", BlockEntityType.Builder.create(RotatableBlockEntity::new, BlockRegistry.CAR_BODY, BlockRegistry.TRASH, BlockRegistry.DEBRIS, BlockRegistry.DEAD_TREE, BlockRegistry.SCRATCHED_DEAD_TREE, BlockRegistry.UFO_INTERIOR).build(null));
+    public static final BlockEntityType<RotatableBlockEntity> ROTATABLE_BLOCK_ENTITY = register("rotatable_block_entity", BlockEntityType.Builder.create(RotatableBlockEntity::new, BlockRegistry.CAR_BODY, BlockRegistry.JUNK_PILE, BlockRegistry.DEBRIS, BlockRegistry.DEAD_TREE, BlockRegistry.SCRATCHED_DEAD_TREE, BlockRegistry.UFO_INTERIOR).build(null));
 
     public static final BlockEntityType<SafeBlockEntity> ACCESS_READER_ENTITY = register("access_reader", FabricBlockEntityTypeBuilder.create(SafeBlockEntity::new, BlockRegistry.ACCESS_READER).build());
 

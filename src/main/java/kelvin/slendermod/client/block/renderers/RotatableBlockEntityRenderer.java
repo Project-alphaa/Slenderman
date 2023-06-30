@@ -26,7 +26,7 @@ public class RotatableBlockEntityRenderer extends GeoBlockRenderer<RotatableBloc
             poseStack.translate(-0.18F, 0.1F, 0);
         }
 
-        if (block == BlockRegistry.SCRATCHED_DEAD_TREE || block == BlockRegistry.UFO_INTERIOR || block == BlockRegistry.DEAD_TREE || block == BlockRegistry.TRASH) {
+        if (block == BlockRegistry.SCRATCHED_DEAD_TREE || block == BlockRegistry.UFO_INTERIOR || block == BlockRegistry.DEAD_TREE || block == BlockRegistry.JUNK_PILE) {
             poseStack.multiply(new Quaternionf().rotateY((float) Math.toRadians(180)));
             poseStack.translate(-1, 0, -1);
         }

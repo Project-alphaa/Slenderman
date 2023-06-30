@@ -37,7 +37,7 @@ public class BlockRegistry {
 
     public static final Block CAR_BODY = register("car_body", new RotatableBlockEntityBlock<>(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).nonOpaque(), "car_body"));
 
-    public static final Block TRASH = register("trash", new RotatableBlockEntityBlock<>(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS).nonOpaque(), "trash"));
+    public static final Block JUNK_PILE = register("junk_pile", new RotatableBlockEntityBlock<>(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS).nonOpaque(), "junk_pile"));
 
     public static final Block DEBRIS = register("debris", new RotatableBlockEntityBlock<>(AbstractBlock.Settings.copy(Blocks.STONE_BUTTON).nonOpaque(), "debris"));
 

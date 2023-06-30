@@ -1,7 +1,7 @@
 {
    "format_version": "1.8.0",
    "animations": {
-      "animation.trash.new": {
+      "animation.junk_pile.new": {
          "loop": true
       }
    },
