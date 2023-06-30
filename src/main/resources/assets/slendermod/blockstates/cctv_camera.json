@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "slendermod:block/cctv_camera"
+    },
+    "facing=east": {
+      "model": "slendermod:block/cctv_camera",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "slendermod:block/cctv_camera",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "slendermod:block/cctv_camera",
+      "y": 270
+    }
+  }
+}

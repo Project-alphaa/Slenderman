@@ -76,6 +76,8 @@ public class BlockRegistry {
 
     public static final Block BLOOD = register("blood", new CarpetBlock(AbstractBlock.Settings.of(Material.ORGANIC_PRODUCT, MapColor.RED).breakInstantly().sounds(BlockSoundGroup.SLIME).nonOpaque().noCollision()));
 
+    public static final Block CCTV_CAMERA = register("cctv_camera", new CCTVCameraBlock(AbstractBlock.Settings.of(Material.METAL).strength(4).nonOpaque().noCollision()));
+
     public static void register() {
     }
 
