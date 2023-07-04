@@ -1,11 +1,7 @@
 package kelvin.slendermod.block;
 
-import kelvin.slendermod.SlenderMod;
-import kelvin.slendermod.registry.BlockRegistry;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.BedPart;
 import net.minecraft.block.enums.DoorHinge;
-import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -25,7 +21,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation")
 public class BarbedWireBlock extends HorizontalFacingBlock {
