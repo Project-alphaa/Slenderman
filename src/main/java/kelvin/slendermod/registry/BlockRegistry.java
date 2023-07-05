@@ -3,6 +3,7 @@ package kelvin.slendermod.registry;
 import kelvin.slendermod.SlenderMod;
 import kelvin.slendermod.block.*;
 import net.minecraft.block.*;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -10,6 +11,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 
 import java.util.LinkedList;
 
@@ -93,4 +96,22 @@ public class BlockRegistry {
             list.add(register("page_" + i, new PageBlock()));
         return list;
     }
+
+
+
+    private static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
+        return false;
+    }
+
+    private static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
+        return true;
+    }
+    private static boolean always(BlockState state, BlockView world, BlockPos pos) {
+        return true;
+    }
+
+    private static boolean never(BlockState state, BlockView world, BlockPos pos) {
+        return false;
+    }
+
 }
