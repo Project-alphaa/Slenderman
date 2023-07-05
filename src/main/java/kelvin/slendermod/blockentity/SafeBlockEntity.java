@@ -54,24 +54,24 @@ public class SafeBlockEntity extends BlockEntity implements GeoBlockEntity, Name
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-        return new SafeScreenHandler(syncId, inv, this, ScreenHandlerContext.create(world, pos));
+        return new SafeScreenHandler(syncId, inv, this, ScreenHandlerContext.create(this.world, this.pos));
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        isOpen = nbt.getBoolean("IsOpen");
+        this.isOpen = nbt.getBoolean("IsOpen");
         if (nbt.contains("Item", NbtElement.COMPOUND_TYPE)) {
-            setItem(ItemStack.fromNbt(nbt.getCompound("Item")));
-            markDirty();
+            this.setItem(ItemStack.fromNbt(nbt.getCompound("Item")));
+            this.markDirty();
         }
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        nbt.putBoolean("IsOpen", isOpen);
-        saveItem(nbt);
+        nbt.putBoolean("IsOpen", this.isOpen);
+        this.saveItem(nbt);
     }
 
     @Nullable
@@ -83,13 +83,13 @@ public class SafeBlockEntity extends BlockEntity implements GeoBlockEntity, Name
     @Override
     public NbtCompound toInitialChunkDataNbt() {
         NbtCompound nbt = new NbtCompound();
-        saveItem(nbt);
+        this.saveItem(nbt);
         return nbt;
     }
 
     private void saveItem(NbtCompound nbt) {
-        if (!getItem().isEmpty()) {
-            nbt.put("Item", getItem().writeNbt(new NbtCompound()));
+        if (!this.getItem().isEmpty()) {
+            nbt.put("Item", this.getItem().writeNbt(new NbtCompound()));
         }
     }
 
@@ -110,8 +110,7 @@ public class SafeBlockEntity extends BlockEntity implements GeoBlockEntity, Name
         if (controller.hasAnimationFinished()) {
             if (controller.getCurrentRawAnimation().equals(OPEN_ANIM)) {
                 controller.setAnimation(OPEN_IDLE_ANIM);
-            }
-            else if (controller.getCurrentRawAnimation().equals(CLOSE_ANIM)) {
+            } else if (controller.getCurrentRawAnimation().equals(CLOSE_ANIM)) {
                 controller.setAnimation(IDLE_ANIM);
             }
         }
@@ -125,17 +124,17 @@ public class SafeBlockEntity extends BlockEntity implements GeoBlockEntity, Name
 
     @Override
     public void clear() {
-        setItem(ItemStack.EMPTY);
-        setUpdated();
+        this.setItem(ItemStack.EMPTY);
+        this.setUpdated();
     }
 
     public void setOpen(boolean open) {
-        isOpen = open;
-        triggerAnim("controller", isOpen ? "open" : "close");
+        this.isOpen = open;
+        this.triggerAnim("controller", this.isOpen ? "open" : "close");
     }
 
     public boolean isOpen() {
-        return isOpen;
+        return this.isOpen;
     }
 
     public void setItem(ItemStack item) {
@@ -143,12 +142,12 @@ public class SafeBlockEntity extends BlockEntity implements GeoBlockEntity, Name
     }
 
     public ItemStack getItem() {
-        return item;
+        return this.item;
     }
 
     public void setUpdated() {
-        markDirty();
-        world.updateListeners(getPos(), getCachedState(), getCachedState(), Block.NOTIFY_ALL);
+        this.markDirty();
+        this.world.updateListeners(this.getPos(), this.getCachedState(), this.getCachedState(), Block.NOTIFY_ALL);
     }
 
     @Override
@@ -158,45 +157,44 @@ public class SafeBlockEntity extends BlockEntity implements GeoBlockEntity, Name
 
     @Override
     public boolean isEmpty() {
-        return getItem().isEmpty();
+        return this.getItem().isEmpty();
     }
 
     @Override
     public ItemStack getStack(int slot) {
-        return item;
+        return this.item;
     }
 
     @Override
     public ItemStack removeStack(int slot, int amount) {
-        return Inventories.splitStack(List.of(item), slot, amount);
+        return Inventories.splitStack(List.of(this.item), slot, amount);
     }
 
     @Override
     public ItemStack removeStack(int slot) {
-        return Inventories.removeStack(List.of(item), slot);
+        return Inventories.removeStack(List.of(this.item), slot);
     }
 
     @Override
     public void setStack(int slot, ItemStack stack) {
-        boolean flag = stack.isEmpty() && ItemStack.canCombine(stack, item);
-        item = stack;
+        boolean flag = stack.isEmpty() && ItemStack.canCombine(stack, this.item);
+        this.item = stack;
 
-        if (stack.getCount() > getMaxCountPerStack()) {
-            stack.setCount(getMaxCountPerStack());
+        if (stack.getCount() > this.getMaxCountPerStack()) {
+            stack.setCount(this.getMaxCountPerStack());
         }
 
         if (!flag) {
-            markDirty();
+            this.markDirty();
         }
     }
 
     @Override
     public boolean canPlayerUse(PlayerEntity player) {
-        if (world.getBlockEntity(pos) != this) {
+        if (this.world.getBlockEntity(this.pos) != this) {
             return false;
-        }
-        else {
-            return player.squaredDistanceTo(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) <= 64;
+        } else {
+            return player.squaredDistanceTo(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64;
         }
     }
 }

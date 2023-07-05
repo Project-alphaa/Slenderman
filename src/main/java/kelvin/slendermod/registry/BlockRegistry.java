@@ -78,6 +78,8 @@ public class BlockRegistry {
 
     public static final Block CCTV_CAMERA = register("cctv_camera", new CCTVCameraBlock(AbstractBlock.Settings.of(Material.METAL).strength(4).nonOpaque().noCollision()));
 
+    public static final Block TOXIC_BARREL = register("toxic_barrel", new ToxicBarrelBlock(AbstractBlock.Settings.of(Material.METAL).strength(4).nonOpaque()));
+
     public static void register() {
     }
 
