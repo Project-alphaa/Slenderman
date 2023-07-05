@@ -67,8 +67,12 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
 
-        if (!direction.equals(getDirectionToOpposite(state)) || !(state.isOf(this)))
+
+        if (!this.canPlaceAt(state,world,pos)) return Blocks.AIR.getDefaultState();
+      
+        if (!direction.equals(getDirectionToOpposite(state)) || !(state.isOf(this))) {
             return state;
+        }
 
         BlockState otherState = world.getBlockState(getOppositePos(state, pos));
 
@@ -144,7 +148,12 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
         BlockPos downPos = pos.down();
         BlockState downState = world.getBlockState(downPos);
         BlockState oppositeState = world.getBlockState(getOppositePos(state, pos));
-        return downState.isSideSolidFullSquare(world, downPos, Direction.UP) && (state.get(HALF) == DoorHinge.LEFT || oppositeState.isOf(this));
+
+        BlockState oppositeDownState = world.getBlockState(getOppositePos(state, pos).down());
+        return downState.isSideSolidFullSquare(world, downPos, Direction.UP) &&
+                oppositeDownState.isSideSolidFullSquare(world, downPos, Direction.UP) &&
+                (state.get(HALF) == DoorHinge.LEFT || oppositeState.isOf(this));
+
 
 
     }
