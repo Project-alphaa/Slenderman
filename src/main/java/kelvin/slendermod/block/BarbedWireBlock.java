@@ -53,7 +53,7 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
     }
 
     public static VoxelShape rotateShape(int times, VoxelShape shape) {
-        VoxelShape[] shapes = new VoxelShape[] { shape, VoxelShapes.empty() };
+        VoxelShape[] shapes = new VoxelShape[] {shape, VoxelShapes.empty()};
 
         for (int i = 0; i < times; i++) {
             shapes[0].forEachBox((minX, minY, minZ, maxX, maxY, maxZ) -> shapes[1] = VoxelShapes.union(shapes[1], VoxelShapes.cuboid(1 - maxZ, minY, minX, 1 - minZ, maxY, maxX)));
@@ -67,14 +67,16 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
 
+
         if (!this.canPlaceAt(state,world,pos)) return Blocks.AIR.getDefaultState();
+      
+        if (!direction.equals(getDirectionToOpposite(state)) || !(state.isOf(this))) {
+            return state;
+        }
 
-        if (!direction.equals(getDirectionToOpposite(state)) || !(state.isOf(this))) return state;
+        BlockState otherState = world.getBlockState(getOppositePos(state, pos));
 
-        BlockState otherState = world.getBlockState(getOppositePos(state,pos));
-
-        if (otherState.isOf(this) &&
-                getDirectionToOpposite(otherState).rotateYClockwise().rotateYClockwise().equals(getDirectionToOpposite(state))) {
+        if (otherState.isOf(this) && getDirectionToOpposite(otherState).rotateYClockwise().rotateYClockwise().equals(getDirectionToOpposite(state))) {
             return state;
         }
 
@@ -82,8 +84,6 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
 
 
     }
-
-
 
 
     @Override
@@ -113,7 +113,6 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
     }
 
 
-
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         super.onPlaced(world, pos, state, placer, itemStack);
@@ -128,14 +127,13 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
     }
 
 
-
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockPos pos = ctx.getBlockPos();
         World world = ctx.getWorld();
         Direction facing = ctx.getPlayerFacing().getOpposite();
         BlockPos pos2 = pos.offset(facing.rotateYCounterclockwise());
-        if (pos.getY() < world.getTopY() && world.getBlockState(pos2).canReplace(ctx) && world.getWorldBorder().contains(pos2) ) {
+        if (pos.getY() < world.getTopY() && world.getBlockState(pos2).canReplace(ctx) && world.getWorldBorder().contains(pos2)) {
             return this.getDefaultState().with(FACING, facing).with(HALF, DoorHinge.LEFT);
         } else {
             return null;
@@ -147,19 +145,18 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
 
 
-
         BlockPos downPos = pos.down();
         BlockState downState = world.getBlockState(downPos);
         BlockState oppositeState = world.getBlockState(getOppositePos(state, pos));
+
         BlockState oppositeDownState = world.getBlockState(getOppositePos(state, pos).down());
         return downState.isSideSolidFullSquare(world, downPos, Direction.UP) &&
                 oppositeDownState.isSideSolidFullSquare(world, downPos, Direction.UP) &&
                 (state.get(HALF) == DoorHinge.LEFT || oppositeState.isOf(this));
 
 
+
     }
-
-
 
 
     @Override
@@ -182,14 +179,12 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
         Direction facing = state.get(FACING);
         return pos.offset(half == DoorHinge.LEFT ? facing.rotateYCounterclockwise() : facing.rotateYClockwise());
     }
+
     private static Direction getDirectionToOpposite(BlockState state) {
         DoorHinge half = state.get(HALF);
         Direction facing = state.get(FACING);
         return half == DoorHinge.LEFT ? facing.rotateYCounterclockwise() : facing.rotateYClockwise();
     }
-
-
-
 
 
 }

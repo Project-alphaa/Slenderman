@@ -16,7 +16,7 @@ public class CCTVCameraBlock extends HorizontalFacingBlock {
 
     public CCTVCameraBlock(AbstractBlock.Settings settings) {
         super(settings);
-        setDefaultState(stateManager.getDefaultState().with(FACING, Direction.NORTH));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
 
     @Override

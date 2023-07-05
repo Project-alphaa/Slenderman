@@ -26,7 +26,7 @@ public class SafeScreenHandler extends ScreenHandler {
         this.inventory = inventory;
         this.context = context;
 
-        slot = addSlot(new Slot(inventory, 0, 80, 20));
+        this.slot = this.addSlot(new Slot(inventory, 0, 80, 20));
 
         // Player's Inventory
         for (int y = 0; y < 3; ++y) {
@@ -43,13 +43,13 @@ public class SafeScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return inventory.canPlayerUse(player);
+        return this.inventory.canPlayerUse(player);
     }
 
     @Override
     public ItemStack quickMove(PlayerEntity player, int slotIndex) {
         ItemStack stack = ItemStack.EMPTY;
-        Slot slot = slots.get(slotIndex);
+        Slot slot = this.slots.get(slotIndex);
 
         if (slot != null && slot.hasStack()) {
             ItemStack stack1 = slot.getStack();
@@ -60,31 +60,26 @@ public class SafeScreenHandler extends ScreenHandler {
             int hotbarEnd = inventoryEnd + 9;
 
             if (slotIndex == this.slot.getIndex()) {
-                if (!insertItem(stack1, containerSize, hotbarEnd, true)) {
+                if (!this.insertItem(stack1, containerSize, hotbarEnd, true)) {
                     return ItemStack.EMPTY;
                 }
-            }
-            else if (slotIndex >= containerSize) {
-                if (!insertItem(stack1, 0, 1, false)) {
+            } else if (slotIndex >= containerSize) {
+                if (!this.insertItem(stack1, 0, 1, false)) {
                     return ItemStack.EMPTY;
-                }
-                else if (slotIndex < inventoryEnd) {
-                    if (!insertItem(stack1, inventoryEnd, hotbarEnd, false)) {
+                } else if (slotIndex < inventoryEnd) {
+                    if (!this.insertItem(stack1, inventoryEnd, hotbarEnd, false)) {
                         return ItemStack.EMPTY;
                     }
-                }
-                else if (slotIndex < hotbarEnd && !insertItem(stack1, containerSize, inventoryEnd, false)) {
+                } else if (slotIndex < hotbarEnd && !this.insertItem(stack1, containerSize, inventoryEnd, false)) {
                     return ItemStack.EMPTY;
                 }
-            }
-            else if (!insertItem(stack1, containerSize, hotbarEnd, false)) {
+            } else if (!this.insertItem(stack1, containerSize, hotbarEnd, false)) {
                 return ItemStack.EMPTY;
             }
 
             if (stack1.isEmpty()) {
                 slot.setStack(ItemStack.EMPTY);
-            }
-            else {
+            } else {
                 slot.markDirty();
             }
 
@@ -100,7 +95,7 @@ public class SafeScreenHandler extends ScreenHandler {
     @Override
     public void close(PlayerEntity player) {
         super.close(player);
-        context.run((world, pos) -> {
+        this.context.run((world, pos) -> {
             if (world.getBlockEntity(pos) instanceof SafeBlockEntity safeBlockEntity) {
                 safeBlockEntity.setOpen(false);
             }
