@@ -37,10 +37,10 @@ import org.jetbrains.annotations.Nullable;
 
 public class WalkmanBlock extends BlockWithEntity {
 
-    public static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(0.0, 0.0, 12.0, 16.0, 14.0, 16.0);
+    public static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(0.0, 0.0, 11.0, 16.0, 14.0, 16.0);
     public static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 14.0, 5.0);
     public static final VoxelShape EAST_SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 5.0, 14.0, 16.0);
-    public static final VoxelShape WEST_SHAPE = Block.createCuboidShape(12.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+    public static final VoxelShape WEST_SHAPE = Block.createCuboidShape(11.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
 
 
