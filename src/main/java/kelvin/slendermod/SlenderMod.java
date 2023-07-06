@@ -42,7 +42,9 @@ public class SlenderMod implements ModInitializer {
         BlockEntityRegistry.register();
         ItemRegistry.register();
         ParticleRegistry.register();
+        GameEventRegistry.register();
         GeckoLib.initialize();
+
 
         ServerPacketHandler.start();
         ConfigRegistry.INSTANCE.load();
