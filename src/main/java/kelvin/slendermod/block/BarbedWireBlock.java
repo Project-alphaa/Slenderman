@@ -154,8 +154,6 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
                 oppositeDownState.isSideSolidFullSquare(world, downPos, Direction.UP) &&
                 (state.get(HALF) == DoorHinge.LEFT || oppositeState.isOf(this));
 
-
-
     }
 
 
