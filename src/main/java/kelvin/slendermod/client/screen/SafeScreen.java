@@ -16,15 +16,15 @@ public class SafeScreen extends HandledScreen<SafeScreenHandler> {
 
     public SafeScreen(SafeScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
-        backgroundHeight = 133;
-        playerInventoryTitleY = backgroundHeight - 94;
+        this.backgroundHeight = 133;
+        this.playerInventoryTitleY = this.backgroundHeight - 94;
     }
 
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        renderBackground(matrices);
+        this.renderBackground(matrices);
         super.render(matrices, mouseX, mouseY, delta);
-        drawMouseoverTooltip(matrices, mouseX, mouseY);
+        this.drawMouseoverTooltip(matrices, mouseX, mouseY);
     }
 
     @Override
@@ -32,6 +32,6 @@ public class SafeScreen extends HandledScreen<SafeScreenHandler> {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1, 1, 1, 1);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        this.drawTexture(matrices, this.x, this.y, 0, 0, this.backgroundWidth, this.backgroundHeight);
     }
 }

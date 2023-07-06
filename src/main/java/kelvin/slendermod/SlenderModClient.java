@@ -4,7 +4,6 @@ import kelvin.slendermod.client.SlendermanMagicParticle;
 import kelvin.slendermod.client.block.renderers.RotatableBlockEntityRenderer;
 import kelvin.slendermod.client.entity.renderers.*;
 import kelvin.slendermod.client.screen.SafeScreen;
-import kelvin.slendermod.client.screen.handler.SafeScreenHandler;
 import kelvin.slendermod.entity.AdultSCPSlenderEntity;
 import kelvin.slendermod.entity.SmallSCPSlenderEntity;
 import kelvin.slendermod.item.FlashlightItem;

@@ -2,6 +2,8 @@ package kelvin.slendermod.registry;
 
 import kelvin.slendermod.item.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.item.FoodComponent;
+import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registries;

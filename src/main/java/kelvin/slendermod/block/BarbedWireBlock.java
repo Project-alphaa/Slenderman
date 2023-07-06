@@ -53,7 +53,7 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
     }
 
     public static VoxelShape rotateShape(int times, VoxelShape shape) {
-        VoxelShape[] shapes = new VoxelShape[] { shape, VoxelShapes.empty() };
+        VoxelShape[] shapes = new VoxelShape[] {shape, VoxelShapes.empty()};
 
         for (int i = 0; i < times; i++) {
             shapes[0].forEachBox((minX, minY, minZ, maxX, maxY, maxZ) -> shapes[1] = VoxelShapes.union(shapes[1], VoxelShapes.cuboid(1 - maxZ, minY, minX, 1 - minZ, maxY, maxX)));
@@ -66,13 +66,25 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        DoorHinge half = state.get(HALF);
-        if (direction.getAxis() == Direction.Axis.Y && half == DoorHinge.LEFT == (direction == state.get(FACING).rotateYCounterclockwise())) {
-            return neighborState.isOf(this) && neighborState.get(HALF) != half ? state.with(FACING, neighborState.get(FACING)) : Blocks.AIR.getDefaultState();
-        } else {
-            return half == DoorHinge.LEFT && direction == state.get(FACING).rotateYClockwise() && !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+
+
+        if (!this.canPlaceAt(state,world,pos)) return Blocks.AIR.getDefaultState();
+      
+        if (!direction.equals(getDirectionToOpposite(state)) || !(state.isOf(this))) {
+            return state;
         }
+
+        BlockState otherState = world.getBlockState(getOppositePos(state, pos));
+
+        if (otherState.isOf(this) && getDirectionToOpposite(otherState).rotateYClockwise().rotateYClockwise().equals(getDirectionToOpposite(state))) {
+            return state;
+        }
+
+        return Blocks.AIR.getDefaultState();
+
+
     }
+
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
@@ -100,30 +112,50 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
         };
     }
 
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced(world, pos, state, placer, itemStack);
+        if (!world.isClient) {
+            BlockPos blockPos = pos.offset(state.get(FACING).rotateYCounterclockwise());
+            world.setBlockState(blockPos, state.with(HALF, DoorHinge.RIGHT), 3);
+
+
+            world.updateNeighbors(pos, Blocks.AIR);
+            state.updateNeighbors(world, pos, 3);
+        }
+    }
+
+
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockPos pos = ctx.getBlockPos();
         World world = ctx.getWorld();
         Direction facing = ctx.getPlayerFacing().getOpposite();
-        if (pos.getY() < world.getTopY() && world.getBlockState(pos.offset(facing.rotateYCounterclockwise())).canReplace(ctx)) {
+        BlockPos pos2 = pos.offset(facing.rotateYCounterclockwise());
+        if (pos.getY() < world.getTopY() && world.getBlockState(pos2).canReplace(ctx) && world.getWorldBorder().contains(pos2)) {
             return this.getDefaultState().with(FACING, facing).with(HALF, DoorHinge.LEFT);
         } else {
             return null;
         }
     }
 
-    @Override
-    public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
-        world.setBlockState(pos.offset(state.get(FACING).rotateYCounterclockwise()), state.with(HALF, DoorHinge.RIGHT), 3);
-    }
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+
+
         BlockPos downPos = pos.down();
         BlockState downState = world.getBlockState(downPos);
         BlockState oppositeState = world.getBlockState(getOppositePos(state, pos));
-        return downState.isSideSolidFullSquare(world, downPos, Direction.UP) && (state.get(HALF) == DoorHinge.LEFT || oppositeState.isOf(this));
+
+        BlockState oppositeDownState = world.getBlockState(getOppositePos(state, pos).down());
+        return downState.isSideSolidFullSquare(world, downPos, Direction.UP) &&
+                oppositeDownState.isSideSolidFullSquare(world, downPos, Direction.UP) &&
+                (state.get(HALF) == DoorHinge.LEFT || oppositeState.isOf(this));
+
     }
+
 
     @Override
     public PistonBehavior getPistonBehavior(BlockState state) {
@@ -145,4 +177,12 @@ public class BarbedWireBlock extends HorizontalFacingBlock {
         Direction facing = state.get(FACING);
         return pos.offset(half == DoorHinge.LEFT ? facing.rotateYCounterclockwise() : facing.rotateYClockwise());
     }
+
+    private static Direction getDirectionToOpposite(BlockState state) {
+        DoorHinge half = state.get(HALF);
+        Direction facing = state.get(FACING);
+        return half == DoorHinge.LEFT ? facing.rotateYCounterclockwise() : facing.rotateYClockwise();
+    }
+
+
 }
