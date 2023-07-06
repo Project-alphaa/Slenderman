@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "slendermod:block/human_remains"
+    },
+    "facing=south": {
+      "model": "slendermod:block/human_remains",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "slendermod:block/human_remains",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "slendermod:block/human_remains",
+      "y": 90
+    }
+  }
+}

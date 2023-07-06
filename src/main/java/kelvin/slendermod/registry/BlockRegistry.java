@@ -85,6 +85,12 @@ public class BlockRegistry {
 
     public static final Block WALKMAN = register("walkman_block", new WalkmanBlock(AbstractBlock.Settings.of(Material.METAL).strength(4).nonOpaque()));
 
+    public static final  Block DEAD_COW = register("dead_cow", new DeadCow(AbstractBlock.Settings.of(Material.ORGANIC_PRODUCT).strength(4).nonOpaque().sounds(BlockSoundGroup.SLIME)));
+
+    public static final  Block DEAD_PIG = register("dead_pig", new DeadPig(AbstractBlock.Settings.of(Material.ORGANIC_PRODUCT).strength(4).nonOpaque().sounds(BlockSoundGroup.SLIME)));
+
+    public static final  Block HUMAN_REMAINS = register("human_remains", new HumanRemains(AbstractBlock.Settings.of(Material.ORGANIC_PRODUCT).strength(4).nonOpaque().sounds(BlockSoundGroup.SLIME)));
+
     public static void register() {
     }
 

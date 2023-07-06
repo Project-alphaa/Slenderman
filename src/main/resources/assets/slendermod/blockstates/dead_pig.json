@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "slendermod:block/dead_pig"
+    },
+    "facing=south": {
+      "model": "slendermod:block/dead_pig",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "slendermod:block/dead_pig",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "slendermod:block/dead_pig",
+      "y": 90
+    }
+  }
+}
