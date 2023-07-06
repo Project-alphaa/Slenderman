@@ -87,6 +87,7 @@ public class SlenderModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.AIR_CONDITIONER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.BLOOD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.CCTV_CAMERA, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.WALKMAN, RenderLayer.getCutout());
 
         for (Block note : BlockRegistry.PAGES)
             BlockRenderLayerMap.INSTANCE.putBlock(note, RenderLayer.getCutout());

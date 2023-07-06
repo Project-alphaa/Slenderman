@@ -24,9 +24,7 @@ public class ItemRegistry {
 
     public static final Item WRITABLE_NOTE = register("writable_note", new WritableNoteItem());
 
-    public static final Item WALKMAN = register("walkman", new WalkmanItem());
-
-    public static final Item CASSETTE_TAPE = register("cassette_tape", new Item(new Item.Settings()));
+    public static final Item CASSETTE_TAPE = register("cassette_tape", new CassetteTapeItem(1, SoundRegistry.TAPE, new Item.Settings().maxCount(1), 5));
 
     public static final Item ACCESS_CARD = register("access_card", new Item(new Item.Settings()));
 
