@@ -91,6 +91,8 @@ public class BlockRegistry {
 
     public static final  Block HUMAN_REMAINS = register("human_remains", new HumanRemains(AbstractBlock.Settings.of(Material.ORGANIC_PRODUCT).strength(4).nonOpaque().sounds(BlockSoundGroup.SLIME)));
 
+    public static final  Block TRAPPED_LEG = register("trapped_leg", new TrappedLeg(AbstractBlock.Settings.of(Material.ORGANIC_PRODUCT).strength(4).nonOpaque().sounds(BlockSoundGroup.SLIME)));
+
     public static void register() {
     }
 
