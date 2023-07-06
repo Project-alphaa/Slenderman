@@ -1,21 +1,19 @@
-package kelvin.slendermod.item;
+package kelvin.slendermod.item.medkit;
 
-import kelvin.slendermod.SlenderMod;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class MedicalKitItem extends Item {
+public class MedicalKitItem extends BaseMedicalKitItem {
 
-    private static int COOLDOWN = 15;
-    private static int USE_TIME = 40;
+    private static final int COOLDOWN = 15;
+    private static final int USE_TIME = 40;
 
 
     public MedicalKitItem(Settings settings) {
@@ -37,7 +35,7 @@ public class MedicalKitItem extends Item {
 
     @Override
     public boolean isUsedOnRelease(ItemStack stack) {
-        return true;
+        return stack.isOf(this);
     }
 
     @Override
@@ -59,6 +57,8 @@ public class MedicalKitItem extends Item {
 
 
 
+        //Fake Cooldown to show how long is left (Might remove in favor of just the animation and sound in the future)
+        //has a side effect of keeping the cooldown when slots change while holding down the key to use.
         if (!player.isCreative()) player.getItemCooldownManager().set(stack.getItem(), USE_TIME);
 
         return TypedActionResult.consume(stack);
@@ -66,7 +66,7 @@ public class MedicalKitItem extends Item {
     }
 
 
-    //Don't set a cooldown if they did not use it.
+    //Don't set a cooldown if they did not use it. (if the above code is removed in favor of animations, this will be too.)
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         if( remainingUseTicks > 0 && user instanceof PlayerEntity player && !player.isCreative()) {
