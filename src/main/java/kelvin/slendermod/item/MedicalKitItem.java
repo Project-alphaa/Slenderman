@@ -14,12 +14,17 @@ import net.minecraft.world.World;
 
 public class MedicalKitItem extends Item {
 
+    private static int COOLDOWN = 15;
+    private static int USE_TIME = 40;
+
+
     public MedicalKitItem(Settings settings) {
         super(settings);
     }
 
 
     //Not sure what this needs to be
+    //Use gecko lib to override?
     @Override
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.BOW;
@@ -27,7 +32,7 @@ public class MedicalKitItem extends Item {
 
     @Override
     public int getMaxUseTime(ItemStack stack) {
-        return 40;
+        return USE_TIME;
     }
 
     @Override
@@ -54,7 +59,7 @@ public class MedicalKitItem extends Item {
 
 
 
-        if (!player.isCreative()) player.getItemCooldownManager().set(stack.getItem(), 40);
+        if (!player.isCreative()) player.getItemCooldownManager().set(stack.getItem(), USE_TIME);
 
         return TypedActionResult.consume(stack);
 //        return TypedActionResult.success(stack);
@@ -75,10 +80,11 @@ public class MedicalKitItem extends Item {
 
         if (remainingUseTicks <=0 && user instanceof PlayerEntity player) {
 
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 300, 1));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 2));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, 1));
 
             if (!player.isCreative()) {
-                player.getItemCooldownManager().set(stack.getItem(), 15);
+                player.getItemCooldownManager().set(stack.getItem(), COOLDOWN);
                 stack.decrement(1);
             }
 
