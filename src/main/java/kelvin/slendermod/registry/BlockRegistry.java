@@ -84,6 +84,7 @@ public class BlockRegistry {
     public static final Block TOXIC_BARREL = register("toxic_barrel", new ToxicBarrelBlock(AbstractBlock.Settings.of(Material.METAL).strength(4).nonOpaque()));
 
     public static final Block WALKMAN = register("walkman_block", new WalkmanBlock(AbstractBlock.Settings.of(Material.METAL).strength(4).nonOpaque()));
+
     public static void register() {
     }
 

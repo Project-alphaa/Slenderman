@@ -45,6 +45,7 @@ public class SlenderMod implements ModInitializer {
         GameEventRegistry.register();
         GeckoLib.initialize();
 
+
         ServerPacketHandler.start();
         ConfigRegistry.INSTANCE.load();
         if (FabricLoader.getInstance().isModLoaded("pixel_guns")) {
