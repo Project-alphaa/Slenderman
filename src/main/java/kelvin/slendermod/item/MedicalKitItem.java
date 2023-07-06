@@ -80,8 +80,8 @@ public class MedicalKitItem extends Item {
 
         if (remainingUseTicks <=0 && user instanceof PlayerEntity player) {
 
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 2));
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, 1));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 1, 0));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 150, 1));
 
             if (!player.isCreative()) {
                 player.getItemCooldownManager().set(stack.getItem(), COOLDOWN);
