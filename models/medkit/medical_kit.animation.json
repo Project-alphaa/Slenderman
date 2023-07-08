@@ -1,0 +1,56 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.medkit.use_heal": {
+			"animation_length": 6,
+			"bones": {
+				"lid_bone": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.375": {
+							"vector": [7.5, 0, 0]
+						},
+						"1.875": {
+							"vector": [67.87, 0, 0]
+						},
+						"3.5": {
+							"vector": [70, 0, 0],
+							"easing": "easeOutSine"
+						},
+						"4.625": {
+							"vector": [67.5, 0, 0]
+						},
+						"5.8333": {
+							"vector": [10, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.medkit.idle": {
+			"animation_length": 4,
+			"bones": {
+				"lid_bone": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [2.5, 0, 0],
+							"easing": "linear"
+						},
+						"3.8333": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.medkit.stop": {
+			"loop": true
+		}
+	},
+	"geckolib_format_version": 2
+}

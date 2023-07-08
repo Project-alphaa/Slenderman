@@ -191,5 +191,13 @@
       "sounds": [
          "slendermod:tape"
       ]
-   }
+   },
+   "medical_kit_use": {
+         "subtitle": "subtitle.slendermod.medical_kit_use",
+         "sounds": [
+            "slendermod:medkit_use_sfx"
+         ]
+      }
+
+
 }
