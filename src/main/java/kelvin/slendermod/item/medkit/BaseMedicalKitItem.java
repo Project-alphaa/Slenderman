@@ -2,8 +2,10 @@ package kelvin.slendermod.item.medkit;
 
 import kelvin.slendermod.SlenderMod;
 import kelvin.slendermod.registry.SoundRegistry;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.StopSoundS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -17,12 +19,13 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
+import tech.lemonlime.lib.consumables.api.DelayedUseItem;
 
 import java.util.Collection;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class BaseMedicalKitItem extends Item implements GeoItem {
+public abstract class BaseMedicalKitItem extends DelayedUseItem implements GeoItem {
 
     private static final RawAnimation USE_ANIM = RawAnimation.begin().thenPlay("animation.medkit.use_heal");
     private static final RawAnimation STOP_USE = RawAnimation.begin().thenPlay("animation.medkit.stop");
@@ -42,9 +45,9 @@ public class BaseMedicalKitItem extends Item implements GeoItem {
 
     //API for starting and stopping animation
 
-    public void animUse(World world, PlayerEntity player, Hand hand) {
+    public void animUse(World world, PlayerEntity player, ItemStack stack) {
         if (world instanceof ServerWorld serverWorld) {
-            triggerAnim(player, GeoItem.getOrAssignId(player.getStackInHand(hand), serverWorld),
+            triggerAnim(player, GeoItem.getOrAssignId(stack, serverWorld),
                     "controller", "animation.medkit.use_heal");
         }
         if (player instanceof ServerPlayerEntity serverPlayerEntity) {
@@ -54,10 +57,10 @@ public class BaseMedicalKitItem extends Item implements GeoItem {
     }
 
 
-    public void animStopUse(World world, PlayerEntity player, Hand hand) {
+    public void animStopUse(World world, PlayerEntity player, ItemStack stack) {
         if (world instanceof ServerWorld serverWorld) {
 
-            triggerAnim(player, GeoItem.getOrAssignId(player.getStackInHand(hand), serverWorld),
+            triggerAnim(player, GeoItem.getOrAssignId(stack, serverWorld),
                     "controller", "animation.medkit.stop");
 
 
@@ -150,5 +153,4 @@ public class BaseMedicalKitItem extends Item implements GeoItem {
     public void startMedSound(ServerPlayerEntity player) {
         player.playSound(SoundRegistry.MEDICAL_KIT_USE, SoundCategory.MASTER,1,1);
     }
-
 }
