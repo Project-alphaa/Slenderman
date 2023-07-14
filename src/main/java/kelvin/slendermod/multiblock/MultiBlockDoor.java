@@ -37,7 +37,7 @@ public class MultiBlockDoor extends MultiBlock {
                 if (!state.get(IS_OPEN)) {
                     world.removeBlock(worldPos, false);
 
-                    world.setBlockState(newPos, state.with(IS_OPEN, true).with(MAIN_BLOCK, worldPos.equals(mainPos)).with(MODEL_BLOCK, relativePos.equals(modelPos)));
+                    world.setBlockState(newPos, state.with(IS_OPEN, true).with(MAIN_BLOCK, worldPos.equals(mainPos)));
                     MultiBlockEntity dummyEntity = (MultiBlockEntity) world.getBlockEntity(newPos);
 
                     if (dummyEntity != null) {
@@ -45,7 +45,7 @@ public class MultiBlockDoor extends MultiBlock {
                     }
                 } else {
                     world.removeBlock(newPos, false);
-                    world.setBlockState(worldPos, state.with(IS_OPEN, false).with(MAIN_BLOCK, worldPos.equals(mainPos)).with(MODEL_BLOCK, relativePos.equals(modelPos)));
+                    world.setBlockState(worldPos, state.with(IS_OPEN, false).with(MAIN_BLOCK, worldPos.equals(mainPos)));
 
                     MultiBlockEntity dummyEntity = (MultiBlockEntity) world.getBlockEntity(worldPos);
 
