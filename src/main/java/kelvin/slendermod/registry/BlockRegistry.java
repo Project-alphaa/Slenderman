@@ -2,6 +2,10 @@ package kelvin.slendermod.registry;
 
 import kelvin.slendermod.SlenderMod;
 import kelvin.slendermod.block.*;
+import kelvin.slendermod.multiblock.DumpsterMultiblock;
+import kelvin.slendermod.multiblock.MultiBlock;
+import kelvin.slendermod.multiblock.MultiBlockDoor;
+import kelvin.slendermod.util.MultiblockPositioner;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
@@ -12,6 +16,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.BlockView;
 
 import java.util.LinkedList;
@@ -93,6 +98,15 @@ public class BlockRegistry {
 
     public static final  Block TRAPPED_LEG = register("trapped_leg", new TrappedLeg(AbstractBlock.Settings.of(Material.ORGANIC_PRODUCT).strength(4).nonOpaque().sounds(BlockSoundGroup.SLIME)));
 
+    public static final Block DUMPSTER_MULTI_BLOCK = register("multi_block", new DumpsterMultiblock(
+            AbstractBlock.Settings.of(Material.METAL).strength(4),
+            new MultiblockPositioner.Builder(new BlockPos(5, 5, 5)).offsetModel(new BlockPos(1, 0, 0)).hollow().build()
+    ));
+
+    public static final Block MULTI_BLOCK_DOOR = register("multi_block_door", new MultiBlockDoor(
+            AbstractBlock.Settings.of(Material.METAL).strength(4),
+            new MultiblockPositioner.Builder(new BlockPos(5, 5, 1)).build()
+    ));
     public static void register() {
     }
 
