@@ -62,7 +62,7 @@ public class MultiBlock extends BlockWithEntity {
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(MAIN_BLOCK, true).with(MODEL_BLOCK, false));
     }
 
-    public MultiBlock(Settings settings, MultiblockPositioner positioner, int blockOffsetX, int blockOffsetZ) {
+    public MultiBlock(Settings settings, MultiblockPositioner positioner, int blockOffsetX) {
         super(settings.nonOpaque());
         BlockPos size = positioner.getSize();
         BlockPos modelOffset = positioner.getModelOffset();
@@ -77,7 +77,7 @@ public class MultiBlock extends BlockWithEntity {
 
 
         BLOCK_OFFSET_X = blockOffsetX;
-        BLOCK_OFFSET_Z = blockOffsetZ;
+        BLOCK_OFFSET_Z = DEPTH;
 
         HOLLOW = positioner.getIsHollow();
 

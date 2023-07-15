@@ -19,42 +19,80 @@ public class MultiBlockDoor extends MultiBlock {
     public static final BooleanProperty IS_OPEN = BooleanProperty.of("is_open");
 
     public MultiBlockDoor(Settings settings, MultiblockPositioner positioner) {
-        super(settings, positioner, 0, 1);
+        super(settings, positioner, 0);
         this.setDefaultState(this.stateManager.getDefaultState().with(IS_OPEN, false));
+    }
+
+
+    @Override
+    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        if (state.get(IS_OPEN)) {
+            Direction currentFacing = state.get(FACING);
+            Direction originalFacing = currentFacing.rotateYClockwise();
+
+            MultiBlockEntity blockEntity = (MultiBlockEntity) world.getBlockEntity(pos);
+            if (blockEntity != null) {
+                BlockPos mainPos = blockEntity.getMainBlock();
+                preformOnAll(world, state.with(FACING, originalFacing), mainPos, (worldPos, relativePos) -> {
+                    BlockPos newPos = worldPos.offset(originalFacing.getOpposite(), relativePos.getX()).offset(originalFacing.rotateYCounterclockwise(), relativePos.getZ() - relativePos.getX());
+                    world.removeBlock(newPos, false);
+                    return true;
+                });
+            }
+        } else {
+            super.onBreak(world, pos, state, player);
+        }
+    }
+
+
+    public boolean canOpenDoor(World world, BlockState state, BlockPos pos) {
+        Direction currentFacing = state.get(FACING);
+        Direction originalFacing = !state.get(IS_OPEN) ? currentFacing : currentFacing.rotateYClockwise();
+
+        return this.preformOnAll(world, state.with(FACING, originalFacing), pos, (worldPos, relativePos) -> {
+            BlockPos newPos = worldPos.offset(originalFacing.getOpposite(), relativePos.getX()).offset(originalFacing.rotateYCounterclockwise(), relativePos.getZ() - relativePos.getX());
+            if (relativePos.getX() != 0) {
+                return world.getBlockState(state.get(IS_OPEN) ? worldPos : newPos).isAir();
+            }
+            return true;
+        });
     }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        Direction facing = state.get(FACING);
-        Direction clockwise = facing.rotateYCounterclockwise();
+        if (hand == Hand.MAIN_HAND) {
+            Direction currentFacing = state.get(FACING);
+            Direction originalFacing = !state.get(IS_OPEN) ? currentFacing : currentFacing.rotateYClockwise();
 
-        MultiBlockEntity blockEntity = (MultiBlockEntity) world.getBlockEntity(pos);
-        BlockPos modelPos = new BlockPos((WIDTH-1)-MODEL_OFFSET_X, 0, (DEPTH-1)-MODEL_OFFSET_Z);
-        if (blockEntity != null) {
-            BlockPos mainPos = blockEntity.getMainBlock();
-            preformOnAll(world, state, mainPos, (worldPos, relativePos) -> {
-                BlockPos newPos = worldPos.offset(facing.getOpposite(), relativePos.getX()).offset(clockwise, relativePos.getZ() - relativePos.getX());
-                if (!state.get(IS_OPEN)) {
-                    world.removeBlock(worldPos, false);
+            System.out.println(originalFacing);
+            Direction clockwise = originalFacing.rotateYCounterclockwise();
 
-                    world.setBlockState(newPos, state.with(IS_OPEN, true).with(MAIN_BLOCK, worldPos.equals(mainPos)));
-                    MultiBlockEntity dummyEntity = (MultiBlockEntity) world.getBlockEntity(newPos);
+            MultiBlockEntity blockEntity = (MultiBlockEntity) world.getBlockEntity(pos);
+            if (blockEntity != null) {
+                BlockPos mainPos = blockEntity.getMainBlock();
 
-                    if (dummyEntity != null) {
-                        dummyEntity.setMainBlock(blockEntity.getMainBlock());
-                    }
-                } else {
-                    world.removeBlock(newPos, false);
-                    world.setBlockState(worldPos, state.with(IS_OPEN, false).with(MAIN_BLOCK, worldPos.equals(mainPos)));
+                if (this.canOpenDoor(world, state, mainPos)) {
+                    preformOnAll(world, state.with(FACING, originalFacing), mainPos, (worldPos, relativePos) -> {
+                        BlockPos newPos = worldPos.offset(originalFacing.getOpposite(), relativePos.getX()).offset(originalFacing.rotateYCounterclockwise(), relativePos.getZ() - relativePos.getX());
 
-                    MultiBlockEntity dummyEntity = (MultiBlockEntity) world.getBlockEntity(worldPos);
+                        BlockPos currPos = !state.get(IS_OPEN) ? newPos : worldPos;
+                        BlockPos oppositePos = state.get(IS_OPEN) ? newPos : worldPos;
+                        Direction currFacing = !state.get(IS_OPEN) ? clockwise : originalFacing;
 
-                    if (dummyEntity != null) {
-                        dummyEntity.setMainBlock(blockEntity.getMainBlock());
-                    }
+
+                        boolean isModelBlock = world.getBlockState(oppositePos).get(MODEL_BLOCK);
+                        world.removeBlock(oppositePos, false);
+
+                        world.setBlockState(currPos, state.with(IS_OPEN, !state.get(IS_OPEN)).with(FACING, currFacing).with(MAIN_BLOCK, worldPos.equals(mainPos)).with(MODEL_BLOCK, isModelBlock));
+                        MultiBlockEntity dummyEntity = (MultiBlockEntity) world.getBlockEntity(currPos);
+
+                        if (dummyEntity != null) {
+                            dummyEntity.setMainBlock(blockEntity.getMainBlock());
+                        }
+                        return true;
+                    });
                 }
-                return true;
-            });
+            }
         }
         return super.onUse(state, world, pos, player, hand, hit);
     }
