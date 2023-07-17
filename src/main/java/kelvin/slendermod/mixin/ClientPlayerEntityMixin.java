@@ -3,6 +3,7 @@ package kelvin.slendermod.mixin;
 import kelvin.slendermod.SlenderModClient;
 import kelvin.slendermod.network.server.ServerPacketHandler;
 import kelvin.slendermod.registry.ItemRegistry;
+import kelvin.slendermod.registry.SoundRegistry;
 import kelvin.slendermod.util.IForceCrawlingPlayer;
 import kelvin.slendermod.util.NoteScreen;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
@@ -53,6 +54,9 @@ public abstract class ClientPlayerEntityMixin extends LivingEntity {
         } else {
             this.isCrawlKeyPressed = false;
         }
+
+
+
     }
 
     @Inject(at = @At("HEAD"), method = "useBook")

@@ -29,6 +29,8 @@ public class SoundRegistry {
     public static final SoundEvent RADIO_BUTTON_CLICK = register("radio_button_click");
     public static final SoundEvent SLENDERMAN_CRYING = register("slenderman_crying");
     public static final SoundEvent TAPE = register("tape");
+    public static final SoundEvent MEDICAL_KIT_USE = register("medical_kit_use");
+
 
     public static void register() {
     }
