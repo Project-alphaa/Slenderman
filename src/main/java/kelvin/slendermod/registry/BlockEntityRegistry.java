@@ -2,8 +2,6 @@ package kelvin.slendermod.registry;
 
 import kelvin.slendermod.blockentity.*;
 import kelvin.slendermod.multiblock.DumpsterMultiblockEntity;
-import kelvin.slendermod.multiblock.MultiBlockDoorEntity;
-import kelvin.slendermod.multiblock.MultiBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
@@ -28,7 +26,6 @@ public class BlockEntityRegistry {
 
     public static final BlockEntityType<DumpsterMultiblockEntity> DUMPSTER_MULTI_BLOCK_ENTITY = register("multi_block", BlockEntityType.Builder.create(DumpsterMultiblockEntity::new, BlockRegistry.DUMPSTER_MULTI_BLOCK).build(null));
 
-    public static final BlockEntityType<MultiBlockDoorEntity> DOOR_MULTI_BLOCK_ENTITY = register("multi_block_door", BlockEntityType.Builder.create(MultiBlockDoorEntity::new, BlockRegistry.MULTI_BLOCK_DOOR).build(null));
     public static void register() {
     }
 

@@ -1,18 +1,18 @@
 {
   "variants": {
     "facing=north": {
-      "model": "slendermod:block/multi_block"
+      "model": "slendermod:block/multi_block_door"
     },
     "facing=south": {
-      "model": "slendermod:block/multi_block",
+      "model": "slendermod:block/multi_block_door",
       "y": 180
     },
     "facing=west": {
-      "model": "slendermod:block/multi_block",
+      "model": "slendermod:block/multi_block_door",
       "y": 270
     },
     "facing=east": {
-      "model": "slendermod:block/multi_block",
+      "model": "slendermod:block/multi_block_door",
       "y": 90
     }
   }
