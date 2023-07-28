@@ -54,24 +54,34 @@ public class MultiBlock extends BlockWithEntity {
         super(settings.nonOpaque());
 
         Vec3i size = positioner.getSize();
-        Vec3i modelOffset = positioner.getModelOffset();
-        Vec3i blockCenter = positioner.isCustomCenter() ? positioner.getCustomBlockCenter() : null;
+        Vec3i modelCenter = positioner.hasCustomBlockCenter() ? positioner.getCustomBlockCenter() : null;
+        Vec3i blockCenter = positioner.hasCustomBlockCenter() ? positioner.getCustomBlockCenter() : null;
 
+        // Dimensions
         WIDTH = size.getX();
         HEIGHT = size.getY();
         DEPTH = size.getZ();
 
-        MODEL_OFFSET_X = modelOffset != null ? modelOffset.getX() : 0;
-        MODEL_OFFSET_Z = modelOffset != null ? modelOffset.getZ() : 0;
+        // Model Offset
+        MODEL_OFFSET_X = WIDTH - 1;
+        MODEL_OFFSET_X = positioner.isModelCenterX() ? (WIDTH - 1) / 2 : MODEL_OFFSET_X;
+        MODEL_OFFSET_X = modelCenter != null ? modelCenter.getX() : MODEL_OFFSET_X;
 
+        MODEL_OFFSET_Z = DEPTH;
+        MODEL_OFFSET_Z = positioner.isModelCenterZ() ? (DEPTH - 1) / 2 : MODEL_OFFSET_Z;
+        MODEL_OFFSET_Z = modelCenter != null ? modelCenter.getZ() : MODEL_OFFSET_Z;
+
+
+        // Block Offset
         BLOCK_OFFSET_X = (WIDTH - 1) / 2;
         BLOCK_OFFSET_X = positioner.isBlockCenterX() ? (WIDTH - 1) / 2 : BLOCK_OFFSET_X;
         BLOCK_OFFSET_X = blockCenter != null ? blockCenter.getX() : BLOCK_OFFSET_X;
 
         BLOCK_OFFSET_Z = DEPTH;
-        BLOCK_OFFSET_Z = positioner.isBlockCenterX() ? (DEPTH + 1) / 2 : BLOCK_OFFSET_Z;
+        BLOCK_OFFSET_Z = positioner.isBlockCenterZ() ? (DEPTH + 1) / 2 : BLOCK_OFFSET_Z;
         BLOCK_OFFSET_Z = blockCenter != null ? blockCenter.getZ() : BLOCK_OFFSET_Z;
 
+        // Attributes
         HOLLOW = positioner.isHollow();
         SHAPED = positioner.isShaped();
 
@@ -97,6 +107,7 @@ public class MultiBlock extends BlockWithEntity {
         World world = ctx.getWorld();
         BlockState state = this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
 
+        // Check if placeable
         if (pos.getY() < world.getTopY() - 1 && this.preformOnAll(world, state, pos, (worldPos, relativePos) -> world.getBlockState(worldPos).canReplace(ctx), false)) {
             return state;
         }
@@ -106,20 +117,24 @@ public class MultiBlock extends BlockWithEntity {
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         MultiBlockEntity mainEntity = (MultiBlockEntity) world.getBlockEntity(pos);
-        BlockPos modelPos = new BlockPos((WIDTH - 1) - MODEL_OFFSET_X, 0, (DEPTH - 1) - MODEL_OFFSET_Z);
+        if (mainEntity != null) {
+            BlockPos modelPos = new BlockPos(MODEL_OFFSET_X, 0, MODEL_OFFSET_Z);
 
-        this.preformOnAll(world, state, pos, (worldPos, relativePos) -> {
-            if (!worldPos.equals(pos) || relativePos.equals(modelPos)) {
-                world.setBlockState(worldPos, state.with(MAIN_BLOCK, false).with(MODEL_BLOCK, relativePos.equals(modelPos)));
+            this.preformOnAll(world, state, pos, (worldPos, relativePos) -> {
+                if (!worldPos.equals(pos) || relativePos.equals(modelPos)) {
+                    world.setBlockState(worldPos, state.with(MAIN_BLOCK, worldPos.equals(pos))
+                            .with(MODEL_BLOCK, relativePos.equals(modelPos))
+                    );
 
-                MultiBlockEntity dummyEntity = (MultiBlockEntity) world.getBlockEntity(worldPos);
-                if (dummyEntity != null && mainEntity != null) {
-                    dummyEntity.setMainBlock(mainEntity.getMainBlock());
+                    // Store position of main block in new dummy
+                    MultiBlockEntity dummyEntity = (MultiBlockEntity) world.getBlockEntity(worldPos);
+                    if (dummyEntity != null) {
+                        dummyEntity.setMainBlock(mainEntity.getMainBlock());
+                    }
                 }
-            }
-            return true;
-        }, false);
-
+                return true;
+            }, false);
+        }
     }
 
     @Override
@@ -151,29 +166,33 @@ public class MultiBlock extends BlockWithEntity {
                 for (int depth = 0; depth < DEPTH; depth++) {
                     rowPos = rowPos.offset(facing);
 
-                    if (SHAPED) {
-                        Vec3i relativePos = new Vec3i(width, height, depth);
-                        BlockState possibleMain = world.getBlockState(rowPos);
-                        for (Point i : POINTS) {
-                            if (i.asVec().equals(relativePos) || (possibleMain.isOf(this) && possibleMain.get(MAIN_BLOCK))) {
-                                if (function.apply(rowPos, relativePos)) {
-                                    blocksSet++;
+                    MultiBlockEntity currBlock = (MultiBlockEntity) world.getBlockEntity(rowPos);
+                    if ((currBlock != null && currBlock.getMainBlock().equals(pos)) || world.getBlockState(rowPos).isReplaceable()) {
+
+                        if (SHAPED) {
+                            Vec3i relativePos = new Vec3i(width, height, depth);
+                            BlockState possibleMain = world.getBlockState(rowPos);
+                            for (Point i : POINTS) {
+                                if (i.asVec().equals(relativePos) || (possibleMain.isOf(this) && possibleMain.get(MAIN_BLOCK))) {
+                                    if (function.apply(rowPos, relativePos)) {
+                                        blocksSet++;
+                                    }
+                                    break;
                                 }
-                                break;
                             }
-                        }
-                        continue;
-                    }
-                    if (HOLLOW) {
-                        if (width != 0 && depth != 0) {
-                            if (width != WIDTH - 1 && depth != DEPTH - 1) {
+                        } else {
+                            if (HOLLOW) {
+                                if (width != 0 && depth != 0) {
+                                    if (width != WIDTH - 1 && depth != DEPTH - 1) {
+                                        blocksSet++;
+                                        continue;
+                                    }
+                                }
+                            }
+                            if (function.apply(rowPos, new Vec3i(width, height, depth))) {
                                 blocksSet++;
-                                continue;
                             }
                         }
-                    }
-                    if (function.apply(rowPos, new Vec3i(width, height, depth))) {
-                        blocksSet++;
                     }
                 }
             }
@@ -184,7 +203,6 @@ public class MultiBlock extends BlockWithEntity {
     @Override
     public BlockRenderType getRenderType(BlockState state) {
         return state.get(MultiBlock.MODEL_BLOCK) ? BlockRenderType.MODEL : BlockRenderType.INVISIBLE;
-        //return BlockRenderType.MODEL;
     }
 
     @Override

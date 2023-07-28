@@ -15,6 +15,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.BlockView;
 
 import java.util.ArrayList;
@@ -106,14 +107,14 @@ public class BlockRegistry {
     public static final Block DUMPSTER_MULTI_BLOCK = register("multi_block", new DumpsterMultiblock(
             AbstractBlock.Settings.of(Material.METAL).strength(4),
             new MultiblockPositioner.Builder(
-                    new BlockPos(5, 5, 5),
+                    new Vec3i(5, 5, 5),
                     new ArrayList<>(List.of(
                             new Point(2, 1, 2),
                             new Point(2, 1, 1),
                             new Point(1, 1, 2),
                             new Point(2, 1, 3),
                             new Point(3, 1, 2)))
-            ).centerBlockZ().centerBlockX().build()
+            ).centerModelX().centerModelZ().centerBlockZ().centerBlockX().build()
     ));
     public static void register() {
     }
