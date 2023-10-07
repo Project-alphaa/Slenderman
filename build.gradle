@@ -27,13 +27,15 @@ repositories {
 	// mod menu
 	maven {url "https://maven.terraformersmc.com/releases/"}
 
-	repositories {
-		maven {
-			name = 'Ladysnake Mods'
-			url = 'https://ladysnake.jfrog.io/artifactory/mods'
+	maven {
+		name = 'Ladysnake Mods'
+		url = 'https://maven.ladysnake.org/releases'
+		content {
+			includeGroup 'io.github.ladysnake'
+			includeGroup 'org.ladysnake'
+			includeGroupByRegex 'dev\\.onyxstudios.*'
 		}
 	}
-
 	maven {
 		url "https://cursemaven.com"
 		content {
@@ -77,7 +79,7 @@ dependencies {
 
 	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.19.3:4.0.3'
 
-	modImplementation "io.github.ladysnake:satin:1.10.0"
+	modImplementation "curse.maven:satin-api-385463:4160593"
 
 	modImplementation "curse.maven:lambdynamiclights-393442:4257388"
 	modImplementation "curse.maven:modmenu-308702:4159524"
