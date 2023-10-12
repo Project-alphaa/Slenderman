@@ -1,6 +1,8 @@
 package kelvin.slendermod.item;
 
+import kelvin.slendermod.client.item.renderers.SlenderGrimoireRenderer;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.item.BuiltinModelItemRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.WrittenBookItem;
@@ -9,18 +11,35 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
 import net.minecraft.resource.Resource;
 import net.minecraft.util.ActionResult;
+import software.bernie.geckolib.animatable.GeoItem;
+import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
+import software.bernie.geckolib.animatable.client.RenderProvider;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.Animation;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import static kelvin.slendermod.SlenderMod.LOGGER;
 import static kelvin.slendermod.SlenderMod.id;
 
-public class SlenderGrimoireItem extends WrittenBookItem {
+public class SlenderGrimoireItem extends WrittenBookItem implements GeoItem {
+
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
     public SlenderGrimoireItem() {
         super(new Settings());
+        SingletonGeoAnimatable.registerSyncedAnimatable(this);
     }
 
     @Override
@@ -54,7 +73,8 @@ public class SlenderGrimoireItem extends WrittenBookItem {
             nbtCompound.putInt(GENERATION_KEY, 0);
             stack.setSubNbt(PAGES_KEY, nbtList);
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -65,14 +85,47 @@ public class SlenderGrimoireItem extends WrittenBookItem {
             InputStream stream = file.orElseThrow(FileNotFoundException::new).getInputStream();
             String text = new String(stream.readAllBytes());
             return text.split("\\|");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             LOGGER.warn("Failed to read book text file: " + fileName, e);
         }
-        return new String[] { };
+        return new String[]{};
     }
 
     @Override
     public boolean hasGlint(ItemStack stack) {
         return false;
+    }
+
+    @Override
+    public void createRenderer(Consumer<Object> consumer) {
+        consumer.accept(new RenderProvider() {
+
+            private SlenderGrimoireRenderer renderer;
+
+            @Override
+            public BuiltinModelItemRenderer getCustomRenderer() {
+                if (this.renderer == null) {
+                    this.renderer = new SlenderGrimoireRenderer();
+                }
+
+                return this.renderer;
+            }
+        });
+    }
+
+    @Override
+    public Supplier<Object> getRenderProvider() {
+        return renderProvider;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        controllerRegistrar.add(new AnimationController<>(this, "controller", 0, state -> PlayState.CONTINUE));
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
     }
 }

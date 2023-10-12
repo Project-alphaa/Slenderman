@@ -91,5 +91,4 @@
    "config.category.slendermod.main.name": "Main Configs",
    "config.option.slendermod.enable_slender_effects.name": "Slender Effects",
    "config.option.slendermod.enable_slender_effects.tooltip": "Should the game render a glitch overlay on the screen and play creepy sounds when near slenders"
-
 }

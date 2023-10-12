@@ -6,6 +6,7 @@ import net.minecraft.util.Identifier;
 import software.bernie.geckolib.model.GeoModel;
 
 public class SafeBlockModel extends GeoModel<SafeBlockEntity> {
+
     @Override
     public Identifier getModelResource(SafeBlockEntity animatable) {
         return new Identifier(SlenderMod.MOD_ID, "geo/safe.geo.json");

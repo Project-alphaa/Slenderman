@@ -22,5 +22,4 @@ public class SmallSCPSlenderModel extends GeoModel<SmallSCPSlenderEntity> {
     public Identifier getAnimationResource(SmallSCPSlenderEntity animatable) {
         return id("animations/small_scp_slender.animation.json");
     }
-
 }

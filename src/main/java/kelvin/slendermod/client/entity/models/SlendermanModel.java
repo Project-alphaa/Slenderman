@@ -22,5 +22,4 @@ public class SlendermanModel extends GeoModel<SlendermanEntity> {
     public Identifier getAnimationResource(SlendermanEntity animatable) {
         return id("animations/slenderman.animation.json");
     }
-
 }
