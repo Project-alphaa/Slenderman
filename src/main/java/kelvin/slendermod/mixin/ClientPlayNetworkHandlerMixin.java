@@ -1,7 +1,7 @@
 package kelvin.slendermod.mixin;
 
 import kelvin.slendermod.registry.ItemRegistry;
-import kelvin.slendermod.util.NoteScreen;
+import kelvin.slendermod.util.CustomBookScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.BookScreen;
@@ -24,14 +24,14 @@ public class ClientPlayNetworkHandlerMixin {
 
     @Inject(at = @At("RETURN"), method = "onOpenWrittenBook")
     public void onOpenWrittenBook(OpenWrittenBookS2CPacket packet, CallbackInfo info) {
-        ItemStack stack = this.client.player.getStackInHand(packet.getHand());
-        Screen screen = new BookScreen(new BookScreen.WrittenBookContents(stack));
+        ItemStack stack = client.player.getStackInHand(packet.getHand());
+        CustomBookScreen customScreen = (CustomBookScreen) new BookScreen(new BookScreen.WrittenBookContents(stack));
         if (stack.isOf(ItemRegistry.SLENDER_GRIMOIRE)) {
-            this.client.setScreen(screen);
-        } else if (stack.isOf(ItemRegistry.NOTE)) {
-            NoteScreen noteScreen = (NoteScreen) new BookScreen(new BookScreen.WrittenBookContents(stack));
-            noteScreen.isNote();
-            this.client.setScreen((Screen) noteScreen);
+            customScreen.setScreenType(CustomBookScreen.CustomScreenType.SLENDER_GRIMOIRE);
         }
+        else if (stack.isOf(ItemRegistry.NOTE)) {
+            customScreen.setScreenType(CustomBookScreen.CustomScreenType.NOTE);
+        }
+        client.setScreen((Screen) customScreen);
     }
 }

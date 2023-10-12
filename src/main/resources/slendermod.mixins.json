@@ -1,28 +1,29 @@
 {
-   "required": true,
-   "minVersion": "0.8",
-   "package": "kelvin.slendermod.mixin",
-   "compatibilityLevel": "JAVA_17",
-   "mixins": [
-      "EndermanEntityMixin",
-      "GunShootC2SPacketMixin",
-      "LambDynLightsMixin",
-      "LivingEntityMixin",
-      "PillarBlockMixin",
-      "PlayerEntityMixin",
-      "PlayerScreenHandlerMixin",
-      "ServerPlayerEntityMixin",
-      "ServerPlayNetworkHandlerMixin"
-   ],
-   "client": [
-      "BookEditScreenMixin",
-      "BookScreenMixin",
-      "ClientPlayerEntityMixin",
-      "ClientPlayNetworkHandlerMixin",
-      "PageTurnWidgetMixin",
-      "PlayerEntityRendererMixin"
-   ],
-   "injectors": {
-      "defaultRequire": 1
-   }
+  "required": true,
+  "minVersion": "0.8",
+  "package": "kelvin.slendermod.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "EndermanEntityMixin",
+    "GunShootC2SPacketMixin",
+    "LambDynLightsMixin",
+    "LivingEntityMixin",
+    "PillarBlockMixin",
+    "PlayerEntityMixin",
+    "PlayerScreenHandlerMixin",
+    "ServerPlayerEntityMixin",
+    "ServerPlayNetworkHandlerMixin"
+  ],
+  "client": [
+    "BookEditScreenMixin",
+    "BookScreenMixin",
+     "SharedBookScreenMixin",
+    "ClientPlayerEntityMixin",
+    "ClientPlayNetworkHandlerMixin",
+    "PageTurnWidgetMixin",
+    "PlayerEntityRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }
