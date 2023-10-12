@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 import kelvin.slendermod.registry.ItemRegistry;
 import kelvin.slendermod.util.IForceCrawlingPlayer;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.OpenWrittenBookS2CPacket;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -15,13 +16,11 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ServerPlayerEntity.class)
 public abstract class ServerPlayerEntityMixin extends PlayerEntity {
-
-    @Shadow
-    public ServerPlayNetworkHandler networkHandler;
 
     public ServerPlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile gameProfile) {
         super(world, pos, yaw, gameProfile);
@@ -32,11 +31,11 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
         return super.isCrawling() || ((IForceCrawlingPlayer) this).isForcedCrawling();
     }
 
-    @Inject(at = @At("HEAD"), method = "useBook")
-    public void useBook(ItemStack book, Hand hand, CallbackInfo info) {
-        if (book.isOf(ItemRegistry.SLENDER_GRIMOIRE) || book.isOf(ItemRegistry.NOTE) || book.isOf(ItemRegistry.WRITABLE_NOTE)) {
-            this.currentScreenHandler.sendContentUpdates();
-            this.networkHandler.sendPacket(new OpenWrittenBookS2CPacket(hand));
+    @Redirect(method = "useBook", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
+    public boolean useBook(ItemStack instance, Item item) {
+        if (instance.isOf(ItemRegistry.SLENDER_GRIMOIRE) || instance.isOf(ItemRegistry.NOTE)) {
+            return true;
         }
+        return instance.isOf(item);
     }
 }
