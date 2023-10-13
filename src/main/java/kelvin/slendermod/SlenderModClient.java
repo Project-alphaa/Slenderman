@@ -8,7 +8,6 @@ import kelvin.slendermod.entity.AdultSCPSlenderEntity;
 import kelvin.slendermod.entity.SmallSCPSlenderEntity;
 import kelvin.slendermod.item.FlashlightItem;
 import kelvin.slendermod.registry.*;
-import kelvin.slendermod.util.MiscUtil;
 import ladysnake.satin.api.event.ShaderEffectRenderCallback;
 import ladysnake.satin.api.managed.ManagedShaderEffect;
 import ladysnake.satin.api.managed.ShaderEffectManager;
@@ -21,7 +20,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
-import net.minecraft.client.gl.WindowFramebuffer;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.gui.screen.ingame.HopperScreen;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
@@ -35,7 +33,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Quaternionf;
@@ -176,55 +173,14 @@ public class SlenderModClient implements ClientModInitializer {
             }
 
             if (isNear) {
-                if (FRAMEBUFFER == null) {
-                    FRAMEBUFFER = new WindowFramebuffer(minecraft.getWindow().getFramebufferWidth(), minecraft.getWindow().getFramebufferHeight());
-                    FRAMEBUFFER.setClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-                    FRAMEBUFFER.clear(Util.getOperatingSystem() == Util.OperatingSystem.OSX);
-
-                }
-
-                if (minecraft.getFramebuffer().textureWidth != FRAMEBUFFER.textureWidth || minecraft.getFramebuffer().textureHeight != FRAMEBUFFER.textureHeight) {
-                    FRAMEBUFFER.resize(minecraft.getFramebuffer().textureWidth, minecraft.getFramebuffer().textureHeight, true);
-                }
-
-                MOTION_BLUR_SHADER.setSamplerUniform("LastFrame", FRAMEBUFFER);
-                MOTION_BLUR_SHADER.setUniformValue("fright", FRIGHT_BLUR);
-                MOTION_BLUR_SHADER.setUniformValue("fear_zoom", FEAR_ZOOM);
-                MOTION_BLUR_SHADER.setUniformValue("iTime", I_TIME);
+                STATIC_SHADER.setUniformValue("iTime", I_TIME);
+                STATIC_SHADER.setUniformValue("intensity", ConfigRegistry.INSTANCE.getConfig().staticIntensity);
+                STATIC_SHADER.setUniformValue("speed", ConfigRegistry.INSTANCE.getConfig().staticSpeed);
 
                 I_TIME += tickDelta;
-                MOTION_BLUR_SHADER.render(tickDelta);
-
-                copyFrameBufferTexture(FRAMEBUFFER.textureWidth, FRAMEBUFFER.textureHeight, minecraft.getFramebuffer().fbo, minecraft.getFramebuffer().getColorAttachment(), FRAMEBUFFER.fbo, FRAMEBUFFER.getColorAttachment());
+                STATIC_SHADER.render(tickDelta);
             }
         }
-        // just move wherever if needed
-        STATIC_SHADER.setUniformValue("iTime", I_TIME);
-        STATIC_SHADER.setUniformValue("intensity", MiscUtil.staticIntensity);
-        STATIC_SHADER.setUniformValue("speed", MiscUtil.staticSpeed);
-
-        I_TIME += tickDelta;
-        STATIC_SHADER.render(tickDelta);
-
-    }
-
-    private static void copyFrameBufferTexture(int width, int height, int fboIn, int textureIn, int fboOut, int textureOut) {
-        // Bind input FBO + texture to a color attachment
-        GL30.glBindFramebuffer(GL30.GL_READ_FRAMEBUFFER, fboIn);
-        GL30.glFramebufferTexture2D(GL30.GL_READ_FRAMEBUFFER, GL30.GL_COLOR_ATTACHMENT0, GL30.GL_TEXTURE_2D, textureIn, 0);
-        GL30.glReadBuffer(GL30.GL_COLOR_ATTACHMENT0);
-
-        // Bind destination FBO + texture to another color attachment
-        GL30.glBindFramebuffer(GL30.GL_DRAW_FRAMEBUFFER, fboOut);
-        GL30.glFramebufferTexture2D(GL30.GL_DRAW_FRAMEBUFFER, GL30.GL_COLOR_ATTACHMENT1, GL30.GL_TEXTURE_2D, textureOut, 0);
-        GL30.glDrawBuffer(GL30.GL_COLOR_ATTACHMENT1);
-
-        // specify source, destination drawing (sub)rectangles.
-        GL30.glBlitFramebuffer(0, 0, width, height, 0, 0, width, height, GL30.GL_COLOR_BUFFER_BIT, GL30.GL_NEAREST);
-
-        // unbind the color attachments
-        GL30.glFramebufferTexture2D(GL30.GL_FRAMEBUFFER, GL30.GL_COLOR_ATTACHMENT1, GL30.GL_TEXTURE_2D, 0, 0);
-        GL30.glFramebufferTexture2D(GL30.GL_FRAMEBUFFER, GL30.GL_COLOR_ATTACHMENT0, GL30.GL_TEXTURE_2D, 0, 0);
     }
 
     private static void scare(MinecraftClient minecraft) {

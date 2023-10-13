@@ -36,6 +36,12 @@
          "type": "float",
          "count": 1,
          "values": [ 1.0 ]
+      },
+      {
+         "name": "speed",
+         "type": "float",
+         "count": 1,
+         "values": [ 1.0 ]
       }
    ]
 }
