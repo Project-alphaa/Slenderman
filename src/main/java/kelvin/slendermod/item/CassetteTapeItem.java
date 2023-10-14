@@ -47,7 +47,6 @@ public class CassetteTapeItem extends MusicDiscItem {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        super.appendTooltip(stack, world, tooltip, context);
     }
 
     @Override

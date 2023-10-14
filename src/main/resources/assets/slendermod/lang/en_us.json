@@ -11,7 +11,7 @@
    "item.slendermod.slender_grimoire": "Slender Grimoire",
    "item.slendermod.scp_slenderman_spawn_egg": "SCP Slenderman Spawn Egg",
    "item.slendermod.scp_slenderwoman_spawn_egg": "SCP Slenderwoman Spawn Egg",
-   "item.slendermod.small_scp_slender_spawn_egg": "Small SCP Slender Spawn Egg",
+   "item.slendermod.small_scp_slender_spawn_egg": "SCP Slender Kid Spawn Egg",
    "item.slendermod.slenderman_spawn_egg": "Slenderman Spawn Egg",
    "item.slendermod.slender_boss_spawn_egg": "Slender Boss Spawn Egg",
    "item.slendermod.access_card": "Access Card",
@@ -60,6 +60,7 @@
    "block.slendermod.dead_cow": "Dead Cow",
    "block.slendermod.dead_pig": "Dead Pig",
    "block.slendermod.human_remains": "Human Remains",
+   "block.slendermod.trapped_leg": "Trapped Leg",
    "entity.slendermod.putrid_horror": "Putrid Horror",
    "entity.slendermod.scp_slenderman": "SCP Slenderman",
    "entity.slendermod.scp_slenderwoman": "SCP Slenderwoman",
@@ -90,5 +91,9 @@
    "config.slendermod.title": "Slender Mod",
    "config.category.slendermod.main.name": "Main Configs",
    "config.option.slendermod.enable_slender_effects.name": "Slender Effects",
-   "config.option.slendermod.enable_slender_effects.tooltip": "Should the game render a glitch overlay on the screen and play creepy sounds when near slenders"
+   "config.option.slendermod.enable_slender_effects.tooltip": "Should the game render a static overlay on the screen and play creepy sounds when near slenders",
+   "config.option.slendermod.slender_effect_intensity.name": "Slender Static Intensity",
+   "config.option.slendermod.slender_effect_intensity.tooltip": "The intensity at which the static overlay is rendered",
+   "config.option.slendermod.slender_effect_speed.name": "Slender Static Speed",
+   "config.option.slendermod.slender_effect_speed.tooltip": "The speed at which the static overlay plays"
 }
