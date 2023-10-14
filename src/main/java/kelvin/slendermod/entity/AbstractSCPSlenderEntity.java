@@ -1,7 +1,6 @@
 package kelvin.slendermod.entity;
 
 import com.google.common.collect.ImmutableList;
-import com.theendercore.npctrader.entity.TraderEntity;
 import dev.lambdaurora.lambdynlights.DynamicLightSource;
 import kelvin.slendermod.SlenderMod;
 import kelvin.slendermod.entity.ai.mm.MMPathNavigateGround;
@@ -307,9 +306,7 @@ public abstract class AbstractSCPSlenderEntity extends PathAwareEntity implement
 
     protected void tryToSpotTargets() {
         Box box = new Box(this.getBlockPos()).expand(500);
-        List<LivingEntity> targets = new ArrayList<>();
-        targets.addAll(this.world.getEntitiesByClass(PlayerEntity.class, box, entity -> true));
-        targets.addAll(this.world.getEntitiesByClass(TraderEntity.class, box, entity -> true));
+        List<LivingEntity> targets = new ArrayList<>(this.world.getEntitiesByClass(PlayerEntity.class, box, entity -> true));
         LivingEntity closest = this.world.getClosestEntity(targets, TargetPredicate.createAttackable().setBaseMaxDistance(500), this, this.getX(), this.getY(), this.getZ());
         DetectionRadius radius = this.getDetectionRadius(closest);
 

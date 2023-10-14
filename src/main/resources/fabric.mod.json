@@ -40,7 +40,6 @@
       "lambdynlights": "2.2.0+1.19.3",
       "geckolib": ">=4.0.3",
       "satin": "1.10.0",
-      "yet-another-config-lib": ">=2.1.1",
-      "npctrader": ">=1.0.0-rc5-debug"
+      "yet-another-config-lib": ">=2.1.1"
    }
 }
