@@ -8,7 +8,7 @@
 
 ### **📘 Description**
 
-**Terrifying Encounter:** Slenders, the entities, has descended upon your world. With there unnaturally long limbs and hauntingly blank visage, They'll stalk you as you navigate the endless landscapes of Minecraft. Can you escape there relentless chase?
+**Terrifying Encounter:** Slenders, the entities, have descended upon your world. With their unnaturally long limbs and hauntingly blank visage, They'll stalk you as you navigate the endless landscapes of Minecraft. Can you escape their relentless chase?
 
 **Multiplayer Madness:** Want to share the terror with your friends? The Slenders offers a multiplayer experience that will have you and your buddies working together to outsmart and escape the ever-present threat of the Slenders.
 
@@ -33,6 +33,14 @@ Survive on a custom map:
 ---
 
 ### **📚 FAQ**
+**Q:** Does this mod have any dependency?
+<br>
+**A:** Yes, this mod requires [Fabric-API](https://curseforge.com/minecraft/mc-mods/fabric-api), [GeckoLib](https://curseforge.com/minecraft/mc-mods/geckolib), [LambDynamicLights](https://curseforge.com/minecraft/mc-mods/lambdynamiclights), and [Satin-API](https://curseforge.com/minecraft/mc-mods/satin-api).
+<br><br>
+**Q:** Can I use this mod in my modpack?
+<br>
+**A:** Yes, feel free to use this mod in your modpack.
+<br><br>
 **Q:** What are the different game versions that this mod will support?
 <br>
 **A:** Currently only version 1.19.3. If there is a high demand we will provide a 1.20 version.
