@@ -2,18 +2,23 @@
    "schemaVersion": 1,
    "id": "slendermod",
    "version": "${version}",
-   "name": "Slender Mod",
-   "description": "A mod that replaces all natural mob spawning with slenders, a terrifying creature from another galaxy",
+   "name": "Slenders",
+   "description": "Replaces all natural mob spawning with Slenders, a terrifying creature from another galaxy",
    "authors": [
       "Kelvin",
       "MincraftEinstein",
       "DrAlpha",
       "Ender"
    ],
+   "contributors": [
+      "JacktheDevel0per",
+      "Revolving Madness",
+      "shadowmaster435"
+   ],
    "contact": {
-      "homepage": "https://fabricmc.net/",
-      "sources": "https://github.com/Alpha-thebaby/Slenders",
-      "issues": "https://github.com/Alpha-thebaby/Slenders/issues"
+      "homepage": "https://curseforge.com/minecraft/mc-mods/slenders",
+      "sources": "https://github.com/Project-Alphaa/Slenders",
+      "issues": "https://github.com/Project-Alphaa/Slenders/issues"
    },
    "license": "CC0-1.0",
    "icon": "assets/slendermod/icon.png",
