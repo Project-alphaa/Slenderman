@@ -43,11 +43,9 @@ import java.util.Random;
 
 public class SlenderModClient implements ClientModInitializer {
 
-    private static final ManagedShaderEffect MOTION_BLUR_SHADER = ShaderEffectManager.getInstance().manage(SlenderMod.id("shaders/post/motionblur.json"));
     private static final ManagedShaderEffect STATIC_SHADER = ShaderEffectManager.getInstance().manage(SlenderMod.id("shaders/post/static.json"));
 
     public static KeyBinding CRAWL_KEY;
-    private static Framebuffer FRAMEBUFFER;
     private static float FRIGHT_BLUR = 0.0f;
     private static float FEAR_ZOOM = 1.0f;
     private static float SCARED_TIMER = 0;
