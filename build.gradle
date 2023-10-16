@@ -91,7 +91,7 @@ dependencies {
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca}")
 	modImplementation(files("pixel-guns-1.0.0.jar"))
 	modImplementation(files("npc-trader-1.0.0-rc5-debug.jar"))
-	modImplementation("tech.lemonlime.lib:consumables:${limelib_consumables_version}")
+	include modImplementation("tech.lemonlime.lib:consumables:${limelib_consumables_version}")
 }
 
 processResources {

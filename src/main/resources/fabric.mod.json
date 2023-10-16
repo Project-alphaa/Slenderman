@@ -45,6 +45,7 @@
       "lambdynlights": "2.2.0+1.19.3",
       "geckolib": ">=4.0.3",
       "satin": "1.10.0",
-      "yet-another-config-lib": ">=2.1.1"
+      "yet-another-config-lib": ">=2.1.1",
+      "limelib-consumables": ">=0.0.4"
    }
 }
