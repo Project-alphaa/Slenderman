@@ -9,9 +9,7 @@
 
 ### **📘 Description**
 
-**Terrifying Encounter:** Slenders, eerie entities, have descended upon your world. With their unnaturally long limbs and hauntingly blank visage, they will stalk you as you navigate the endless landscapes of Minecraft. Can you escape their relentless chase?
-
-**Multiplayer Madness:** Looking to share the horror with your friends? The Slenders mod offers a multiplayer experience that will have you and your buddies working together to outsmart and escape the ever-present threat of the Slenderman.
+The Infected Slenders have gone global and wiped out humanity. You're all that remains, well - you and the endless Slenders. How long can you last? Can you escape their relentless chase? The Slenders are terrifying. They're attracted to humans and sound, and they'll stop at nothing to get to you! Looking to share the horror with your friends? The Slenderman mod offers a multiplayer experience that will have you and your buddies working together to outsmart and escape the ever-present threat of the Slenderman.
 
 **Survive on a custom map:**
 <br>
