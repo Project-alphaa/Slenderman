@@ -1,4 +1,4 @@
-# Slenders
+# The Slenders
 
 ![Banner](https://raw.githubusercontent.com/Project-Alphaa/Slenderman/main/banner.png)
 
