@@ -93,12 +93,12 @@ public class AdultSCPSlenderEntity extends AbstractSCPSlenderEntity {
 
     @Override
     protected SoundEvent getAngrySound() {
-        return SoundRegistry.HORROR_ROAR;
+        return SoundRegistry.SCP_SLENDER_ANGRY;
     }
 
     @Override
     protected SoundEvent getLookingSound() {
-        return SoundRegistry.HORROR_GROWL;
+        return SoundRegistry.SCP_SLENDER_LOOKING;
     }
 
     protected AnimationSet getAnimationSet() {

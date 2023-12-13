@@ -81,12 +81,12 @@ public class SmallSCPSlenderEntity extends AbstractSCPSlenderEntity {
 
     @Override
     protected SoundEvent getAngrySound() {
-        return SoundRegistry.SMALL_SLENDER_CHASING;
+        return SoundRegistry.SMALL_SCP_SLENDER_ANGRY;
     }
 
     @Override
     protected SoundEvent getLookingSound() {
-        return SoundRegistry.SMALL_SLENDER_LOOKING;
+        return SoundRegistry.SMALL_SCP_SLENDER_LOOKING;
     }
 
     @Override

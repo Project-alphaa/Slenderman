@@ -1,70 +1,70 @@
 {
-  "horror_roar": {
-    "subtitle": "subtitle.slendermod.something_roars",
+  "scp_slender_angry": {
+    "subtitle": "subtitle.slendermod.scp_slender_angry",
     "sounds": [
-      "slendermod:entity/slenderman/roar",
-      "slendermod:entity/slenderman/roar2",
-      "slendermod:entity/slenderman/roar3",
-      "slendermod:entity/slenderman/roar4"
+      "slendermod:entity/scp_slender/roar",
+      "slendermod:entity/scp_slender/roar2",
+      "slendermod:entity/scp_slender/roar3",
+      "slendermod:entity/scp_slender/roar4"
     ]
   },
-  "horror_growl": {
-    "subtitle": "subtitle.slendermod.something_growls",
+  "scp_slender_looking": {
+    "subtitle": "subtitle.slendermod.scp_slender_looking",
     "sounds": [
-      "slendermod:entity/slenderman/growl",
-      "slendermod:entity/slenderman/growl2",
-      "slendermod:entity/slenderman/growl3"
+      "slendermod:entity/scp_slender/growl",
+      "slendermod:entity/scp_slender/growl2",
+      "slendermod:entity/scp_slender/growl3"
     ]
   },
-  "small_slender_looking": {
-    "subtitle": "subtitle.slendermod.small_slender_looking",
+  "small_scp_slender_looking": {
+    "subtitle": "subtitle.slendermod.small_scp_slender_looking",
     "sounds": [
-      "slendermod:entity/slenderkid/looking1",
-      "slendermod:entity/slenderkid/looking2",
-      "slendermod:entity/slenderkid/looking3",
-      "slendermod:entity/slenderkid/looking4",
-      "slendermod:entity/slenderkid/looking5",
-      "slendermod:entity/slenderkid/looking6",
-      "slendermod:entity/slenderkid/looking7",
-      "slendermod:entity/slenderkid/looking8",
-      "slendermod:entity/slenderkid/looking9",
-      "slendermod:entity/slenderkid/looking10",
-      "slendermod:entity/slenderkid/looking11",
-      "slendermod:entity/slenderkid/looking12",
-      "slendermod:entity/slenderkid/looking13",
-      "slendermod:entity/slenderkid/looking14",
-      "slendermod:entity/slenderkid/looking15",
-      "slendermod:entity/slenderkid/looking16",
-      "slendermod:entity/slenderkid/looking17",
-      "slendermod:entity/slenderkid/looking18",
-      "slendermod:entity/slenderkid/looking19",
-      "slendermod:entity/slenderkid/looking20",
-      "slendermod:entity/slenderkid/looking21",
-      "slendermod:entity/slenderkid/looking22",
-      "slendermod:entity/slenderkid/looking23",
-      "slendermod:entity/slenderkid/looking24",
-      "slendermod:entity/slenderkid/looking25",
-      "slendermod:entity/slenderkid/looking26",
-      "slendermod:entity/slenderkid/looking27",
-      "slendermod:entity/slenderkid/looking28",
-      "slendermod:entity/slenderkid/looking29",
-      "slendermod:entity/slenderkid/looking30"
+      "slendermod:entity/small_scp_slender/looking1",
+      "slendermod:entity/small_scp_slender/looking2",
+      "slendermod:entity/small_scp_slender/looking3",
+      "slendermod:entity/small_scp_slender/looking4",
+      "slendermod:entity/small_scp_slender/looking5",
+      "slendermod:entity/small_scp_slender/looking6",
+      "slendermod:entity/small_scp_slender/looking7",
+      "slendermod:entity/small_scp_slender/looking8",
+      "slendermod:entity/small_scp_slender/looking9",
+      "slendermod:entity/small_scp_slender/looking10",
+      "slendermod:entity/small_scp_slender/looking11",
+      "slendermod:entity/small_scp_slender/looking12",
+      "slendermod:entity/small_scp_slender/looking13",
+      "slendermod:entity/small_scp_slender/looking14",
+      "slendermod:entity/small_scp_slender/looking15",
+      "slendermod:entity/small_scp_slender/looking16",
+      "slendermod:entity/small_scp_slender/looking17",
+      "slendermod:entity/small_scp_slender/looking18",
+      "slendermod:entity/small_scp_slender/looking19",
+      "slendermod:entity/small_scp_slender/looking20",
+      "slendermod:entity/small_scp_slender/looking21",
+      "slendermod:entity/small_scp_slender/looking22",
+      "slendermod:entity/small_scp_slender/looking23",
+      "slendermod:entity/small_scp_slender/looking24",
+      "slendermod:entity/small_scp_slender/looking25",
+      "slendermod:entity/small_scp_slender/looking26",
+      "slendermod:entity/small_scp_slender/looking27",
+      "slendermod:entity/small_scp_slender/looking28",
+      "slendermod:entity/small_scp_slender/looking29",
+      "slendermod:entity/small_scp_slender/looking30"
     ]
   },
-  "small_slender_chasing": {
-    "subtitle": "subtitle.slendermod.small_slender_chasing",
+  "small_scp_slender_angry": {
+    "subtitle": "subtitle.slendermod.small_scp_slender_angry",
     "sounds": [
-      "slendermod:entity/slenderkid/chasing1",
-      "slendermod:entity/slenderkid/chasing2",
-      "slendermod:entity/slenderkid/chasing3",
-      "slendermod:entity/slenderkid/chasing4",
-      "slendermod:entity/slenderkid/chasing5",
-      "slendermod:entity/slenderkid/chasing6",
-      "slendermod:entity/slenderkid/chasing7",
-      "slendermod:entity/slenderkid/chasing8",
-      "slendermod:entity/slenderkid/chasing9",
-      "slendermod:entity/slenderkid/chasing10",
-      "slendermod:entity/slenderkid/chasing11"
+      "slendermod:entity/small_scp_slender/chasing1",
+      "slendermod:entity/small_scp_slender/chasing2",
+      "slendermod:entity/small_scp_slender/chasing3",
+      "slendermod:entity/small_scp_slender/chasing4",
+      "slendermod:entity/small_scp_slender/chasing5",
+      "slendermod:entity/small_scp_slender/chasing6",
+      "slendermod:entity/small_scp_slender/chasing7",
+      "slendermod:entity/small_scp_slender/chasing8",
+      "slendermod:entity/small_scp_slender/chasing9",
+      "slendermod:entity/small_scp_slender/chasing10",
+      "slendermod:entity/small_scp_slender/chasing11"
     ]
   },
   "shock": {
@@ -105,7 +105,7 @@
     ]
   },
   "buzzing": {
-    "subtitle": "subtitle.slendermod.froglight_buzzing",
+    "subtitle": "subtitle.slendermod.buzzing",
     "sounds": [
       "slendermod:buzzing"
     ]
@@ -173,17 +173,17 @@
       "slendermod:radio_button_click"
     ]
   },
-  "slenderman_crying": {
-    "subtitle": "subtitle.slendermod.slenderman_crying",
+  "scp_slender_crying": {
+    "subtitle": "subtitle.slendermod.scp_slender_crying",
     "sounds": [
-      "slendermod:entity/slenderman/crying",
-      "slendermod:entity/slenderman/crying1",
-      "slendermod:entity/slenderman/crying2",
-      "slendermod:entity/slenderman/crying3",
-      "slendermod:entity/slenderman/crying4",
-      "slendermod:entity/slenderman/crying5",
-      "slendermod:entity/slenderman/crying6",
-      "slendermod:entity/slenderman/crying7"
+      "slendermod:entity/scp_slender/crying",
+      "slendermod:entity/scp_slender/crying1",
+      "slendermod:entity/scp_slender/crying2",
+      "slendermod:entity/scp_slender/crying3",
+      "slendermod:entity/scp_slender/crying4",
+      "slendermod:entity/scp_slender/crying5",
+      "slendermod:entity/scp_slender/crying6",
+      "slendermod:entity/scp_slender/crying7"
     ]
   },
   "tape": {
