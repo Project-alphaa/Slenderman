@@ -13,9 +13,9 @@ public class SlendermanMagicParticle extends PortalParticle {
 
     protected SlendermanMagicParticle(ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
         super(clientWorld, x, y, z, velocityX, velocityY, velocityZ);
-        this.red = 0.5F;
-        this.green = 0;
-        this.blue = 0;
+        this.red = 0.25F;
+        this.green = 0.25F;
+        this.blue = 0.25F;
     }
 
     @Environment(EnvType.CLIENT)
