@@ -1,14 +1,18 @@
 package kelvin.slendermod.entity;
 
+import kelvin.slendermod.registry.SoundRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -119,6 +123,21 @@ public class SlendermanEntity extends EndermanEntity implements GeoEntity {
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.cache;
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return isAngry() ? SoundRegistry.SLENDERMAN_ANGRY : SoundRegistry.SLENDERMAN_IDLE;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return null;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return null;
     }
 
     private static class SlendermanAttackGoal extends MeleeAttackGoal {

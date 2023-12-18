@@ -197,5 +197,40 @@
     "sounds": [
       "slendermod:medkit_use_sfx"
     ]
+  },
+  "slenderman_idle": {
+    "subtitle": "subtitle.slendermod.slenderman_idle",
+    "sounds": [
+      "slendermod:entity/slenderman/idle1",
+      "slendermod:entity/slenderman/idle2",
+      "slendermod:entity/slenderman/idle3",
+      "slendermod:entity/slenderman/idle4",
+      "slendermod:entity/slenderman/idle5",
+      "slendermod:entity/slenderman/idle6",
+      "slendermod:entity/slenderman/idle7",
+      "slendermod:entity/slenderman/idle8",
+      "slendermod:entity/slenderman/idle9",
+      "slendermod:entity/slenderman/idle10",
+      "slendermod:entity/slenderman/idle11",
+      "slendermod:entity/slenderman/idle12",
+      "slendermod:entity/slenderman/idle13"
+    ]
+  },
+  "slenderman_angry": {
+    "subtitle": "subtitle.slendermod.slenderman_angry",
+    "sounds": [
+      "slendermod:entity/slenderman/angry1",
+      "slendermod:entity/slenderman/angry2",
+      "slendermod:entity/slenderman/angry3",
+      "slendermod:entity/slenderman/angry4"
+    ]
+  },
+  "slenderman_scream": {
+    "subtitle": "subtitle.slendermod.slenderman_scream",
+    "sounds": [
+      "slendermod:entity/slenderman/scream1",
+      "slendermod:entity/slenderman/scream2",
+      "slendermod:entity/slenderman/scream3"
+    ]
   }
 }

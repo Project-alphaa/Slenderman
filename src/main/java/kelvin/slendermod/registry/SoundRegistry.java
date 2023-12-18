@@ -18,6 +18,9 @@ public class SoundRegistry {
     public static final SoundEvent BOSS_DASH = register("boss_dash");
     public static final SoundEvent BOSS_ATTACK = register("boss_attack");
     public static final SoundEvent BOSS_IDLE = register("boss_idle");
+    public static final SoundEvent SLENDERMAN_IDLE = register("slenderman_idle");
+    public static final SoundEvent SLENDERMAN_ANGRY = register("slenderman_angry");
+    public static final SoundEvent SLENDERMAN_SCREAM = register("slenderman_scream");
 
     // Ambience
     public static final SoundEvent SHOCK = register("shock");
