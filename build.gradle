@@ -86,7 +86,11 @@ dependencies {
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca}")
 	modImplementation(files("pixel-guns-1.0.0.jar"))
 	modImplementation(files("npc-trader-1.0.0-rc5-debug.jar"))
-	include modImplementation(files("consumables-0.0.4.jar"))
+	modImplementation(files("consumables-0.0.4.jar"))
+}
+
+remapJar {
+	nestedJars.from(file('consumables-0.0.4.jar'))
 }
 
 processResources {
