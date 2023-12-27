@@ -85,7 +85,6 @@ dependencies {
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca}")
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca}")
 	modImplementation(files("pixel-guns-1.0.0.jar"))
-	modImplementation(files("npc-trader-1.0.0-rc5-debug.jar"))
 	modImplementation(files("consumables-0.0.4.jar"))
 }
 
