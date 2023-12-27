@@ -37,6 +37,7 @@
    "mixins": [
       "slendermod.mixins.json"
    ],
+   "accessWidener": "slendermod.accesswidener",
    "depends": {
       "fabricloader": ">=0.14.9",
       "fabric-api": "*",
