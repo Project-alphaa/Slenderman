@@ -11,7 +11,7 @@
 
 The Infected Slenders have gone global and wiped out humanity. You're all that remains, well - you and the endless Slenders. How long can you last? Can you escape their relentless chase? The Slenders are terrifying. They're attracted to humans and sound, and they'll stop at nothing to get to you! Looking to share the horror with your friends? The Slenderman mod offers a multiplayer experience that will have you and your buddies working together to outsmart and escape the ever-present threat of the Slenderman.
 
-**Survive on a custom map:**
+Survive on a custom map:
 <br>
 [Map Image](https://jamboard.google.com/d/1X6S7mMrVR1SYTtt0bWFzHFz30wxd17ZK0niKRrKpuTU/edit?usp=sharing)
 <br>
