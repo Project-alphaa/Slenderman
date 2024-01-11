@@ -43,7 +43,7 @@ Survive on a custom map:
 <br><br>
 **Q:** I would like to contribute to or maintain the mod. Would I be able to do so?
 <br>
-**A:** Of course, you can do both or help add a feature. Just make sure to inform me through my Discord server.
+**A:** Of course, you can do both or help add a feature. Just make sure to contact me through my Discord server.
 
 ---
 ### **🛠 Contributing**
