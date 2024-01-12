@@ -9,7 +9,7 @@
 
 ### **📘 Description**
 
-The Infected Slenders have spread worldwide and wiped out the entire human race. You are the last survivor, along with the endless Slenders. How long can you survive their relentless chase? The Slenders are terrifying creatures that are drawn to humans and sound. They will stop at nothing to capture you! Want to experience the horror with your friends? The Slenderman mod offers a multiplayer experience that will have you and your buddies working together to outsmart and escape the ever-present threat of the Slenderman.
+The Infected Slenders have spread worldwide and wiped out the entire human race. You are the last survivor, along with the endless Slenders. How long can you survive their relentless chase? The Slenders are terrifying creatures that are drawn to humans and sound. They will stop at nothing to get you! Want to experience the horror with your friends? The Slenderman mod offers a multiplayer experience that will have you and your buddies working together to outsmart and escape the ever-present threat of the Slenderman.
 
 Survive on a custom map:
 [Map Image](https://jamboard.google.com/d/1X6S7mMrVR1SYTtt0bWFzHFz30wxd17ZK0niKRrKpuTU/edit?usp=sharing)
