@@ -28,9 +28,9 @@ Survive on a custom map: [Map Image](https://drive.google.com/file/d/1uGYnUUFTsP
 ![](https://i.imgur.com/j8YAnhl.png)
 
 ### **🛠 Contributing**
-If anyone would like to add the remaining features to the game, feel free to check out the Trello board: [Mod Trello Board](https://trello.com/b/BmcUb06n/project-slenderman-main), [Map Trello Board](https://trello.com/b/l1NQgglA/project-slenderman-building). Just make sure to contact me through my discord server for any [help](https://drive.google.com/drive/folders/1ktzk9z7oy2AW_2jvOAMThN_bHCH8q8Gy?usp=drive_link).
+If anyone would like to add the remaining features to the game, feel free to check out the Trello board: [Mod Trello Board](https://trello.com/b/BmcUb06n/project-slenderman-main), [Map Trello Board](https://trello.com/b/l1NQgglA/project-slenderman-building). Just make sure to contact me through my discord server for any help.
 
-The concept of this particular mod is to survive for 100 days. If anyone feels interested in doing so, you're more than welcome to give it a try here.
+The concept of this particular mod is to survive for 100 days. If anyone feels interested in doing so, you're more than welcome to give it a try [here](https://drive.google.com/drive/folders/1ktzk9z7oy2AW_2jvOAMThN_bHCH8q8Gy?usp=drive_link).
 
 ![](https://i.imgur.com/j8YAnhl.png)
 
