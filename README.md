@@ -7,7 +7,7 @@
 [![](https://img.shields.io/badge/Discord-6a6a6a?style=for-the-badge&labelColor=272727&logo=discord)](https://discord.gg/nb3aNdVWtk)
 
 ### **📘 Description**
-The Infected Slenders have spread worldwide and wiped out the entire human race. You are the last survivor, along with the endless Slenders. How long can you survive their relentless chase? The Slenders are terrifying creatures that are drawn to humans and sound. They will stop at nothing to get you! Want to experience the horror with your friends? The Slenderman mod offers a multiplayer experience that will have you and your buddies working together to outsmart and escape the ever-present threat of the Slenderman.
+The Infected Slenders have spread worldwide and wiped out the entire human race. You are the last survivor, along with the endless Slenders. How long can you survive their relentless chase? The Slenders are terrifying creatures that are drawn to humans and sound. They will stop at nothing to get you. Want to experience the horror with your friends? The Slenderman mod offers a multiplayer experience that will have you and your buddies working together to outsmart and escape the ever-present threat of the Slenderman.
 
 Survive on a custom map: [Map Image](https://drive.google.com/file/d/1uGYnUUFTsPg-59iyrXgmeuW6h_i91vQt/view?usp=sharing) [Map Download](https://drive.google.com/file/d/1XQDHgWuXKUrj73KCTGx8w5OinFneCHiF/view?usp=drive_link)
 
