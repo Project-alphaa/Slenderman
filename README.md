@@ -7,9 +7,11 @@
 [![](https://img.shields.io/badge/Discord-6a6a6a?style=for-the-badge&labelColor=272727&logo=discord)](https://discord.gg/nb3aNdVWtk)
 
 ### **📘 Description**
-The Infected Slenders have spread worldwide and wiped out the entire human race. You are the last survivor, along with the endless Slenders. How long can you survive their relentless chase? The Slenders are terrifying creatures that are drawn to humans and sound. They will stop at nothing to get you. Want to experience the horror with your friends? The Slenderman mod offers a multiplayer experience that will have you and your buddies working together to outsmart and escape the ever-present threat of the Slenderman.
+The Infected Slenders have spread across the globe and wiped out the entire human race. You are the last key human survivor in a world overrun by these entities. The Slenders are horrifying creatures with unnaturally long thin bodies and distorted, blurred faces. They are drawn to humans and any sound they make. How long can you avoid their terrifying chase and survive in this desolate world?
 
-Survive on a custom map: [Map Image](https://drive.google.com/file/d/1uGYnUUFTsPg-59iyrXgmeuW6h_i91vQt/view?usp=sharing) [Map Download](https://drive.google.com/file/d/1XQDHgWuXKUrj73KCTGx8w5OinFneCHiF/view?usp=drive_link)
+The Slenderman mod includes a multiplayer map experience that will have you and your buddies working together to outsmart and escape the ever-present threat of the Slenderman. 
+
+Custom map: [Map Image](https://drive.google.com/file/d/1uGYnUUFTsPg-59iyrXgmeuW6h_i91vQt/view?usp=sharing) [Map Download](https://drive.google.com/file/d/1XQDHgWuXKUrj73KCTGx8w5OinFneCHiF/view?usp=drive_link)
 
 ![](https://i.imgur.com/j8YAnhl.png)
 
@@ -22,9 +24,9 @@ Survive on a custom map: [Map Image](https://drive.google.com/file/d/1uGYnUUFTsP
 <br>
 **A:** Yes, feel free to use this mod in your modpack.
 <br><br>
-**Q:** What are the different game versions that this mod will support?
+**Q:** I have an inquiry about something. Can you help?
 <br>
-**A:** Currently only version 1.19.3. If there is a high demand we will provide a 1.20 version.
+**A:** Ask away in the comments or on the Discord server, and we will do our best to respond.
 
 ![](https://i.imgur.com/j8YAnhl.png)
 
