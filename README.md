@@ -7,7 +7,7 @@
 [![](https://img.shields.io/badge/Discord-6a6a6a?style=for-the-badge&labelColor=272727&logo=discord)](https://discord.gg/nb3aNdVWtk)
 
 ### **📘 Description**
-The Infected Slenders have spread across the globe and wiped out the entire human race. You are the last key human survivor in a world overrun by these entities. The Slenders are horrifying creatures with unnaturally long thin bodies and distorted, blurred faces. They are drawn to humans and any sound they make. How long can you avoid their terrifying chase and survive in this desolate world?
+The Infected Slenders have spread across the globe and wiped out the entire human race. You are the last key human survivor in a world overrun by these entities. The Slenders are horrifying creatures with unnaturally long thin bodies and distorted, blurred faces. They are drawn to humans and any sound they make. How long can you last their terrifying chase and survive in this desolate world?
 
 The Slenderman mod includes a multiplayer map experience that will have you and your buddies working together to outsmart and escape the ever-present threat of the Slenderman. 
 
