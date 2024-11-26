@@ -1,4 +1,4 @@
-![Banner](https://raw.githubusercontent.com/Project-Alphaa/Slenderman/main/banner.png)
+![Slenders banner 2 0](https://github.com/user-attachments/assets/4d571362-5552-45d1-a45c-9a4b09a7049a)
 
 ![](https://img.shields.io/badge/Mod_Loader-Fabric-6a6a6a?style=for-the-badge&labelColor=272727)
 [![](https://img.shields.io/badge/-Github-6a6a6a?style=for-the-badge&labelColor=272727&logo=github)](https://github.com/Project-Alphaa/Slenders)
